@@ -13,8 +13,14 @@
             url('hero-image.png');utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%2306081A" width="1200" height="800"/><circle cx="200" cy="150" r="100" fill="%235DBE4A" opacity="0.1"/><circle cx="900" cy="600" r="150" fill="%23C8F04A" opacity="0.08"/><circle cx="600" cy="400" r="80" fill="%235DBE4A" opacity="0.12"/></svg>');
             background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; position: relative;
         }
-        .hero-side::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top left, rgba(93,190,74,0.1), transparent), radial-gradient(ellipse at bottom right, rgba(200,240,74,0.08), transparent); }
-        .hero-content { position: relative; z-index: 1; }
+.hero-side {
+    /* This adds a 60% black tint over the image */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                url('hero-image.png'); 
+    background-size: cover;
+    background-position: center;
+    /* ... keep your other existing properties ... */
+}        .hero-content { position: relative; z-index: 1; }
         .form-side { background: var(--navy); display: flex; align-items: center; justify-content: center; padding: 60px 40px; }
         @media (max-width: 960px) { body { grid-template-columns: 1fr; } .hero-side { display: none; } }
     </style>
