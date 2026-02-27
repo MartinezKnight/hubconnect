@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Your Business — HubConnect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <a href="index.html" class="nav-logo">
+        <img src="HC-Logo.png" alt="HubConnect" style="height: 110px; width: auto;">
+    </a>
+    <ul class="nav-links">
+        <li><a href="index.html#how">How It Works</a></li>
+        <li><a href="index.html#categories">Categories</a></li>
+        <li><a href="index.html#partners">Partners</a></li>
+        <li><a href="dashboard.html">Browse Marketplace</a></li>
+    </ul>
+    <div class="nav-actions">
+        <a href="login.html" class="btn btn-ghost">Sign In</a>
+        <a href="signup.html" class="btn btn-lime">Get Started</a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content-wrapper">
+        <div class="hero-text animate-fade">
+            <div class="hero-eyebrow">For Business Owners</div>
+            <h1 class="hero-title">
+                Reach 50,000+ <br>
+                <span class="accent">Customers Today</span>
+            </h1>
+            <p class="hero-subtitle">
+                List your business on HubConnect and connect with thousands of Africans looking for what you offer. Keep 85% of every transaction.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px;">
+                <div>
+                    <div style="font-size: 42px; font-weight: 800; color: var(--lime); font-family: 'Syne', sans-serif; margin-bottom: 8px;">85%</div>
+                    <div style="font-size: 14px; color: var(--muted);">Revenue Share</div>
+                </div>
+                <div>
+                    <div style="font-size: 42px; font-weight: 800; color: var(--lime); font-family: 'Syne', sans-serif; margin-bottom: 8px;">50K+</div>
+                    <div style="font-size: 14px; color: var(--muted);">Active Users</div>
+                </div>
+                <div>
+                    <div style="font-size: 42px; font-weight: 800; color: var(--lime); font-family: 'Syne', sans-serif; margin-bottom: 8px;">3</div>
+                    <div style="font-size: 14px; color: var(--muted);">Cities</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="animate-scale delay-2">
+            <img src="hero-image.png" alt="Business Partners" class="hero-image">
+        </div>
+    </div>
+</section>
+
+<!-- Form Section -->
+<section style="max-width: 1160px; margin: 0 auto; padding: 100px 40px;">
+    <div style="max-width: 800px; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 48px;">
+            <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 16px;">List Your Business</h2>
+            <p style="font-size: 17px; color: var(--muted);">Fill out the form below. Our team will review and activate your listing within 24 hours.</p>
+        </div>
+        
+        <form onsubmit="event.preventDefault(); alert('Application submitted! Our team will contact you within 24 hours.'); window.location.href='index.html';" style="background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 40px;">
+            
+            <div class="form-group">
+                <label class="form-label">Business Name</label>
+                <input type="text" class="form-input" placeholder="e.g., MamaChika Store" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Business Category</label>
+                <select class="form-input" required>
+                    <option value="">Select category...</option>
+                    <option value="food">Food & Groceries</option>
+                    <option value="transport">Transport</option>
+                    <option value="housing">Housing</option>
+                    <option value="recycling">Recycling</option>
+                    <option value="services">Home Services</option>
+                    <option value="training">Training</option>
+                    <option value="investment">Investment</option>
+                    <option value="delivery">Delivery</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Opportunity Type</label>
+                <select class="form-input" required>
+                    <option value="">Select type...</option>
+                    <option value="bulk">Bulk Buying Pool</option>
+                    <option value="shared">Shared Resource</option>
+                    <option value="coliving">Co-Living Space</option>
+                    <option value="rideshare">Ride Share</option>
+                    <option value="service">Shared Service</option>
+                    <option value="training">Career Mortgage</option>
+                    <option value="investment">Investment Pool</option>
+                    <option value="delivery">Shared Delivery</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Listing Title</label>
+                <input type="text" class="form-input" placeholder="e.g., Bulk Rice 50kg Pool" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Description</label>
+                <textarea class="form-input" rows="4" placeholder="Describe your offering..." required></textarea>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="form-group">
+                    <label class="form-label">Price per Person (₦)</label>
+                    <input type="number" class="form-input" placeholder="38000" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Pool Size (People)</label>
+                    <input type="number" class="form-input" placeholder="20" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Location</label>
+                <select class="form-input" required>
+                    <option value="">Select location...</option>
+                    <option value="lagos">Lagos</option>
+                    <option value="abuja">Abuja</option>
+                    <option value="kano">Kano</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Contact Email</label>
+                <input type="email" class="form-input" placeholder="business@example.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Contact Phone</label>
+                <input type="tel" class="form-input" placeholder="+234 801 234 5678" required>
+            </div>
+            
+            <button type="submit" class="btn btn-lime" style="width: 100%; padding: 16px; font-size: 16px; font-weight: 700;">Submit Application</button>
+            
+            <p style="text-align: center; margin-top: 24px; font-size: 13px; color: var(--muted);">
+                By submitting, you agree to our Terms of Service and Privacy Policy
+            </p>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer style="border-top: 1px solid var(--border); padding: 48px 40px 28px; margin-top: 100px;">
+    <div style="max-width: 1160px; margin: 0 auto; text-align: center;">
+        <div style="margin-bottom: 32px;">
+            <img src="HC-Logo.png" alt="HubConnect" style="height: 90px; width: auto;">
+        </div>
+        <div style="display: flex; gap: 24px; justify-content: center; margin-bottom: 24px; flex-wrap: wrap;">
+            <a href="index.html#how" style="font-size: 14px; color: var(--muted);">How It Works</a>
+            <a href="index.html#categories" style="font-size: 14px; color: var(--muted);">Categories</a>
+            <a href="post-opportunity.html" style="font-size: 14px; color: var(--muted);">List Your Business</a>
+            <a href="login.html" style="font-size: 14px; color: var(--muted);">Sign In</a>
+        </div>
+        <p style="font-size: 13px; color: var(--muted);">&copy; 2026 HubConnect. Africa's Universal Service Layer.</p>
+    </div>
+</footer>
+
+</body>
+</html>

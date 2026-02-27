@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Provider Dashboard — HubConnect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="display: flex; min-height: 100vh;">
+
+<aside class="sidebar">
+    <a href="index.html" class="logo"><img src="HC-Logo.png" alt="HubConnect"></a>
+    <div class="nav-label">Business</div>
+    <ul class="nav-list">
+        <li class="nav-item"><a class="active" href="partner-dashboard-provider.html"><span class="nav-dot"></span>Dashboard</a></li>
+        <li class="nav-item"><a href="post-opportunity.html"><span class="nav-dot"></span>New Listing</a></li>
+    </ul>
+    <div class="nav-label">Account</div>
+    <ul class="nav-list">
+        <li class="nav-item"><a href="index.html"><span class="nav-dot"></span>Logout</a></li>
+    </ul>
+</aside>
+
+<div class="main">
+    <div class="topbar">
+        <h1>Service Provider Dashboard</h1>
+    </div>
+    
+    <div class="content">
+        <div style="background: linear-gradient(135deg, rgba(200,240,74,0.15), rgba(93,190,74,0.08)); border: 1px solid rgba(93,190,74,0.3); border-radius: 16px; padding: 40px; margin-bottom: 32px;">
+            <div style="font-size: 15px; color: var(--muted); margin-bottom: 12px; font-weight: 600;">Service Provider</div>
+            <div style="font-family: 'Syne', sans-serif; font-size: 42px; font-weight: 800; color: var(--lime); margin-bottom: 8px;">HomeHelp NG</div>
+            <div style="font-size: 14px; color: var(--muted);">Home Services · Verified Provider since Feb 2026</div>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-label">Revenue (30 Days)</div>
+                <div class="stat-value">₦180K</div>
+                <div style="font-size: 12px; color: var(--green); font-weight: 600; margin-top: 6px;">↑ 24%</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Your Share (80%)</div>
+                <div class="stat-value">₦144K</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Active Services</div>
+                <div class="stat-value">8</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Clients</div>
+                <div class="stat-value">64</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">Active Service Pools</h3>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr><th>Service</th><th>Progress</th><th>Revenue</th><th>Status</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight: 600;">AC Repair Pool</td>
+                            <td>6/8 clients</td>
+                            <td style="font-weight: 700; color: var(--green);">₦15,000</td>
+                            <td><span class="status-badge status-completed">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;">Plumbing Service</td>
+                            <td>4/6 clients</td>
+                            <td style="font-weight: 700; color: var(--green);">₦8,000</td>
+                            <td><span class="status-badge status-pending">Filling</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

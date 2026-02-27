@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings — HubConnect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="display: flex; min-height: 100vh;">
+
+<!-- Sidebar -->
+<aside class="sidebar">
+    <a href="index.html" class="logo"><img src="HC-Logo.png" alt="HubConnect"></a>
+    <div class="nav-label">Main</div>
+    <ul class="nav-list">
+        <li class="nav-item"><a href="dashboard.html"><span class="nav-dot"></span>Marketplace</a></li>
+        <li class="nav-item"><a href="transactions.html"><span class="nav-dot"></span>Transactions</a></li>
+        <li class="nav-item"><a href="profile.html"><span class="nav-dot"></span>Profile</a></li>
+    </ul>
+    <div class="nav-label">Earnings</div>
+    <ul class="nav-list">
+        <li class="nav-item"><a href="agent-dashboard.html"><span class="nav-dot"></span>Referrals</a></li>
+    </ul>
+    <div class="nav-label">Account</div>
+    <ul class="nav-list">
+        <li class="nav-item"><a class="active" href="settings.html"><span class="nav-dot"></span>Settings</a></li>
+        <li class="nav-item"><a href="index.html"><span class="nav-dot"></span>Logout</a></li>
+    </ul>
+</aside>
+
+<!-- Main Content -->
+<div class="main">
+    <div class="topbar">
+        <h1>Settings</h1>
+    </div>
+    
+    <div class="content">
+        <!-- Notifications -->
+        <div class="section">
+            <h3 class="section-title">Notifications</h3>
+            <p style="font-size: 14px; color: var(--muted); margin-bottom: 24px;">Choose how you want to receive updates</p>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--border);">
+                <div>
+                    <div style="font-weight: 600; margin-bottom: 4px;">Email Notifications</div>
+                    <div style="font-size: 13px; color: var(--muted);">Receive updates about transactions and pools</div>
+                </div>
+                <label style="position: relative; display: inline-block; width: 52px; height: 28px;">
+                    <input type="checkbox" checked style="opacity: 0; width: 0; height: 0;">
+                    <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: var(--green); border-radius: 100px; transition: 0.3s;"></span>
+                </label>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--border);">
+                <div>
+                    <div style="font-weight: 600; margin-bottom: 4px;">SMS Notifications</div>
+                    <div style="font-size: 13px; color: var(--muted);">Get text messages for important updates</div>
+                </div>
+                <label style="position: relative; display: inline-block; width: 52px; height: 28px;">
+                    <input type="checkbox" checked style="opacity: 0; width: 0; height: 0;">
+                    <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: var(--green); border-radius: 100px; transition: 0.3s;"></span>
+                </label>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--border);">
+                <div>
+                    <div style="font-weight: 600; margin-bottom: 4px;">Pool Updates</div>
+                    <div style="font-size: 13px; color: var(--muted);">Notify me when pools I'm in are closing</div>
+                </div>
+                <label style="position: relative; display: inline-block; width: 52px; height: 28px;">
+                    <input type="checkbox" checked style="opacity: 0; width: 0; height: 0;">
+                    <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: var(--green); border-radius: 100px; transition: 0.3s;"></span>
+                </label>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0;">
+                <div>
+                    <div style="font-weight: 600; margin-bottom: 4px;">Marketing Emails</div>
+                    <div style="font-size: 13px; color: var(--muted);">New opportunities and platform updates</div>
+                </div>
+                <label style="position: relative; display: inline-block; width: 52px; height: 28px;">
+                    <input type="checkbox" style="opacity: 0; width: 0; height: 0;">
+                    <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.1); border-radius: 100px; transition: 0.3s;"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Security -->
+        <div class="section">
+            <h3 class="section-title">Security</h3>
+            <p style="font-size: 14px; color: var(--muted); margin-bottom: 24px;">Keep your account secure</p>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--border);">
+                <div>
+                    <div style="font-weight: 600; margin-bottom: 4px;">Password</div>
+                    <div style="font-size: 13px; color: var(--muted);">Last changed 30 days ago</div>
+                </div>
+                <a href="reset-password.html" class="btn btn-outline">Change Password</a>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--border);">
+                <div>
+                    <div style="font-weight: 600; margin-bottom: 4px;">Two-Factor Authentication</div>
+                    <div style="font-size: 13px; color: var(--muted);">Add an extra layer of security</div>
+                </div>
+                <button class="btn btn-lime">Enable 2FA</button>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0;">
+                <div>
+                    <div style="font-weight: 600; margin-bottom: 4px;">Active Sessions</div>
+                    <div style="font-size: 13px; color: var(--muted);">Manage devices logged into your account</div>
+                </div>
+                <button class="btn btn-outline">View Sessions</button>
+            </div>
+        </div>
+
+        <!-- Privacy -->
+        <div class="section">
+            <h3 class="section-title">Privacy</h3>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--border);">
+                <div>
+                    <div style="font-weight: 600; margin-bottom: 4px;">Profile Visibility</div>
+                    <div style="font-size: 13px; color: var(--muted);">Who can see your profile information</div>
+                </div>
+                <select class="form-input" style="width: 200px;">
+                    <option>Everyone</option>
+                    <option>My Referrals Only</option>
+                    <option>Private</option>
+                </select>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0;">
+                <div>
+                    <div style="font-weight: 600; margin-bottom: 4px;">Data Export</div>
+                    <div style="font-size: 13px; color: var(--muted);">Download all your account data</div>
+                </div>
+                <button class="btn btn-outline">Request Export</button>
+            </div>
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="section" style="border-color: rgba(239,68,68,0.3); background: rgba(239,68,68,0.03);">
+            <h3 class="section-title" style="color: var(--red);">Danger Zone</h3>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid rgba(239,68,68,0.2);">
+                <div>
+                    <div style="font-weight: 600; margin-bottom: 4px;">Deactivate Account</div>
+                    <div style="font-size: 13px; color: var(--muted);">Temporarily disable your account</div>
+                </div>
+                <button class="btn" style="background: transparent; color: var(--red); border: 1px solid var(--red);">Deactivate</button>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0;">
+                <div>
+                    <div style="font-weight: 600; margin-bottom: 4px;">Delete Account</div>
+                    <div style="font-size: 13px; color: var(--muted);">Permanently delete your account and data</div>
+                </div>
+                <button class="btn" style="background: var(--red); color: white;">Delete Account</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

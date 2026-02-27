@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile — HubConnect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="display: flex; min-height: 100vh;">
+
+<!-- Sidebar -->
+<aside class="sidebar">
+    <a href="index.html" class="logo"><img src="HC-Logo.png" alt="HubConnect"></a>
+    <div class="nav-label">Main</div>
+    <ul class="nav-list">
+        <li class="nav-item"><a href="dashboard.html"><span class="nav-dot"></span>Marketplace</a></li>
+        <li class="nav-item"><a href="transactions.html"><span class="nav-dot"></span>Transactions</a></li>
+        <li class="nav-item"><a class="active" href="profile.html"><span class="nav-dot"></span>Profile</a></li>
+    </ul>
+    <div class="nav-label">Earnings</div>
+    <ul class="nav-list">
+        <li class="nav-item"><a href="agent-dashboard.html"><span class="nav-dot"></span>Referrals</a></li>
+    </ul>
+    <div class="nav-label">Account</div>
+    <ul class="nav-list">
+        <li class="nav-item"><a href="settings.html"><span class="nav-dot"></span>Settings</a></li>
+        <li class="nav-item"><a href="index.html"><span class="nav-dot"></span>Logout</a></li>
+    </ul>
+</aside>
+
+<!-- Main Content -->
+<div class="main">
+    <div class="topbar">
+        <h1>My Profile</h1>
+    </div>
+    
+    <div class="content">
+        <!-- Profile Header -->
+        <div class="section" style="display: flex; align-items: center; gap: 32px; margin-bottom: 32px;">
+            <div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, rgba(93,190,74,0.2), rgba(200,240,74,0.1)); border: 3px solid var(--green); display: flex; align-items: center; justify-content: center; font-size: 48px; font-weight: 800; color: var(--lime); font-family: 'Syne', sans-serif;">
+                AO
+            </div>
+            <div style="flex: 1;">
+                <h2 style="font-size: 32px; font-weight: 800; margin-bottom: 8px;">Ada Okafor</h2>
+                <p style="font-size: 15px; color: var(--muted); margin-bottom: 16px;">Member since January 2026</p>
+                <div style="display: flex; gap: 12px;">
+                    <button class="btn btn-lime">Edit Profile</button>
+                    <button class="btn btn-outline">Change Password</button>
+                </div>
+            </div>
+            <div style="text-align: right;">
+                <div style="font-size: 14px; color: var(--muted); margin-bottom: 6px;">Tier</div>
+                <div style="display: inline-block; padding: 8px 20px; background: rgba(93,190,74,0.12); border: 1px solid rgba(93,190,74,0.3); border-radius: 100px; font-weight: 700; color: var(--green);">Active User</div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-row" style="margin-bottom: 32px;">
+            <div class="stat-card">
+                <div class="stat-label">Total Savings</div>
+                <div class="stat-value">₦180K</div>
+                <div style="font-size: 12px; color: var(--green); font-weight: 600; margin-top: 6px;">↑ 22% this month</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Transactions</div>
+                <div class="stat-value">24</div>
+                <div style="font-size: 12px; color: var(--muted); margin-top: 6px;">Since joining</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Referral Earnings</div>
+                <div class="stat-value">₦24K</div>
+                <div style="font-size: 12px; color: var(--green); font-weight: 600; margin-top: 6px;">8 referrals</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Active Pools</div>
+                <div class="stat-value">3</div>
+                <div style="font-size: 12px; color: var(--muted); margin-top: 6px;">Currently in</div>
+            </div>
+        </div>
+
+        <!-- Personal Information -->
+        <div class="section">
+            <h3 class="section-title">Personal Information</h3>
+            <form onsubmit="event.preventDefault(); alert('Profile updated successfully!');">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-input" value="Ada Okafor" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" value="ada.okafor@example.com" readonly>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-input" value="+234 801 234 5678">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Location</label>
+                        <select class="form-input">
+                            <option>Lagos, Nigeria</option>
+                            <option>Abuja, Nigeria</option>
+                            <option>Kano, Nigeria</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Bio (Optional)</label>
+                    <textarea class="form-input" rows="3" placeholder="Tell us about yourself...">Saving money and building wealth with HubConnect. Love the bulk buying pools!</textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-lime">Save Changes</button>
+            </form>
+        </div>
+
+        <!-- Payment Information -->
+        <div class="section">
+            <h3 class="section-title">Payment Information</h3>
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <div style="font-weight: 600; margin-bottom: 4px;">GTBank - 0123456789</div>
+                        <div style="font-size: 13px; color: var(--muted);">Ada Okafor</div>
+                    </div>
+                    <div style="display: inline-block; padding: 6px 14px; background: rgba(93,190,74,0.12); border-radius: 100px; font-size: 11px; font-weight: 700; color: var(--green);">VERIFIED</div>
+                </div>
+            </div>
+            <button class="btn btn-outline">Add New Account</button>
+        </div>
+
+        <!-- Referral Link -->
+        <div class="section">
+            <h3 class="section-title">Your Referral Link</h3>
+            <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">Share this link to earn ₦500 per referral + 5% forever</p>
+            <div style="display: flex; gap: 12px;">
+                <input type="text" class="form-input" value="https://hubconnect.ng/ref/ada-okafor" readonly style="flex: 1;">
+                <button class="btn btn-lime" onclick="navigator.clipboard.writeText('https://hubconnect.ng/ref/ada-okafor'); alert('Link copied!');">Copy Link</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

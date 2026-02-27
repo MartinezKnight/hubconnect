@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referral Earnings — HubConnect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="display: flex; min-height: 100vh;">
+
+<!-- Sidebar -->
+<aside class="sidebar">
+    <a href="index.html" class="logo"><img src="HC-Logo.png" alt="HubConnect"></a>
+    <div class="nav-label">Main</div>
+    <ul class="nav-list">
+        <li class="nav-item"><a href="dashboard.html"><span class="nav-dot"></span>Marketplace</a></li>
+        <li class="nav-item"><a href="transactions.html"><span class="nav-dot"></span>Transactions</a></li>
+        <li class="nav-item"><a href="profile.html"><span class="nav-dot"></span>Profile</a></li>
+    </ul>
+    <div class="nav-label">Earnings</div>
+    <ul class="nav-list">
+        <li class="nav-item"><a class="active" href="agent-dashboard.html"><span class="nav-dot"></span>Referrals</a></li>
+    </ul>
+    <div class="nav-label">Account</div>
+    <ul class="nav-list">
+        <li class="nav-item"><a href="settings.html"><span class="nav-dot"></span>Settings</a></li>
+        <li class="nav-item"><a href="index.html"><span class="nav-dot"></span>Logout</a></li>
+    </ul>
+</aside>
+
+<!-- Main Content -->
+<div class="main">
+    <div class="topbar">
+        <h1>Referral Earnings</h1>
+    </div>
+    
+    <div class="content">
+        <!-- Hero Card -->
+        <div style="background: linear-gradient(135deg, rgba(93,190,74,0.15), rgba(200,240,74,0.08)); border: 1px solid rgba(93,190,74,0.3); border-radius: 16px; padding: 40px; margin-bottom: 32px; text-align: center;">
+            <div style="font-size: 15px; color: var(--muted); margin-bottom: 12px; font-weight: 600;">Total Earnings</div>
+            <div style="font-family: 'Syne', sans-serif; font-size: 64px; font-weight: 800; color: var(--lime); margin-bottom: 16px;">₦24,500</div>
+            <div style="font-size: 14px; color: var(--muted); margin-bottom: 32px;">From 8 successful referrals</div>
+            <button class="btn btn-lime btn-lg">Withdraw Earnings</button>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-row" style="margin-bottom: 32px;">
+            <div class="stat-card">
+                <div class="stat-label">This Month</div>
+                <div class="stat-value">₦12K</div>
+                <div style="font-size: 12px; color: var(--green); font-weight: 600; margin-top: 6px;">↑ 45% from last month</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Referrals</div>
+                <div class="stat-value">8</div>
+                <div style="font-size: 12px; color: var(--muted); margin-top: 6px;">Active users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Signup Bonus</div>
+                <div class="stat-value">₦4,000</div>
+                <div style="font-size: 12px; color: var(--muted); margin-top: 6px;">₦500 × 8</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">5% Commission</div>
+                <div class="stat-value">₦20,500</div>
+                <div style="font-size: 12px; color: var(--muted); margin-top: 6px;">From transactions</div>
+            </div>
+        </div>
+
+        <!-- Referral Link -->
+        <div class="section">
+            <h3 class="section-title">Your Referral Link</h3>
+            <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">Earn ₦500 per signup + 5% forever from their transactions</p>
+            <div style="display: flex; gap: 12px; margin-bottom: 20px;">
+                <input type="text" class="form-input" value="https://hubconnect.ng/ref/ada-okafor" readonly style="flex: 1;">
+                <button class="btn btn-lime" onclick="navigator.clipboard.writeText('https://hubconnect.ng/ref/ada-okafor'); alert('Link copied!');">Copy Link</button>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px;">
+                <button class="btn btn-outline" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <span>📱</span> WhatsApp
+                </button>
+                <button class="btn btn-outline" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <span>📘</span> Facebook
+                </button>
+                <button class="btn btn-outline" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <span>🐦</span> Twitter
+                </button>
+                <button class="btn btn-outline" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <span>📧</span> Email
+                </button>
+            </div>
+        </div>
+
+        <!-- Referral History -->
+        <div class="section">
+            <h3 class="section-title">Referral History</h3>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Joined</th>
+                            <th>Status</th>
+                            <th>Transactions</th>
+                            <th>Your Earnings</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight: 600;">Ibrahim Yusuf</td>
+                            <td>Jan 15, 2026</td>
+                            <td><span class="status-badge status-completed">Active</span></td>
+                            <td>8</td>
+                            <td style="font-weight: 700; color: var(--green);">₦3,200</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;">Chioma Eze</td>
+                            <td>Jan 20, 2026</td>
+                            <td><span class="status-badge status-completed">Active</span></td>
+                            <td>5</td>
+                            <td style="font-weight: 700; color: var(--green);">₦2,100</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;">Emeka Obi</td>
+                            <td>Jan 22, 2026</td>
+                            <td><span class="status-badge status-completed">Active</span></td>
+                            <td>12</td>
+                            <td style="font-weight: 700; color: var(--green);">₦5,400</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;">Fatima Bello</td>
+                            <td>Jan 25, 2026</td>
+                            <td><span class="status-badge status-pending">Pending</span></td>
+                            <td>0</td>
+                            <td style="font-weight: 700; color: var(--green);">₦500</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;">Tunde Adewale</td>
+                            <td>Feb 1, 2026</td>
+                            <td><span class="status-badge status-completed">Active</span></td>
+                            <td>7</td>
+                            <td style="font-weight: 700; color: var(--green);">₦2,950</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;">Blessing Nnamdi</td>
+                            <td>Feb 5, 2026</td>
+                            <td><span class="status-badge status-completed">Active</span></td>
+                            <td>9</td>
+                            <td style="font-weight: 700; color: var(--green);">₦3,850</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;">David Okoye</td>
+                            <td>Feb 10, 2026</td>
+                            <td><span class="status-badge status-completed">Active</span></td>
+                            <td>6</td>
+                            <td style="font-weight: 700; color: var(--green);">₦2,600</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;">Aisha Mohammed</td>
+                            <td>Feb 15, 2026</td>
+                            <td><span class="status-badge status-completed">Active</span></td>
+                            <td>10</td>
+                            <td style="font-weight: 700; color: var(--green);">₦4,500</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <div class="section" style="background: rgba(93,190,74,0.05); border-color: rgba(93,190,74,0.2);">
+            <h3 class="section-title" style="color: var(--green);">How Referral Earnings Work</h3>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 20px;">
+                <div>
+                    <div style="font-size: 32px; margin-bottom: 12px;">1️⃣</div>
+                    <div style="font-weight: 700; margin-bottom: 8px;">Share Your Link</div>
+                    <div style="font-size: 14px; color: var(--muted);">Copy and share your unique referral link with friends and family</div>
+                </div>
+                <div>
+                    <div style="font-size: 32px; margin-bottom: 12px;">2️⃣</div>
+                    <div style="font-weight: 700; margin-bottom: 8px;">They Sign Up</div>
+                    <div style="font-size: 14px; color: var(--muted);">When they create an account, you earn ₦500 instantly</div>
+                </div>
+                <div>
+                    <div style="font-size: 32px; margin-bottom: 12px;">3️⃣</div>
+                    <div style="font-weight: 700; margin-bottom: 8px;">Earn Forever</div>
+                    <div style="font-size: 14px; color: var(--muted);">Get 5% commission on every transaction they make, forever</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
