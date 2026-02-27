@@ -8,13 +8,26 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; margin: 0; }
-        .hero-side {
-            background: linear-gradient(135deg, rgba(6,8,26,0.7), rgba(13,16,48,0.6)), 
-            url('hero-image.png');            
-            background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; position: relative;
-        }
-        .hero-side::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top right, rgba(93,190,74,0.12), transparent), radial-gradient(ellipse at bottom left, rgba(200,240,74,0.08), transparent); }
-        .hero-content { position: relative; z-index: 1; }
+        /* If you want to blur just the background without a wrapper, 
+   it's often easier to use an overlay instead, but here is the 'Glass' look: */
+.hero-side {
+    background: url('hero-image.png');
+    background-size: cover;
+    position: relative;
+}
+
+.hero-side::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 8, 26, 0.5); /* Dark tint */
+    backdrop-filter: blur(4px); /* This blurs the image behind the text */
+    z-index: 0;
+}
+
+.hero-content {
+    z-index: 1; /* Ensures your text stays sharp on top of the blur */
+}
         .form-side { background: var(--navy); display: flex; align-items: center; justify-content: center; padding: 60px 40px; overflow-y: auto; }
         @media (max-width: 960px) { body { grid-template-columns: 1fr; } .hero-side { display: none; } }
     </style>
