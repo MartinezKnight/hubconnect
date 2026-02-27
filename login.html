@@ -9,18 +9,35 @@
     <style>
         body { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; margin: 0; }
         .hero-side {
-            background: linear-gradient(135deg, rgba(6,8,26,0.7), rgba(13,16,48,0.6)), 
-            url('hero-image.png');utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%2306081A" width="1200" height="800"/><circle cx="200" cy="150" r="100" fill="%235DBE4A" opacity="0.1"/><circle cx="900" cy="600" r="150" fill="%23C8F04A" opacity="0.08"/><circle cx="600" cy="400" r="80" fill="%235DBE4A" opacity="0.12"/></svg>');
-            background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; position: relative;
-        }
-.hero-side {
-    /* This adds a 60% black tint over the image */
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                url('hero-image.png'); 
+    position: relative; /* This is the anchor for the background layer */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+    overflow: hidden; /* This keeps the blur from 'leaking' outside the box */
+    min-height: 100vh;
+}
+
+/* This is your new "Background Layer" */
+.hero-side::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* Put your image and dark tint here */
+    background: linear-gradient(rgba(6, 8, 26, 0.6), rgba(6, 8, 26, 0.8)), 
+                url('hero-image.png');
     background-size: cover;
     background-position: center;
-    /* ... keep your other existing properties ... */
-}        .hero-content { position: relative; z-index: 1; }
+    filter: blur(8px); /* Adjust this number to your liking */
+    transform: scale(1.1); /* Prevents white edges caused by the blur */
+    z-index: 0;
+}
+
+/* This ensures your text sits ON TOP of the blur */
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
         .form-side { background: var(--navy); display: flex; align-items: center; justify-content: center; padding: 60px 40px; }
         @media (max-width: 960px) { body { grid-template-columns: 1fr; } .hero-side { display: none; } }
     </style>
