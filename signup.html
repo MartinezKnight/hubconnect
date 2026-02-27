@@ -8,25 +8,35 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; margin: 0; }
-        /* If you want to blur just the background without a wrapper, 
-   it's often easier to use an overlay instead, but here is the 'Glass' look: */
-.hero-side {
-    background: url('hero-image.png');
-    background-size: cover;
-    position: relative;
+        .hero-side {
+    position: relative; /* This is the anchor for the background layer */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+    overflow: hidden; /* This keeps the blur from 'leaking' outside the box */
+    min-height: 100vh;
 }
 
+/* This is your new "Background Layer" */
 .hero-side::before {
     content: "";
     position: absolute;
-    inset: 0;
-    background: rgba(6, 8, 26, 0.5); /* Dark tint */
-    backdrop-filter: blur(4px); /* This blurs the image behind the text */
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* Put your image and dark tint here */
+    background: linear-gradient(rgba(6, 8, 26, 0.6), rgba(6, 8, 26, 0.8)), 
+                url('hero-image.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px); /* Adjust this number to your liking */
+    transform: scale(1.1); /* Prevents white edges caused by the blur */
     z-index: 0;
 }
 
+/* This ensures your text sits ON TOP of the blur */
 .hero-content {
-    z-index: 1; /* Ensures your text stays sharp on top of the blur */
+    position: relative;
+    z-index: 1;
 }
         .form-side { background: var(--navy); display: flex; align-items: center; justify-content: center; padding: 60px 40px; overflow-y: auto; }
         @media (max-width: 960px) { body { grid-template-columns: 1fr; } .hero-side { display: none; } }
