@@ -856,3 +856,323 @@ html { scroll-behavior: smooth; }
     border-color: rgba(93,190,74,0.3);
     transform: scale(1.05);
 }
+/* ═══════════════════════════════════════════════════════════════════
+   MOBILE & TABLET RESPONSIVENESS
+   Add this to the VERY END of your styles.css file
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Mobile - Phones (up to 768px) */
+@media (max-width: 768px) {
+    /* Navigation */
+    nav {
+        padding: 12px 20px !important;
+        height: 60px !important;
+    }
+    
+    nav img, 
+    .nav-logo img {
+        height: 70px !important;
+    }
+    
+    .nav-links {
+        display: none !important;
+    }
+    
+    .nav-actions {
+        gap: 8px;
+    }
+    
+    .nav-actions .btn {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+    
+    /* Hero Section */
+    .hero {
+        padding: 100px 24px 60px !important;
+        min-height: auto !important;
+    }
+    
+    .hero-content-wrapper {
+        grid-template-columns: 1fr !important;
+        gap: 40px;
+    }
+    
+    .hero-text {
+        text-align: center !important;
+    }
+    
+    .hero-title {
+        font-size: 36px !important;
+        line-height: 1.15 !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 16px !important;
+        margin-bottom: 32px !important;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        justify-content: center !important;
+    }
+    
+    .hero-cta .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .hero-image {
+        max-width: 100%;
+    }
+    
+    /* Stats Row */
+    .stats-row {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+    }
+    
+    .stat-cell {
+        padding: 20px 16px !important;
+    }
+    
+    .stat-num,
+    .stat-value {
+        font-size: 24px !important;
+    }
+    
+    /* Section */
+    .section {
+        padding: 60px 24px !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    .section h2,
+    .section-heading {
+        font-size: 32px !important;
+    }
+    
+    .section-sub {
+        font-size: 15px;
+    }
+    
+    /* How It Works - Stack Cards */
+    #how > div:last-child {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+    }
+    
+    .step-card {
+        padding: 40px 24px !important;
+    }
+    
+    /* Categories - 2 Columns on Mobile */
+    #categories > div:last-child {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+    }
+    
+    .category-card {
+        padding: 24px 16px !important;
+    }
+    
+    .category-card h3 {
+        font-size: 15px !important;
+    }
+    
+    .category-card p {
+        font-size: 12px !important;
+    }
+    
+    .icon-pulse {
+        width: 60px !important;
+        height: 60px !important;
+        margin: 0 auto 16px !important;
+    }
+    
+    .icon-pulse svg {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    
+    /* Partners - 2 Columns */
+    #partners > div:last-child {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+    }
+    
+    .partner-card {
+        padding: 24px 16px !important;
+    }
+    
+    /* Stories - Stack on Mobile */
+    #stories > div:last-child {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    
+    .story-card {
+        padding: 24px !important;
+    }
+    
+    /* Mission Band */
+    .mission-band {
+        padding: 40px 24px !important;
+    }
+    
+    .mission-quote {
+        font-size: 20px !important;
+    }
+    
+    /* CTA Sections */
+    #list-business > div {
+        padding: 48px 24px !important;
+    }
+    
+    #list-business h2 {
+        font-size: 32px !important;
+    }
+    
+    #list-business p {
+        font-size: 16px !important;
+    }
+    
+    /* Footer */
+    footer {
+        padding: 40px 24px !important;
+    }
+    
+    footer img {
+        height: 70px !important;
+    }
+    
+    footer > div > div {
+        flex-direction: column !important;
+        gap: 16px;
+    }
+    
+    /* Dashboard/Sidebar Pages */
+    .sidebar {
+        display: none !important;
+    }
+    
+    .main {
+        margin-left: 0 !important;
+    }
+    
+    .topbar {
+        padding: 16px 20px !important;
+        height: 56px !important;
+    }
+    
+    .topbar h1 {
+        font-size: 18px !important;
+    }
+    
+    .content {
+        padding: 24px 20px !important;
+    }
+    
+    /* Forms */
+    .form-input,
+    .form-select,
+    .form-textarea {
+        padding: 12px 14px !important;
+        font-size: 14px !important;
+    }
+    
+    .form-group {
+        margin-bottom: 16px;
+    }
+    
+    /* Buttons */
+    .btn-lg {
+        padding: 14px 24px !important;
+        font-size: 14px !important;
+    }
+    
+    /* Tables */
+    .table {
+        font-size: 13px;
+    }
+    
+    .table th,
+    .table td {
+        padding: 12px 10px !important;
+    }
+    
+    /* Cards */
+    .card,
+    .section {
+        padding: 20px !important;
+    }
+    
+    /* Container */
+    .container {
+        padding: 24px 20px !important;
+    }
+}
+
+/* Tablet - iPads (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    nav {
+        padding: 0 40px;
+    }
+    
+    nav img {
+        height: 90px !important;
+    }
+    
+    .hero {
+        padding: 120px 40px 80px;
+    }
+    
+    .hero-title {
+        font-size: 48px !important;
+    }
+    
+    .stats-row {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    #categories > div:last-child {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+    
+    #partners > div:last-child {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    #stories > div:last-child {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* Very Small Phones (up to 375px) */
+@media (max-width: 375px) {
+    nav img {
+        height: 60px !important;
+    }
+    
+    .hero-title {
+        font-size: 28px !important;
+    }
+    
+    .section h2 {
+        font-size: 26px !important;
+    }
+    
+    .btn {
+        font-size: 12px;
+        padding: 10px 16px;
+    }
+    
+    .stats-row {
+        grid-template-columns: 1fr !important;
+    }
+    
+    #categories > div:last-child {
+        grid-template-columns: 1fr !important;
+    }
+}
