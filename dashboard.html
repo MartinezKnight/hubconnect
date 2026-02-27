@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace — HubConnect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="display: flex; min-height: 100vh; background: var(--navy);">
+
+<!-- Sidebar -->
+<aside class="sidebar">
+    <a href="index.html" class="logo"><img src="../assets/HC_Logo.png" alt="HubConnect"></a>
+    
+    <div class="nav-label">Marketplace</div>
+    <ul class="nav-list">
+        <li class="nav-item"><a class="active" href="dashboard.html"><span class="nav-dot"></span>Browse Listings</a></li>
+        <li class="nav-item"><a href="transactions.html"><span class="nav-dot"></span>My Transactions</a></li>
+    </ul>
+
+    <div class="nav-label">Account</div>
+    <ul class="nav-list">
+        <li class="nav-item"><a href="agent-dashboard.html"><span class="nav-dot"></span>Earnings & Referrals</a></li>
+        <li class="nav-item"><a href="profile.html"><span class="nav-dot"></span>My Profile</a></li>
+    </ul>
+
+    <div style="margin-top: auto; padding: 20px 24px; border-top: 1px solid var(--border);">
+        <div style="background: rgba(93,190,74,0.08); border: 1px solid rgba(93,190,74,0.2); border-radius: 10px; padding: 16px;">
+            <div style="font-size: 12px; color: var(--muted); margin-bottom: 6px;">Referral Income</div>
+            <div style="font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--lime);">₦12,450</div>
+            <div style="font-size: 11px; color: var(--muted); margin-top: 4px;">Your referral code: ADA2K24</div>
+        </div>
+    </div>
+</aside>
+
+<!-- Main -->
+<div class="main">
+    <div class="topbar">
+        <h1>Browse Opportunities</h1>
+        <button class="icon-btn" onclick="window.location.href='profile.html'">👤</button>
+    </div>
+
+    <div class="content">
+        <!-- Location Selector -->
+        <div style="margin-bottom: 24px;">
+            <label style="display: block; font-size: 13px; color: var(--muted); margin-bottom: 8px;">Your Location</label>
+            <select id="location" onchange="updateLocation()" style="padding: 10px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; color: var(--white); font-size: 14px;">
+                <option value="Lagos">Lagos, Nigeria</option>
+                <option value="Abuja">Abuja, Nigeria</option>
+                <option value="Kano">Kano, Nigeria</option>
+                <option value="Port Harcourt">Port Harcourt, Nigeria</option>
+                <option value="Ibadan">Ibadan, Nigeria</option>
+                <option value="Nairobi">Nairobi, Kenya</option>
+                <option value="Accra">Accra, Ghana</option>
+            </select>
+        </div>
+
+        <!-- Filters -->
+        <div style="margin-bottom: 16px;">
+            <div style="font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.08em;">Category</div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="filter-btn active" onclick="filterCategory('all', this)">All</button>
+                <button class="filter-btn" onclick="filterCategory('transport', this)">Transport</button>
+                <button class="filter-btn" onclick="filterCategory('food', this)">Food & Groceries</button>
+                <button class="filter-btn" onclick="filterCategory('recycling', this)">Recycling</button>
+                <button class="filter-btn" onclick="filterCategory('services', this)">Home Services</button>
+                <button class="filter-btn" onclick="filterCategory('training', this)">Training</button>
+                <button class="filter-btn" onclick="filterCategory('housing', this)">Housing</button>
+                <button class="filter-btn" onclick="filterCategory('investment', this)">Investment</button>
+                <button class="filter-btn" onclick="filterCategory('delivery', this)">Delivery</button>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+            <div style="font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.08em;">Mode</div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="filter-btn mode-filter-btn active" onclick="filterMode('all', this)">All Types</button>
+                <button class="filter-btn mode-filter-btn" onclick="filterMode('active-pool', this)">Active Pools</button>
+                <button class="filter-btn mode-filter-btn" onclick="filterMode('shared-resource', this)">Shared Resources</button>
+                <button class="filter-btn mode-filter-btn" onclick="filterMode('instant-booking', this)">Instant Booking</button>
+                <button class="filter-btn mode-filter-btn" onclick="filterMode('investment-pool', this)">Investment Pools</button>
+            </div>
+        </div>
+
+        <!-- Search & Sort -->
+        <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+            <input type="text" id="search" placeholder="Search opportunities..." style="flex: 1; padding: 10px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; color: var(--white);" oninput="searchListings()">
+            <select id="sort" onchange="renderCards()" style="padding: 10px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; color: var(--white);">
+                <option value="relevance">Sort: Relevance</option>
+                <option value="savings">Highest Saving</option>
+                <option value="closing">Closing Soonest</option>
+                <option value="slots">Fewest Slots</option>
+            </select>
+        </div>
+
+        <!-- Listings Grid -->
+        <div id="listings-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px;"></div>
+    </div>
+</div>
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Transactions — HubConnect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="display: flex; min-height: 100vh;">
+
+<aside class="sidebar">
+    <a href="index.html" class="logo"><img src="../assets/HC_Logo.png" alt="HubConnect"></a>
+    <div class="nav-label">Marketplace</div>
+    <ul class="nav-list">
+        <li class="nav-item"><a href="dashboard.html"><span class="nav-dot"></span>Browse Listings</a></li>
+        <li class="nav-item"><a class="active" href="transactions.html"><span class="nav-dot"></span>My Transactions</a></li>
+    </ul>
+    <div class="nav-label">Account</div>
+    <ul class="nav-list">
+        <li class="nav-item"><a href="profile.html"><span class="nav-dot"></span>My Profile</a></li>
+    </ul>
+</aside>
+
+<div class="main">
+    <div class="topbar">
+        <h1>My Transactions</h1>
+        <button class="icon-btn">👤</button>
+    </div>
+
+    <div class="content">
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-label">Total Spent</div>
+                <div class="stat-value">₦47K</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Saved</div>
+                <div class="stat-value">₦28K</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Completed</div>
+                <div class="stat-value">12</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">In Escrow</div>
+                <div class="stat-value">2</div>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-bottom: 24px;">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Completed</button>
+            <button class="filter-btn">In Escrow</button>
+            <button class="filter-btn">Refunded</button>
+        </div>
+
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Transaction</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Bulk Rice 50kg</strong><br><small style="color: var(--muted);">MamaChika Store</small></td>
+                        <td><span style="font-family: 'Syne'; font-weight: 700; color: var(--lime);">₦38,000</span></td>
+                        <td><span class="status-badge status-escrow">In Escrow</span></td>
+                        <td>18 Feb 2026</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Shared Ride: Ikeja-Lekki</strong><br><small style="color: var(--muted);">RideShare Lagos</small></td>
+                        <td><span style="font-family: 'Syne'; font-weight: 700; color: var(--lime);">₦750</span></td>
+                        <td><span class="status-badge status-completed">Completed</span></td>
+                        <td>17 Feb 2026</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
