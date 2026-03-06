@@ -10,7 +10,7 @@
 <body style="display: flex; min-height: 100vh; background: var(--navy);">
 
 <!-- Sidebar -->
-<aside class="sidebar">
+<aside class="sidebar animate-slide">
     <a href="index.html" class="logo"><img src="HC-Logo.png" alt="HubConnect"></a>
     
     <div class="nav-label">Marketplace</div>
@@ -36,28 +36,47 @@
 
 <!-- Main -->
 <div class="main">
-    <div class="topbar">
+    <div class="topbar animate-fade">
         <h1>Browse Opportunities</h1>
         <button class="icon-btn" onclick="window.location.href='profile.html'">👤</button>
     </div>
 
     <div class="content">
         <!-- Location Selector -->
-        <div style="margin-bottom: 24px;">
+        <div style="margin-bottom: 24px;" class="animate-fade delay-1">
             <label style="display: block; font-size: 13px; color: var(--muted); margin-bottom: 8px;">Your Location</label>
             <select id="location" onchange="updateLocation()" style="padding: 10px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; color: var(--white); font-size: 14px;">
-                <option value="Lagos">Lagos, Nigeria</option>
-                <option value="Abuja">Abuja, Nigeria</option>
-                <option value="Kano">Kano, Nigeria</option>
-                <option value="Port Harcourt">Port Harcourt, Nigeria</option>
-                <option value="Ibadan">Ibadan, Nigeria</option>
-                <option value="Nairobi">Nairobi, Kenya</option>
-                <option value="Accra">Accra, Ghana</option>
+                <optgroup label="Nigeria - States">
+                    <option value="Lagos">Lagos State</option>
+                    <option value="Abuja">Abuja (FCT)</option>
+                    <option value="Kano">Kano State</option>
+                    <option value="Rivers">Rivers State (Port Harcourt)</option>
+                    <option value="Oyo">Oyo State (Ibadan)</option>
+                    <option value="Kaduna">Kaduna State</option>
+                    <option value="Ogun">Ogun State</option>
+                    <option value="Delta">Delta State</option>
+                    <option value="Anambra">Anambra State</option>
+                    <option value="Enugu">Enugu State</option>
+                    <option value="Edo">Edo State (Benin City)</option>
+                </optgroup>
+                <optgroup label="West Africa">
+                    <option value="Accra">Ghana (Accra)</option>
+                    <option value="Dakar">Senegal (Dakar)</option>
+                    <option value="Abidjan">Ivory Coast (Abidjan)</option>
+                    <option value="Cotonou">Benin (Cotonou)</option>
+                    <option value="Lome">Togo (Lomé)</option>
+                </optgroup>
+                <optgroup label="East Africa">
+                    <option value="Nairobi">Kenya (Nairobi)</option>
+                    <option value="Dar">Tanzania (Dar es Salaam)</option>
+                    <option value="Kampala">Uganda (Kampala)</option>
+                    <option value="Kigali">Rwanda (Kigali)</option>
+                </optgroup>
             </select>
         </div>
 
         <!-- Filters -->
-        <div style="margin-bottom: 16px;">
+        <div style="margin-bottom: 16px;" class="animate-fade delay-2">
             <div style="font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.08em;">Category</div>
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                 <button class="filter-btn active" onclick="filterCategory('all', this)">All</button>
@@ -72,7 +91,7 @@
             </div>
         </div>
 
-        <div style="margin-bottom: 24px;">
+        <div style="margin-bottom: 24px;" class="animate-fade delay-2">
             <div style="font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.08em;">Mode</div>
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                 <button class="filter-btn mode-filter-btn active" onclick="filterMode('all', this)">All Types</button>
@@ -84,7 +103,7 @@
         </div>
 
         <!-- Search & Sort -->
-        <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+        <div style="display: flex; gap: 12px; margin-bottom: 24px;" class="animate-fade delay-3">
             <input type="text" id="search" placeholder="Search opportunities..." style="flex: 1; padding: 10px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; color: var(--white);" oninput="searchListings()">
             <select id="sort" onchange="renderCards()" style="padding: 10px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; color: var(--white);">
                 <option value="relevance">Sort: Relevance</option>
@@ -100,6 +119,32 @@
 </div>
 
 <script src="dashboard.js"></script>
+
+<!-- Animation Observer -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Trigger animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { 
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in'); 
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
+
+    document.querySelectorAll('.animate-fade, .animate-slide, .animate-scale').forEach(el => {
+        observer.observe(el);
+        // Immediately trigger for above-fold elements
+        if (el.getBoundingClientRect().top < window.innerHeight) {
+            el.classList.add('animate-in');
+        }
+    });
+});
+</script>
+
+<!-- Particles Animation -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="particles.js"></script>
 
 </body>
 </html>
