@@ -41,50 +41,42 @@
             <h3 class="section-title">Notifications</h3>
             <p style="font-size: 14px; color: var(--muted); margin-bottom: 24px;">Choose how you want to receive updates</p>
             
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--border);">
-                <div>
-                    <div style="font-weight: 600; margin-bottom: 4px;">Email Notifications</div>
-                    <div style="font-size: 13px; color: var(--muted);">Receive updates about transactions and pools</div>
-                </div>
-                <label style="position: relative; display: inline-block; width: 52px; height: 28px;">
-                    <input type="checkbox" checked style="opacity: 0; width: 0; height: 0;">
-                    <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: var(--green); border-radius: 100px; transition: 0.3s;"></span>
-                </label>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--border);">
-                <div>
-                    <div style="font-weight: 600; margin-bottom: 4px;">SMS Notifications</div>
-                    <div style="font-size: 13px; color: var(--muted);">Get text messages for important updates</div>
-                </div>
-                <label style="position: relative; display: inline-block; width: 52px; height: 28px;">
-                    <input type="checkbox" checked style="opacity: 0; width: 0; height: 0;">
-                    <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: var(--green); border-radius: 100px; transition: 0.3s;"></span>
-                </label>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--border);">
-                <div>
-                    <div style="font-weight: 600; margin-bottom: 4px;">Pool Updates</div>
-                    <div style="font-size: 13px; color: var(--muted);">Notify me when pools I'm in are closing</div>
-                </div>
-                <label style="position: relative; display: inline-block; width: 52px; height: 28px;">
-                    <input type="checkbox" checked style="opacity: 0; width: 0; height: 0;">
-                    <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: var(--green); border-radius: 100px; transition: 0.3s;"></span>
-                </label>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0;">
-                <div>
-                    <div style="font-weight: 600; margin-bottom: 4px;">Marketing Emails</div>
-                    <div style="font-size: 13px; color: var(--muted);">New opportunities and platform updates</div>
-                </div>
-                <label style="position: relative; display: inline-block; width: 52px; height: 28px;">
-                    <input type="checkbox" style="opacity: 0; width: 0; height: 0;">
-                    <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.1); border-radius: 100px; transition: 0.3s;"></span>
-                </label>
-            </div>
-        </div>
+      <!-- Email Notifications -->
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 24px; border-bottom: 1px solid var(--border);">
+    <div>
+        <div style="font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 4px;">Email Notifications</div>
+        <div style="font-size: 13px; color: var(--muted);">Receive updates about transactions and pools</div>
+    </div>
+    <div class="toggle-switch active" id="toggle-email" onclick="toggleSetting('email')"></div>
+</div>
+
+<!-- SMS Notifications -->
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 24px; border-bottom: 1px solid var(--border);">
+    <div>
+        <div style="font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 4px;">SMS Notifications</div>
+        <div style="font-size: 13px; color: var(--muted);">Get text messages for important updates</div>
+    </div>
+    <div class="toggle-switch active" id="toggle-sms" onclick="toggleSetting('sms')"></div>
+</div>
+
+<!-- Pool Updates -->
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 24px; border-bottom: 1px solid var(--border);">
+    <div>
+        <div style="font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 4px;">Pool Updates</div>
+        <div style="font-size: 13px; color: var(--muted);">Notify me when pools I'm in are closing</div>
+    </div>
+    <div class="toggle-switch active" id="toggle-pool" onclick="toggleSetting('pool')"></div>
+</div>
+
+<!-- Marketing Emails -->
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 24px;">
+    <div>
+        <div style="font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 4px;">Marketing Emails</div>
+        <div style="font-size: 13px; color: var(--muted);">New opportunities and platform updates</div>
+    </div>
+    <div class="toggle-switch" id="toggle-marketing" onclick="toggleSetting('marketing')"></div>
+</div>
+</div>
 
         <!-- Security -->
         <div class="section">
