@@ -155,6 +155,33 @@
         </div>
 
     </div>
+    <script>
+function toggleSetting(type) {
+    const toggle = document.getElementById('toggle-' + type);
+    toggle.classList.toggle('active');
+    
+    // Save to localStorage
+    const isActive = toggle.classList.contains('active');
+    localStorage.setItem('setting-' + type, isActive);
+    
+    // Optional: Show confirmation
+    console.log(type + ' notifications: ' + (isActive ? 'ON' : 'OFF'));
+}
+
+// Load saved settings on page load
+document.addEventListener('DOMContentLoaded', () => {
+    ['email', 'sms', 'pool', 'marketing'].forEach(type => {
+        const saved = localStorage.getItem('setting-' + type);
+        if (saved === 'false') {
+            document.getElementById('toggle-' + type).classList.remove('active');
+        }
+    });
+});
+</script>
+
+<!-- Particles Animation -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="particles.js"></script>
 </div>
 
 </body>
