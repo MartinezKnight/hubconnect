@@ -1426,3 +1426,17 @@ body {
     align-items: center;
     gap: 4px;
 }
+/* ══════════════════════════════════════════════════════════════
+   FORM SELECT DROPDOWN FIX
+   ══════════════════════════════════════════════════════════════ */
+
+.form-select option {
+    background: var(--card);
+    color: var(--white);
+    padding: 10px;
+}
+
+.form-select {
+    background: var(--card);
+    color: var(--white);
+}
