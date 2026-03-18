@@ -1476,3 +1476,413 @@ body {
     transform: translateX(24px);
     background: var(--navy);
 }
+
+/* ══════════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE STYLES - COMPREHENSIVE
+   Add this to the END of your existing styles.css
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Tablet Devices (1024px and below) ── */
+@media (max-width: 1024px) {
+    /* Hero adjustments */
+    .hero-content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    
+    .hero-text {
+        text-align: center;
+    }
+    
+    .hero-cta {
+        justify-content: center;
+    }
+    
+    /* How It Works */
+    .how-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    
+    /* Categories */
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    
+    /* Partners */
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    /* Stories */
+    .stories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+}
+
+/* ── Mobile Devices (768px and below) ── */
+@media (max-width: 768px) {
+    /* Sidebar - Hide on mobile */
+    .sidebar {
+        position: fixed;
+        left: -260px;
+        transition: left 0.3s;
+        z-index: 1000;
+    }
+    
+    .sidebar.open {
+        left: 0;
+    }
+    
+    /* Main content - Full width on mobile */
+    .main {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    /* Topbar - Add menu button */
+    .topbar {
+        padding: 0 20px;
+    }
+    
+    .topbar h1 {
+        font-size: 18px;
+    }
+    
+    /* Hero */
+    .hero {
+        padding: 60px 24px;
+        min-height: auto;
+    }
+    
+    .hero-title {
+        font-size: clamp(32px, 8vw, 48px);
+    }
+    
+    .hero-subtitle {
+        font-size: 16px;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .hero-cta .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Sections */
+    .how-section,
+    .categories-section,
+    .partners-section,
+    .stories-section,
+    .cta-section {
+        padding: 60px 24px;
+    }
+    
+    .section-heading {
+        font-size: clamp(28px, 7vw, 42px);
+    }
+    
+    /* Stats */
+    .stats-section {
+        padding: 48px 24px;
+    }
+    
+    .stats-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .stat-cell {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        padding: 20px;
+    }
+    
+    .stat-cell:last-child {
+        border-bottom: none;
+    }
+    
+    /* Mission Band */
+    .mission-band {
+        padding: 48px 24px;
+    }
+    
+    .mission-quote {
+        font-size: clamp(16px, 4vw, 20px);
+    }
+    
+    /* Categories, Partners, Stories */
+    .categories-grid,
+    .partners-grid,
+    .stories-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
+    footer {
+        padding: 60px 24px 32px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    /* CTA Box */
+    .cta-box {
+        padding: 48px 32px;
+    }
+    
+    .cta-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .cta-actions .btn {
+        width: 100%;
+    }
+    
+    /* Navigation */
+    nav {
+        padding: 0 20px;
+        height: 64px;
+    }
+    
+    nav .nav-logo img {
+        height: 80px;
+    }
+    
+    /* Content area */
+    .content {
+        padding: 24px 16px;
+    }
+    
+    /* Listing cards grid */
+    #listings-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px;
+    }
+    
+    /* Forms */
+    .form-input,
+    .form-select,
+    .form-textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    /* Tables - Make scrollable */
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    .table {
+        min-width: 600px;
+    }
+    
+    /* Filters - Stack on mobile */
+    .filter-btn,
+    .mode-filter-btn {
+        font-size: 12px;
+        padding: 6px 14px;
+    }
+    
+    /* Step cards - Stack vertically */
+    .step-card {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+}
+
+/* ── Small Mobile (480px and below) ── */
+@media (max-width: 480px) {
+    /* Hero */
+    .hero {
+        padding: 40px 16px;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+        line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+        font-size: 15px;
+    }
+    
+    .hero-eyebrow {
+        font-size: 10px;
+        padding: 6px 14px;
+    }
+    
+    /* Sections */
+    .how-section,
+    .categories-section,
+    .partners-section,
+    .stories-section {
+        padding: 48px 16px;
+    }
+    
+    .section-heading {
+        font-size: 24px;
+    }
+    
+    .section-sub {
+        font-size: 15px;
+    }
+    
+    /* Stats */
+    .stat-num {
+        font-size: 36px;
+    }
+    
+    .stat-lbl {
+        font-size: 12px;
+    }
+    
+    /* Buttons */
+    .btn {
+        font-size: 14px;
+        padding: 12px 20px;
+    }
+    
+    .btn-lg {
+        padding: 14px 24px !important;
+        font-size: 15px !important;
+    }
+    
+    /* Cards */
+    .category-card,
+    .partner-card,
+    .story-card,
+    .listing-card {
+        padding: 24px 20px;
+    }
+    
+    /* Mission quote */
+    .mission-quote {
+        font-size: 15px;
+    }
+    
+    /* CTA */
+    .cta-box {
+        padding: 40px 24px;
+    }
+    
+    .cta-box h2 {
+        font-size: 26px;
+    }
+    
+    .cta-box p {
+        font-size: 15px;
+    }
+    
+    /* Topbar */
+    .topbar h1 {
+        font-size: 16px;
+    }
+    
+    /* Profile/Settings forms */
+    .section {
+        padding: 24px 16px;
+    }
+    
+    .section-title {
+        font-size: 16px;
+    }
+}
+
+/* ── Mobile Navigation Toggle ── */
+.mobile-menu-toggle {
+    display: none;
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+}
+
+/* ── Mobile Overlay ── */
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.mobile-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* ── Landscape Mobile Adjustments ── */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 40px 24px;
+    }
+    
+    .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ── Improve touch targets on mobile ── */
+@media (max-width: 768px) {
+    .btn,
+    .filter-btn,
+    .mode-filter-btn,
+    .icon-btn,
+    .toggle-switch {
+        min-height: 44px; /* iOS recommended */
+    }
+    
+    .nav-item a {
+        padding: 14px 12px;
+    }
+}
+
+/* ── Mobile-friendly phone mockup ── */
+@media (max-width: 768px) {
+    .floating-mockup {
+        max-width: 220px;
+        margin: 0 auto;
+    }
+    
+    /* Hide second mockup on mobile for better performance */
+    .how-grid > div:last-child {
+        display: none;
+    }
+}
