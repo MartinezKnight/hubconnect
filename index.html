@@ -13,16 +13,25 @@
 
 <!-- ══════════════════════ NAVIGATION ══════════════════════ -->
 <nav>
+    <!-- Mobile Menu Toggle (Hamburger) -->
+    <button class="mobile-menu-btn" id="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
     <a href="index.html" class="nav-logo">
         <img src="HC-Logo.png" alt="HubConnect">
     </a>
-    <ul class="nav-links">
+    
+    <ul class="nav-links" id="nav-links">
         <li><a href="#how">How It Works</a></li>
         <li><a href="#categories">Categories</a></li>
         <li><a href="#partners">Partners</a></li>
         <li><a href="#stories">Success Stories</a></li>
         <li><a href="#list-business">List Your Business</a></li>
     </ul>
+    
     <div class="nav-actions">
         <a href="login.html" class="btn btn-ghost">Sign In</a>
         <a href="signup.html" class="btn btn-lime">Get Started</a>
@@ -482,5 +491,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 </script>
+    <script src="mobile-nav.js"></script>
+
+<!-- Particles Animation -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="particles.js"></script>
+</body>
+</html>
 </body>
 </html>
