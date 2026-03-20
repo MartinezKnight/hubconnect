@@ -1874,6 +1874,126 @@ body {
     }
 }
 
+<!-- ══════════════════════════════════════════════════════════════
+     ADD THIS CSS TO THE END OF YOUR STYLES.CSS FILE
+     ══════════════════════════════════════════════════════════════ -->
+ 
+/*
+/* Hamburger Menu - Hidden by default */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 10px;
+    background: transparent;
+    border: none;
+}
+ 
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--white);
+    transition: all 0.3s;
+    border-radius: 2px;
+}
+ 
+/* Mobile styles */
+@media (max-width: 768px) {
+    /* Show hamburger on mobile */
+    .hamburger {
+        display: flex;
+        order: -1;
+    }
+    
+    /* Navigation layout */
+    nav {
+        flex-wrap: wrap;
+        position: relative;
+    }
+    
+    .nav-logo {
+        flex: 1;
+        text-align: center;
+        order: 0;
+    }
+    
+    .nav-logo img {
+        height: 70px !important;
+    }
+    
+    /* Hide menu items by default on mobile */
+    .nav-links,
+    .nav-actions {
+        display: none;
+        width: 100%;
+    }
+    
+    /* Show menu when checkbox is checked */
+    #menu-toggle:checked ~ .nav-links,
+    #menu-toggle:checked ~ .nav-actions {
+        display: flex !important;
+    }
+    
+    /* Style mobile menu */
+    .nav-links {
+        flex-direction: column;
+        background: rgba(9, 17, 42, 0.98);
+        margin: 0;
+        padding: 20px 0;
+        gap: 0;
+        order: 3;
+        border-top: 1px solid var(--border);
+    }
+    
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-links a {
+        display: block;
+        padding: 16px 20px;
+        font-size: 16px;
+        border-bottom: 1px solid var(--border);
+    }
+    
+    .nav-actions {
+        flex-direction: column;
+        gap: 12px;
+        padding: 20px;
+        background: rgba(9, 17, 42, 0.98);
+        order: 4;
+    }
+    
+    .nav-actions .btn {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+    
+    /* Animate hamburger when menu is open */
+    #menu-toggle:checked ~ .hamburger span:nth-child(1) {
+        transform: rotate(45deg) translate(7px, 7px);
+    }
+    
+    #menu-toggle:checked ~ .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    #menu-toggle:checked ~ .hamburger span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+}
+*/
+ 
+<!-- ══════════════════════════════════════════════════════════════
+     THAT'S IT! No JavaScript needed!
+     The checkbox hack works on ALL browsers
+     ══════════════════════════════════════════════════════════════ -->
+
 /* ── Mobile-friendly phone mockup ── */
 @media (max-width: 768px) {
     .floating-mockup {
