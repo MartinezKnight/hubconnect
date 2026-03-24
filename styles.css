@@ -1877,7 +1877,106 @@ body {
 <!-- ══════════════════════════════════════════════════════════════
      ADD THIS CSS TO THE END OF YOUR STYLES.CSS FILE
      ══════════════════════════════════════════════════════════════ -->
- 
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #F0F2EC;
+    transition: all 0.3s;
+    border-radius: 2px;
+}
+
+#menu-toggle:checked ~ .hamburger span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+#menu-toggle:checked ~ .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+#menu-toggle:checked ~ .hamburger span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex !important;
+        order: -1;
+    }
+    
+    nav {
+        flex-wrap: wrap;
+        padding: 0 20px !important;
+    }
+    
+    .nav-logo {
+        flex: 1;
+        text-align: center;
+        order: 0;
+    }
+    
+    nav .nav-logo img {
+        height: 70px !important;
+    }
+    
+    .nav-links {
+        display: none !important;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(9, 17, 42, 0.98);
+        margin: 0;
+        padding: 20px 0;
+        gap: 0;
+        order: 3;
+        border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    
+    .nav-actions {
+        display: none !important;
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+        padding: 20px;
+        background: rgba(9, 17, 42, 0.98);
+        order: 4;
+    }
+    
+    #menu-toggle:checked ~ .nav-links {
+        display: flex !important;
+    }
+    
+    #menu-toggle:checked ~ .nav-actions {
+        display: flex !important;
+    }
+    
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-links a {
+        display: block;
+        padding: 16px 20px;
+        font-size: 16px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    
+    .nav-actions .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
 /*
 /* Hamburger Menu - Hidden by default */
 .hamburger {
