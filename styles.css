@@ -1977,7 +1977,7 @@ body {
         text-align: center;
         justify-content: center;
     }
-/*
+
 /* Hamburger Menu - Hidden by default */
 .hamburger {
     display: none;
@@ -2086,7 +2086,7 @@ body {
         transform: rotate(-45deg) translate(7px, -7px);
     }
 }
-*/
+
  
 <!-- ══════════════════════════════════════════════════════════════
      THAT'S IT! No JavaScript needed!
