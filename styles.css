@@ -2105,6 +2105,38 @@ h1, h2, h3 {
         line-height: 1.2 !important;
     }
 }
+
+   /* ─── MOBILE PATCH FOR INTERNAL PAGES ─── */
+@media (max-width: 768px) {
+    /* Stack form rows that are side-by-side */
+    .form-row, .grid-2-col, .grid-3-col {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+    }
+
+    /* Ensure the main container doesn't have forced padding */
+    .container, .content {
+        padding: 20px 15px !important;
+    }
+
+    /* Make sure tables can scroll sideways so they don't break the width */
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Profile specific: stack avatar and info */
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    /* Buttons often look better full-width on mobile profile pages */
+    .btn-mobile-full {
+        width: 100%;
+    }
+}
 }
 
  
