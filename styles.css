@@ -2085,6 +2085,26 @@ body {
     #menu-toggle:checked ~ .hamburger span:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -7px);
     }
+   /* Prevent text overflow on mobile */
+   
+.hero-title,
+.section-heading,
+.cta-box h2,
+h1, h2, h3 {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto;
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .hero-title,
+    .section-heading,
+    .cta-box h2 {
+        font-size: 28px !important;
+        line-height: 1.2 !important;
+    }
+}
 }
 
  
