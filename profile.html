@@ -7,22 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body style="display: flex; min-height: 100vh;">
-<nav>
-    <!-- Hidden checkbox -->
-    <input type="checkbox" id="menu-toggle" style="display: none;">
-    
-    <!-- Hamburger -->
-    <label for="menu-toggle" class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </label>
-    
-    <!-- Rest of navigation... -->
-</nav>
+<body class="page-wrapper">
+ 
+<!-- Mobile overlay (closes sidebar when tapped) -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+ 
 <!-- Sidebar -->
-<aside class="sidebar">
+<aside class="sidebar" id="sidebar">
     <a href="index.html" class="logo"><img src="HC-Logo.png" alt="HubConnect"></a>
     <div class="nav-label">Main</div>
     <ul class="nav-list">
@@ -40,62 +31,67 @@
         <li class="nav-item"><a href="index.html"><span class="nav-dot"></span>Logout</a></li>
     </ul>
 </aside>
-
+ 
 <!-- Main Content -->
 <div class="main">
+ 
+    <!-- Topbar -->
     <div class="topbar">
+        <!-- Hamburger: only visible on mobile via CSS -->
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
         <h1>My Profile</h1>
+        <div></div><!-- spacer to keep h1 centred on mobile -->
     </div>
-    
+ 
     <div class="content">
+ 
         <!-- Profile Header -->
-        <div class="section" style="display: flex; align-items: center; gap: 32px; margin-bottom: 32px;">
-            <div style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, rgba(93,190,74,0.2), rgba(200,240,74,0.1)); border: 3px solid var(--green); display: flex; align-items: center; justify-content: center; font-size: 48px; font-weight: 800; color: var(--lime); font-family: 'Syne', sans-serif;">
-                AO
-            </div>
-            <div style="flex: 1;">
-                <h2 style="font-size: 32px; font-weight: 800; margin-bottom: 8px;">Ada Okafor</h2>
-                <p style="font-size: 15px; color: var(--muted); margin-bottom: 16px;">Member since January 2026</p>
-                <div style="display: flex; gap: 12px;">
+        <div class="section profile-header-card" style="margin-bottom: 32px;">
+            <div class="profile-avatar">AO</div>
+            <div class="profile-info">
+                <h2 class="profile-name">Ada Okafor</h2>
+                <p class="profile-since">Member since January 2026</p>
+                <div class="profile-actions">
                     <button class="btn btn-lime">Edit Profile</button>
-                    <button class="btn btn-outline"> <link href="change-password.html"> Change Password </link> </button>
+                    <a href="change-password.html" class="btn btn-outline">Change Password</a>
                 </div>
             </div>
-            <div style="text-align: right;">
-                <div style="font-size: 14px; color: var(--muted); margin-bottom: 6px;">Tier</div>
-                <div style="display: inline-block; padding: 8px 20px; background: rgba(93,190,74,0.12); border: 1px solid rgba(93,190,74,0.3); border-radius: 100px; font-weight: 700; color: var(--green);">Active User</div>
+            <div class="profile-tier">
+                <div class="tier-label">Tier</div>
+                <div class="tier-badge">Active User</div>
             </div>
         </div>
-
+ 
         <!-- Stats -->
         <div class="stats-row" style="margin-bottom: 32px;">
             <div class="stat-card">
                 <div class="stat-label">Total Savings</div>
                 <div class="stat-value">₦180K</div>
-                <div style="font-size: 12px; color: var(--green); font-weight: 600; margin-top: 6px;">↑ 22% this month</div>
+                <div class="stat-up">↑ 22% this month</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Transactions</div>
                 <div class="stat-value">24</div>
-                <div style="font-size: 12px; color: var(--muted); margin-top: 6px;">Since joining</div>
+                <div class="stat-note">Since joining</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Referral Earnings</div>
                 <div class="stat-value">₦24K</div>
-                <div style="font-size: 12px; color: var(--green); font-weight: 600; margin-top: 6px;">8 referrals</div>
+                <div class="stat-up">8 referrals</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Active Pools</div>
                 <div class="stat-value">3</div>
-                <div style="font-size: 12px; color: var(--muted); margin-top: 6px;">Currently in</div>
+                <div class="stat-note">Currently in</div>
             </div>
         </div>
-
+ 
         <!-- Personal Information -->
         <div class="section">
             <h3 class="section-title">Personal Information</h3>
             <form onsubmit="event.preventDefault(); alert('Profile updated successfully!');">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+ 
+                <div class="two-col-grid" style="margin-bottom: 20px;">
                     <div class="form-group">
                         <label class="form-label">Full Name</label>
                         <input type="text" class="form-input" value="Ada Okafor" readonly>
@@ -105,58 +101,68 @@
                         <input type="email" class="form-input" value="ada.okafor@example.com" readonly>
                     </div>
                 </div>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+ 
+                <div class="two-col-grid" style="margin-bottom: 20px;">
                     <div class="form-group">
                         <label class="form-label">Phone Number</label>
                         <input type="tel" class="form-input" value="+234 801 234 5678">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Location</label>
-                        <select class="form-input">
+                        <select class="form-select form-input">
                             <option>Lagos, Nigeria</option>
                             <option>Abuja, Nigeria</option>
                             <option>Kano, Nigeria</option>
                         </select>
                     </div>
                 </div>
-                
+ 
                 <div class="form-group">
                     <label class="form-label">Bio (Optional)</label>
-                    <textarea class="form-input" rows="3" placeholder="Tell us about yourself...">Saving money and building wealth with HubConnect. Love the bulk buying pools!</textarea>
+                    <textarea class="form-input form-textarea" placeholder="Tell us about yourself...">Saving money and building wealth with HubConnect. Love the bulk buying pools!</textarea>
                 </div>
-                
+ 
                 <button type="submit" class="btn btn-lime">Save Changes</button>
             </form>
         </div>
-
+ 
         <!-- Payment Information -->
         <div class="section">
             <h3 class="section-title">Payment Information</h3>
-            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 20px; margin-bottom: 20px;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <div style="font-weight: 600; margin-bottom: 4px;">GTBank - 0123456789</div>
-                        <div style="font-size: 13px; color: var(--muted);">Ada Okafor</div>
-                    </div>
-                    <div style="display: inline-block; padding: 6px 14px; background: rgba(93,190,74,0.12); border-radius: 100px; font-size: 11px; font-weight: 700; color: var(--green);">VERIFIED</div>
+            <div class="bank-row">
+                <div>
+                    <div class="bank-name">GTBank — 0123456789</div>
+                    <div class="bank-owner">Ada Okafor</div>
                 </div>
+                <div class="verified-badge">VERIFIED</div>
             </div>
             <button class="btn btn-outline">Add New Account</button>
         </div>
-
+ 
         <!-- Referral Link -->
         <div class="section">
             <h3 class="section-title">Your Referral Link</h3>
             <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">Share this link to earn ₦500 per referral + 5% forever</p>
-            <div style="display: flex; gap: 12px;">
-                <input type="text" class="form-input" value="https://hubconnect.ng/ref/ada-okafor" readonly style="flex: 1;">
+            <div class="input-btn-row">
+                <input type="text" class="form-input" value="https://hubconnect.ng/ref/ada-okafor" readonly>
                 <button class="btn btn-lime" onclick="navigator.clipboard.writeText('https://hubconnect.ng/ref/ada-okafor'); alert('Link copied!');">Copy Link</button>
             </div>
         </div>
-
-    </div>
-</div>
-
+ 
+    </div><!-- /content -->
+</div><!-- /main -->
+ 
+<script>
+  const toggle  = document.getElementById('menuToggle');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('mobileOverlay');
+ 
+  function openSidebar()  { sidebar.classList.add('open');  overlay.classList.add('active'); }
+  function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('active'); }
+ 
+  toggle.addEventListener('click', () => sidebar.classList.contains('open') ? closeSidebar() : openSidebar());
+  overlay.addEventListener('click', closeSidebar);
+</script>
+ 
 </body>
 </html>
