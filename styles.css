@@ -918,16 +918,24 @@ footer {
   100% { background-position: 1000px 0; }
 }
 
-/* Intersection Observer classes — start invisible */
-.animate-fade,
-.animate-slide,
-.animate-scale {
+/* Intersection Observer scroll-in animations.
+   The opacity:0 initial state is ONLY applied when the body has the
+   js-ready class, which your observer script must add on DOMContentLoaded:
+   
+     document.body.classList.add('js-ready');
+   
+   This guarantees that any page where the script is absent or fails
+   still renders all content visibly. */
+
+.js-ready .animate-fade,
+.js-ready .animate-slide,
+.js-ready .animate-scale {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
-.animate-scale { transform: scale(0.97) translateY(16px); }
-.animate-in    { opacity: 1 !important; transform: none !important; }
+.js-ready .animate-scale { transform: scale(0.97) translateY(16px); }
+.animate-in { opacity: 1 !important; transform: none !important; }
 
 .delay-1 { transition-delay: 0.1s; }
 .delay-2 { transition-delay: 0.2s; }
@@ -1152,4 +1160,131 @@ footer {
   .listing-card { padding: 24px 16px; }
 
   .cta-box { padding: 40px 16px; }
+}
+
+
+/* ─────────────────────────────────────────
+   23. DASHBOARD PAGE UTILITIES
+   Replaces inline styles in dashboard HTML
+   so media queries can actually reach them
+───────────────────────────────────────── */
+
+.page-wrapper { display: flex; min-height: 100vh; }
+
+/* Profile header */
+.profile-header-card {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.profile-avatar {
+  width: 120px; height: 120px; min-width: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(93,190,74,0.2), rgba(200,240,74,0.1));
+  border: 3px solid var(--green);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px; font-weight: 800;
+  color: var(--lime); font-family: 'Syne', sans-serif;
+  flex-shrink: 0;
+}
+.profile-info    { flex: 1; min-width: 0; }
+.profile-name    { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+.profile-since   { font-size: 15px; color: var(--muted); margin-bottom: 16px; }
+.profile-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.profile-tier    { text-align: right; flex-shrink: 0; }
+.tier-label      { font-size: 14px; color: var(--muted); margin-bottom: 6px; }
+.tier-badge {
+  display: inline-block; padding: 8px 20px;
+  background: rgba(93,190,74,0.12);
+  border: 1px solid rgba(93,190,74,0.3);
+  border-radius: 100px; font-weight: 700; color: var(--green);
+}
+
+/* Two-column form grid */
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Input + button row (referral link) */
+.input-btn-row { display: flex; gap: 12px; align-items: stretch; }
+.input-btn-row .form-input { flex: 1; min-width: 0; }
+.input-btn-row .btn        { flex-shrink: 0; }
+
+/* 4-column social share */
+.share-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* 3-column how-it-works */
+.how-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 20px;
+}
+
+/* Earnings hero card */
+.earnings-hero {
+  background: linear-gradient(135deg, rgba(93,190,74,0.15), rgba(200,240,74,0.08));
+  border: 1px solid rgba(93,190,74,0.3);
+  border-radius: 16px; padding: 40px;
+  margin-bottom: 32px; text-align: center;
+}
+.earnings-label  { font-size: 15px; color: var(--muted); margin-bottom: 12px; font-weight: 600; }
+.earnings-amount { font-family: 'Syne', sans-serif; font-size: 64px; font-weight: 800; color: var(--lime); line-height: 1; margin-bottom: 16px; }
+.earnings-sub    { font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+
+/* Bank account row */
+.bank-row {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 10px; padding: 20px; margin-bottom: 20px;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; flex-wrap: wrap;
+}
+.bank-name  { font-weight: 600; margin-bottom: 4px; }
+.bank-owner { font-size: 13px; color: var(--muted); }
+.verified-badge {
+  display: inline-block; padding: 6px 14px;
+  background: rgba(93,190,74,0.12); border-radius: 100px;
+  font-size: 11px; font-weight: 700; color: var(--green); white-space: nowrap;
+}
+
+/* Stat note helpers */
+.stat-up   { font-size: 12px; color: var(--green); font-weight: 600; margin-top: 6px; }
+.stat-note { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+/* ─── Mobile overrides ─── */
+@media (max-width: 768px) {
+  .page-wrapper { flex-direction: column; }
+
+  .profile-header-card {
+    flex-direction: column; align-items: center;
+    text-align: center; gap: 20px;
+  }
+  .profile-tier    { text-align: center; }
+  .profile-actions { justify-content: center; }
+  .profile-name    { font-size: 22px; }
+
+  .two-col-grid  { grid-template-columns: 1fr; gap: 0; }
+
+  .input-btn-row { flex-direction: column; }
+  .input-btn-row .btn { width: 100%; }
+
+  .share-grid    { grid-template-columns: repeat(2, 1fr); }
+  .how-grid-3    { grid-template-columns: 1fr; }
+
+  .earnings-amount { font-size: 42px; }
+  .earnings-hero   { padding: 28px 20px; }
+}
+
+@media (max-width: 480px) {
+  .earnings-amount { font-size: 34px; }
+  .profile-avatar  { width: 88px; height: 88px; min-width: 88px; font-size: 32px; }
+  .share-grid      { grid-template-columns: 1fr 1fr; gap: 8px; }
 }
