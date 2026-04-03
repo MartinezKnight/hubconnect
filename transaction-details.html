@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Details - HubConnect</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <div style="display: flex; min-height: 100vh;">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="HC-Logo.png" alt="HubConnect">
+            </div>
+
+            <div class="nav-label">MAIN</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="dashboard.html">
+                        <span class="nav-dot"></span>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="marketplace.html">
+                        <span class="nav-dot"></span>
+                        Marketplace
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="my-pools.html">
+                        <span class="nav-dot"></span>
+                        My Pools
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="transactions.html" class="active">
+                        <span class="nav-dot"></span>
+                        Transactions
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-label">ACCOUNT</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="profile.html">
+                        <span class="nav-dot"></span>
+                        Profile
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html">
+                        <span class="nav-dot"></span>
+                        Settings
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-label">BUSINESS</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="agent-dashboard.html">
+                        <span class="nav-dot"></span>
+                        Agent Dashboard
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Top Bar -->
+            <div class="topbar">
+                <h1>Transaction Details</h1>
+                <div style="display: flex; gap: 10px;">
+                    <button class="icon-btn" onclick="window.location.href='notifications.html'">🔔</button>
+                    <button class="icon-btn" onclick="window.location.href='profile.html'">👤</button>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Back Button -->
+                <div style="margin-bottom: 24px;">
+                    <a href="transactions.html" style="color: var(--muted); font-size: 14px; display: inline-flex; align-items: center; gap: 6px;">
+                        ← Back to Transactions
+                    </a>
+                </div>
+
+                <!-- Transaction Header -->
+                <div class="section" style="margin-bottom: 24px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
+                        <div>
+                            <h2 style="font-size: 24px; margin-bottom: 8px;">Bulk Rice 50kg</h2>
+                            <p style="color: var(--muted); font-size: 14px;">MamaChika Store</p>
+                        </div>
+                        <span class="status-badge status-completed">COMPLETED</span>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                        <div>
+                            <p style="font-size: 12px; color: var(--muted); margin-bottom: 4px;">Transaction ID</p>
+                            <p style="font-weight: 600;">#TXN-2024-001</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 12px; color: var(--muted); margin-bottom: 4px;">Amount</p>
+                            <p style="font-weight: 600; color: var(--lime); font-size: 20px;">₦38,000</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 12px; color: var(--muted); margin-bottom: 4px;">Date</p>
+                            <p style="font-weight: 600;">March 15, 2024</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 12px; color: var(--muted); margin-bottom: 4px;">Payment Method</p>
+                            <p style="font-weight: 600;">Pool Payment</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="section" style="margin-bottom: 24px;">
+                    <h3 class="section-title">Transaction Timeline</h3>
+                    
+                    <div style="position: relative; padding-left: 40px;">
+                        <!-- Timeline Line -->
+                        <div style="position: absolute; left: 11px; top: 10px; bottom: 10px; width: 2px; background: var(--border);"></div>
+                        
+                        <!-- Timeline Items -->
+                        <div style="position: relative; margin-bottom: 32px;">
+                            <div style="position: absolute; left: -40px; width: 24px; height: 24px; border-radius: 50%; background: var(--green); border: 3px solid var(--navy);"></div>
+                            <div>
+                                <p style="font-weight: 600; margin-bottom: 4px;">Order Delivered</p>
+                                <p style="font-size: 13px; color: var(--muted);">March 20, 2024 at 2:30 PM</p>
+                                <p style="font-size: 13px; color: var(--muted); margin-top: 8px;">Your order has been successfully delivered and payment released to vendor.</p>
+                            </div>
+                        </div>
+
+                        <div style="position: relative; margin-bottom: 32px;">
+                            <div style="position: absolute; left: -40px; width: 24px; height: 24px; border-radius: 50%; background: var(--green); border: 3px solid var(--navy);"></div>
+                            <div>
+                                <p style="font-weight: 600; margin-bottom: 4px;">Order Shipped</p>
+                                <p style="font-size: 13px; color: var(--muted);">March 18, 2024 at 10:15 AM</p>
+                            </div>
+                        </div>
+
+                        <div style="position: relative; margin-bottom: 32px;">
+                            <div style="position: absolute; left: -40px; width: 24px; height: 24px; border-radius: 50%; background: var(--green); border: 3px solid var(--navy);"></div>
+                            <div>
+                                <p style="font-weight: 600; margin-bottom: 4px;">Payment in Escrow</p>
+                                <p style="font-size: 13px; color: var(--muted);">March 16, 2024 at 4:20 PM</p>
+                                <p style="font-size: 13px; color: var(--muted); margin-top: 8px;">₦38,000 held in escrow pending delivery confirmation.</p>
+                            </div>
+                        </div>
+
+                        <div style="position: relative;">
+                            <div style="position: absolute; left: -40px; width: 24px; height: 24px; border-radius: 50%; background: var(--green); border: 3px solid var(--navy);"></div>
+                            <div>
+                                <p style="font-weight: 600; margin-bottom: 4px;">Order Placed</p>
+                                <p style="font-size: 13px; color: var(--muted);">March 15, 2024 at 11:45 AM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Details -->
+                <div class="section" style="margin-bottom: 24px;">
+                    <h3 class="section-title">Order Details</h3>
+                    
+                    <div style="border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
+                        <table style="width: 100%;">
+                            <thead>
+                                <tr style="background: rgba(255,255,255,0.02);">
+                                    <th style="text-align: left; padding: 16px; font-size: 12px; font-weight: 700; color: var(--muted);">ITEM</th>
+                                    <th style="text-align: right; padding: 16px; font-size: 12px; font-weight: 700; color: var(--muted);">QUANTITY</th>
+                                    <th style="text-align: right; padding: 16px; font-size: 12px; font-weight: 700; color: var(--muted);">PRICE</th>
+                                    <th style="text-align: right; padding: 16px; font-size: 12px; font-weight: 700; color: var(--muted);">TOTAL</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 16px; border-top: 1px solid var(--border);">Bulk Rice 50kg</td>
+                                    <td style="padding: 16px; text-align: right; border-top: 1px solid var(--border);">2</td>
+                                    <td style="padding: 16px; text-align: right; border-top: 1px solid var(--border);">₦19,000</td>
+                                    <td style="padding: 16px; text-align: right; border-top: 1px solid var(--border); font-weight: 600;">₦38,000</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" style="padding: 16px; text-align: right; border-top: 1px solid var(--border); font-weight: 700;">TOTAL</td>
+                                    <td style="padding: 16px; text-align: right; border-top: 1px solid var(--border); font-weight: 700; color: var(--lime); font-size: 18px;">₦38,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Delivery Information -->
+                <div class="section">
+                    <h3 class="section-title">Delivery Information</h3>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
+                        <div>
+                            <p style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">DELIVERY ADDRESS</p>
+                            <p style="font-weight: 600; margin-bottom: 4px;">Ada Okafor</p>
+                            <p style="font-size: 14px; color: var(--muted); line-height: 1.6;">
+                                15 Admiralty Way,<br>
+                                Lekki Phase 1,<br>
+                                Lagos, Nigeria
+                            </p>
+                        </div>
+                        <div>
+                            <p style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">CONTACT</p>
+                            <p style="font-size: 14px; margin-bottom: 4px;">+234 803 456 7890</p>
+                            <p style="font-size: 14px; color: var(--muted);">adaokafor@email.com</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">TRACKING NUMBER</p>
+                            <p style="font-size: 14px; font-weight: 600; color: var(--lime);">HC-TRK-2024-12345</p>
+                            <a href="#" style="font-size: 13px; color: var(--green); margin-top: 8px; display: inline-block;">Track Shipment →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div style="margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap;">
+                    <button class="btn btn-outline" onclick="window.print()">Download Receipt</button>
+                    <button class="btn btn-ghost" onclick="window.location.href='mailto:support@hubconnect.com'">Contact Support</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Particles configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#5DBE4A' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: '#5DBE4A', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+    </script>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        // Mobile sidebar toggle
+        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.querySelector('.mobile-overlay');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('open');
+                if (overlay) overlay.classList.toggle('active');
+            });
+        }
+
+        if (overlay) {
+            overlay.addEventListener('click', () => {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+            });
+        }
+    </script>
+</body>
+</html>

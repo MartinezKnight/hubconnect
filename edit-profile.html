@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - HubConnect</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <div style="display: flex; min-height: 100vh;">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="HC-Logo.png" alt="HubConnect">
+            </div>
+
+            <div class="nav-label">MAIN</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="dashboard.html">
+                        <span class="nav-dot"></span>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="marketplace.html">
+                        <span class="nav-dot"></span>
+                        Marketplace
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="my-pools.html">
+                        <span class="nav-dot"></span>
+                        My Pools
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="transactions.html">
+                        <span class="nav-dot"></span>
+                        Transactions
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-label">ACCOUNT</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="profile.html" class="active">
+                        <span class="nav-dot"></span>
+                        Profile
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html">
+                        <span class="nav-dot"></span>
+                        Settings
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-label">BUSINESS</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="agent-dashboard.html">
+                        <span class="nav-dot"></span>
+                        Agent Dashboard
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Top Bar -->
+            <div class="topbar">
+                <h1>Edit Profile</h1>
+                <div style="display: flex; gap: 10px;">
+                    <button class="icon-btn" onclick="window.location.href='notifications.html'">🔔</button>
+                    <button class="icon-btn" onclick="window.location.href='profile.html'">👤</button>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Back Button -->
+                <div style="margin-bottom: 24px;">
+                    <a href="profile.html" style="color: var(--muted); font-size: 14px; display: inline-flex; align-items: center; gap: 6px;">
+                        ← Back to Profile
+                    </a>
+                </div>
+
+                <form onsubmit="saveProfile(event)">
+                    <!-- Profile Picture -->
+                    <div class="section" style="margin-bottom: 24px;">
+                        <h3 class="section-title">Profile Picture</h3>
+                        <div style="display: flex; align-items: center; gap: 24px;">
+                            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--green), var(--lime)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; font-weight: 800; color: var(--navy);">
+                                AO
+                            </div>
+                            <div>
+                                <input type="file" id="profile-pic" accept="image/*" style="display: none;" onchange="previewImage(event)">
+                                <button type="button" class="btn btn-outline" onclick="document.getElementById('profile-pic').click()">Upload New Photo</button>
+                                <p style="font-size: 13px; color: var(--muted); margin-top: 8px;">JPG, PNG or GIF. Max size 2MB.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Information -->
+                    <div class="section" style="margin-bottom: 24px;">
+                        <h3 class="section-title">Personal Information</h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                            <div class="form-group">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-input" value="Ada" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-input" value="Okafor" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-input" value="adaokafor@email.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-input" value="+234 803 456 7890" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Date of Birth</label>
+                                <input type="date" class="form-input" value="1995-06-15">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Gender</label>
+                                <select class="form-select">
+                                    <option>Female</option>
+                                    <option>Male</option>
+                                    <option>Other</option>
+                                    <option>Prefer not to say</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Address Information -->
+                    <div class="section" style="margin-bottom: 24px;">
+                        <h3 class="section-title">Address Information</h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                            <div class="form-group" style="grid-column: 1 / -1;">
+                                <label class="form-label">Street Address</label>
+                                <input type="text" class="form-input" value="15 Admiralty Way" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">City</label>
+                                <input type="text" class="form-input" value="Lagos" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">State/Region</label>
+                                <input type="text" class="form-input" value="Lagos" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Postal Code</label>
+                                <input type="text" class="form-input" value="101245">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Country</label>
+                                <select class="form-select">
+                                    <option selected>Nigeria</option>
+                                    <option>Ghana</option>
+                                    <option>Kenya</option>
+                                    <option>South Africa</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Preferences -->
+                    <div class="section" style="margin-bottom: 24px;">
+                        <h3 class="section-title">Preferences</h3>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                            <div class="form-group">
+                                <label class="form-label">Preferred Language</label>
+                                <select class="form-select">
+                                    <option selected>English</option>
+                                    <option>Yoruba</option>
+                                    <option>Igbo</option>
+                                    <option>Hausa</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Time Zone</label>
+                                <select class="form-select">
+                                    <option selected>WAT (West Africa Time)</option>
+                                    <option>GMT</option>
+                                    <option>EAT (East Africa Time)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Currency</label>
+                                <select class="form-select">
+                                    <option selected>₦ Nigerian Naira (NGN)</option>
+                                    <option>$ US Dollar (USD)</option>
+                                    <option>£ British Pound (GBP)</option>
+                                    <option>€ Euro (EUR)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bio -->
+                    <div class="section" style="margin-bottom: 32px;">
+                        <h3 class="section-title">Bio</h3>
+                        <div class="form-group">
+                            <label class="form-label">About You (Optional)</label>
+                            <textarea class="form-textarea" rows="5" placeholder="Tell us a little about yourself...">Active user since January 2026. Love saving money through group buying!</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                        <button type="button" class="btn btn-ghost" onclick="window.location.href='profile.html'">Cancel</button>
+                        <button type="submit" class="btn btn-lime">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Particles configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#5DBE4A' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: '#5DBE4A', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+
+        // Preview uploaded image
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Update the profile picture display
+                    alert('Profile picture uploaded! (Preview functionality will be implemented)');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Save profile
+        function saveProfile(event) {
+            event.preventDefault();
+            alert('Profile updated successfully!');
+            window.location.href = 'profile.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - HubConnect</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <div style="display: flex; min-height: 100vh;">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="HC-Logo.png" alt="HubConnect">
+            </div>
+
+            <div class="nav-label">MAIN</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="dashboard.html">
+                        <span class="nav-dot"></span>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="marketplace.html">
+                        <span class="nav-dot"></span>
+                        Marketplace
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="my-pools.html">
+                        <span class="nav-dot"></span>
+                        My Pools
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="transactions.html">
+                        <span class="nav-dot"></span>
+                        Transactions
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-label">ACCOUNT</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="profile.html">
+                        <span class="nav-dot"></span>
+                        Profile
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html">
+                        <span class="nav-dot"></span>
+                        Settings
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-label">BUSINESS</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="agent-dashboard.html">
+                        <span class="nav-dot"></span>
+                        Agent Dashboard
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Top Bar -->
+            <div class="topbar">
+                <h1>Notifications</h1>
+                <div style="display: flex; gap: 10px;">
+                    <button class="icon-btn" onclick="window.location.href='profile.html'">👤</button>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Header Actions -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px;">
+                    <div style="display: flex; gap: 12px;">
+                        <button class="filter-btn active" onclick="filterNotifications('all')">All</button>
+                        <button class="filter-btn" onclick="filterNotifications('unread')">Unread</button>
+                        <button class="filter-btn" onclick="filterNotifications('pools')">Pools</button>
+                        <button class="filter-btn" onclick="filterNotifications('transactions')">Transactions</button>
+                    </div>
+                    <button class="btn btn-ghost" onclick="markAllRead()">Mark all as read</button>
+                </div>
+
+                <!-- Notifications List -->
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <!-- Today -->
+                    <div style="font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: 0.08em; margin-top: 16px;">TODAY</div>
+                    
+                    <!-- Notification Card - Unread -->
+                    <div class="section" style="padding: 20px; background: rgba(93,190,74,0.05); border-color: rgba(93,190,74,0.2); cursor: pointer; position: relative;" onclick="window.location.href='transaction-details.html'">
+                        <div style="position: absolute; top: 20px; right: 20px; width: 8px; height: 8px; background: var(--green); border-radius: 50%;"></div>
+                        <div style="display: flex; gap: 16px; align-items: flex-start;">
+                            <div style="width: 40px; height: 40px; background: rgba(93,190,74,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px;">💰</div>
+                            <div style="flex: 1;">
+                                <h4 style="font-size: 15px; font-weight: 600; margin-bottom: 6px;">Pool Payment Complete</h4>
+                                <p style="font-size: 14px; color: var(--muted); margin-bottom: 8px;">Your payment of ₦38,000 for Bulk Rice 50kg has been processed successfully.</p>
+                                <p style="font-size: 12px; color: var(--muted);">2 hours ago</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notification Card - Unread -->
+                    <div class="section" style="padding: 20px; background: rgba(93,190,74,0.05); border-color: rgba(93,190,74,0.2); cursor: pointer; position: relative;" onclick="window.location.href='pool-details.html'">
+                        <div style="position: absolute; top: 20px; right: 20px; width: 8px; height: 8px; background: var(--green); border-radius: 50%;"></div>
+                        <div style="display: flex; gap: 16px; align-items: flex-start;">
+                            <div style="width: 40px; height: 40px; background: rgba(200,240,74,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px;">🎯</div>
+                            <div style="flex: 1;">
+                                <h4 style="font-size: 15px; font-weight: 600; margin-bottom: 6px;">Pool Almost Full!</h4>
+                                <p style="font-size: 14px; color: var(--muted); margin-bottom: 8px;">Shared Ride: Ikeja-Lekki is at 18/20 participants. Join now!</p>
+                                <p style="font-size: 12px; color: var(--muted);">5 hours ago</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Yesterday -->
+                    <div style="font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: 0.08em; margin-top: 24px;">YESTERDAY</div>
+
+                    <!-- Notification Card - Read -->
+                    <div class="section" style="padding: 20px; cursor: pointer;" onclick="window.location.href='transaction-details.html'">
+                        <div style="display: flex; gap: 16px; align-items: flex-start;">
+                            <div style="width: 40px; height: 40px; background: rgba(96,165,250,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px;">📦</div>
+                            <div style="flex: 1;">
+                                <h4 style="font-size: 15px; font-weight: 600; margin-bottom: 6px;">Order Shipped</h4>
+                                <p style="font-size: 14px; color: var(--muted); margin-bottom: 8px;">Your order #TXN-2024-001 has been shipped and is on its way.</p>
+                                <p style="font-size: 12px; color: var(--muted);">Yesterday at 10:15 AM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notification Card - Read -->
+                    <div class="section" style="padding: 20px; cursor: pointer;" onclick="window.location.href='pool-details.html'">
+                        <div style="display: flex; gap: 16px; align-items: flex-start;">
+                            <div style="width: 40px; height: 40px; background: rgba(93,190,74,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px;">✅</div>
+                            <div style="flex: 1;">
+                                <h4 style="font-size: 15px; font-weight: 600; margin-bottom: 6px;">Pool Successfully Closed</h4>
+                                <p style="font-size: 14px; color: var(--muted); margin-bottom: 8px;">Bulk Rice 50kg pool reached capacity and orders are being processed.</p>
+                                <p style="font-size: 12px; color: var(--muted);">Yesterday at 4:20 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- This Week -->
+                    <div style="font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: 0.08em; margin-top: 24px;">THIS WEEK</div>
+
+                    <!-- Notification Card - Read -->
+                    <div class="section" style="padding: 20px; cursor: pointer;">
+                        <div style="display: flex; gap: 16px; align-items: flex-start;">
+                            <div style="width: 40px; height: 40px; background: rgba(252,211,77,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px;">🎉</div>
+                            <div style="flex: 1;">
+                                <h4 style="font-size: 15px; font-weight: 600; margin-bottom: 6px;">Welcome to HubConnect!</h4>
+                                <p style="font-size: 14px; color: var(--muted); margin-bottom: 8px;">Get started by exploring available pools and save up to 70% on your purchases.</p>
+                                <p style="font-size: 12px; color: var(--muted);">March 15, 2024</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notification Card - Read -->
+                    <div class="section" style="padding: 20px; cursor: pointer;">
+                        <div style="display: flex; gap: 16px; align-items: flex-start;">
+                            <div style="width: 40px; height: 40px; background: rgba(93,190,74,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px;">🎁</div>
+                            <div style="flex: 1;">
+                                <h4 style="font-size: 15px; font-weight: 600; margin-bottom: 6px;">Referral Bonus Earned!</h4>
+                                <p style="font-size: 14px; color: var(--muted); margin-bottom: 8px;">You've earned ₦2,000 for referring a friend. Keep sharing!</p>
+                                <p style="font-size: 12px; color: var(--muted);">March 14, 2024</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Empty State (hidden by default) -->
+                    <div id="empty-state" style="display: none; text-align: center; padding: 80px 20px;">
+                        <div style="font-size: 48px; margin-bottom: 16px;">🔔</div>
+                        <h3 style="font-size: 18px; margin-bottom: 8px;">No notifications yet</h3>
+                        <p style="color: var(--muted); font-size: 14px;">When you get notifications, they'll show up here.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Particles configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#5DBE4A' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: '#5DBE4A', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+
+        // Filter notifications
+        function filterNotifications(filter) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter logic would go here
+            console.log('Filtering by:', filter);
+        }
+
+        // Mark all as read
+        function markAllRead() {
+            const unreadDots = document.querySelectorAll('.section .nav-dot');
+            unreadDots.forEach(dot => dot.style.display = 'none');
+            
+            const highlightedSections = document.querySelectorAll('.section[style*="rgba(93,190,74,0.05)"]');
+            highlightedSections.forEach(section => {
+                section.style.background = '';
+                section.style.borderColor = '';
+            });
+            
+            alert('All notifications marked as read');
+        }
+    </script>
+</body>
+</html>
