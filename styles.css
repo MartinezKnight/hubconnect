@@ -1,6 +1,6 @@
 /* ============================================
    HUBCONNECT — UNIFIED STYLES
-   Single source of truth for all pages
+   FIXED: Navigation logo sizing & spacing
    ============================================ */
 
 /* ─── FONTS ─── */
@@ -83,6 +83,7 @@ a {
 
 /* ─────────────────────────────────────────
    4. NAVIGATION (public / marketing pages)
+   FIXED: Logo sizing and proper spacing
 ───────────────────────────────────────── */
 nav {
   position: sticky;
@@ -91,7 +92,6 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
   padding: 0 48px;
   height: 72px;
   background: rgba(6,8,26,0.95);
@@ -107,20 +107,28 @@ nav {
   font-size: 21px;
   color: var(--lime);
   letter-spacing: -0.03em;
+  display: flex;
+  align-items: center;
 }
 
-.nav-logo img { height: 110px; width: auto; }
+/* FIXED: Proper logo sizing */
+.nav-logo img { 
+  height: 45px; 
+  width: auto; 
+}
 
 .nav-links {
   display: flex;
   align-items: center;
   gap: 36px;
   list-style: none;
-  margin: 0; padding: 0;
+  margin: 0; 
+  padding: 0;
 }
 
 .nav-links a {
   font-size: 14px;
+  font-weight: 500;
   color: var(--muted);
   transition: color 0.2s;
 }
@@ -133,7 +141,7 @@ nav {
   gap: 12px;
 }
 
-/* Hamburger — hidden on desktop */
+/* Hamburger — hidden on desktop, WHITE color always */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -142,14 +150,14 @@ nav {
   padding: 10px;
   background: transparent;
   border: none;
-  order: -1;
+  z-index: 1001;
 }
 
 .hamburger span {
   display: block;
   width: 25px;
   height: 3px;
-  background: var(--white);
+  background: var(--white); /* ALWAYS WHITE */
   border-radius: 2px;
   transition: all 0.3s;
 }
@@ -311,6 +319,12 @@ nav {
   border-radius: 7px;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer;
+  transition: all 0.2s;
+}
+
+.icon-btn:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.15);
 }
 
 .content   { padding: 32px; }
@@ -577,7 +591,7 @@ nav {
   border-bottom: 1px solid var(--border);
   font-size: 14px;
 }
-.table tbody tr:hover         { background: rgba(255,255,255,0.02); }
+.table tbody tr:hover         { background: rgba(255,255,255,0.02); cursor: pointer; }
 .table tbody tr:last-child td { border-bottom: none; }
 
 
@@ -918,15 +932,6 @@ footer {
   100% { background-position: 1000px 0; }
 }
 
-/* Intersection Observer scroll-in animations.
-   The opacity:0 initial state is ONLY applied when the body has the
-   js-ready class, which your observer script must add on DOMContentLoaded:
-   
-     document.body.classList.add('js-ready');
-   
-   This guarantees that any page where the script is absent or fails
-   still renders all content visibly. */
-
 .js-ready .animate-fade,
 .js-ready .animate-slide,
 .js-ready .animate-scale {
@@ -979,50 +984,83 @@ footer {
 
 /* ══════════════════════════════════════════
    21. RESPONSIVE — MOBILE  (≤ 768px)
-   Covers ALL pages: dashboard, forms,
-   profile, settings, marketplace, etc.
+   FIXED: Proper hamburger menu for ALL pages
 ══════════════════════════════════════════ */
 @media (max-width: 768px) {
 
-  /* ── Navigation (public) ── */
+  /* ── Navigation (public) - FIXED ── */
   nav {
     padding: 0 20px !important;
     height: auto;
-    min-height: 64px;
-    position: sticky;
+    min-height: 68px;
   }
 
-  .hamburger { display: flex; }
+  /* SHOW hamburger on mobile */
+  .hamburger { 
+    display: flex !important; 
+    order: -1;
+  }
 
-  nav .nav-logo img { height: 70px !important; }
+  /* Logo centered */
+  .nav-logo { 
+    flex: 1; 
+    text-align: center; 
+    order: 0; 
+  }
 
-  .nav-logo { flex: 1; text-align: center; order: 0; }
+  .nav-logo img { 
+    height: 50px !important; 
+  }
 
+  /* Hide nav links by default */
   .nav-links {
     display: none !important;
     flex-direction: column;
     width: 100%;
     background: rgba(9,17,42,0.98);
-    margin: 0; padding: 20px 0;
-    gap: 0; order: 3;
+    margin: 0; 
+    padding: 20px 0;
+    gap: 0; 
+    order: 3;
     border-top: 1px solid var(--border);
   }
-  #menu-toggle:checked ~ .nav-links { display: flex !important; }
+  
+  /* Show when menu is toggled */
+  #menu-toggle:checked ~ .nav-links { 
+    display: flex !important; 
+  }
 
-  .nav-links li { width: 100%; text-align: center; }
-  .nav-links a  { display: block; padding: 16px 20px; font-size: 16px; border-bottom: 1px solid var(--border); }
+  .nav-links li { 
+    width: 100%; 
+    text-align: center; 
+  }
+  
+  .nav-links a  { 
+    display: block; 
+    padding: 16px 20px; 
+    font-size: 16px; 
+    border-bottom: 1px solid var(--border); 
+  }
 
+  /* Nav actions */
   .nav-actions {
     display: none !important;
     flex-direction: column;
-    width: 100%; gap: 12px;
+    width: 100%; 
+    gap: 12px;
     padding: 20px;
     background: rgba(9,17,42,0.98);
     order: 4;
   }
-  #menu-toggle:checked ~ .nav-actions { display: flex !important; }
+  
+  #menu-toggle:checked ~ .nav-actions { 
+    display: flex !important; 
+  }
 
-  .nav-actions .btn { width: 100%; justify-content: center; }
+  .nav-actions .btn { 
+    width: 100%; 
+    justify-content: center; 
+  }
 
   /* ── Sidebar (dashboard) ── */
   .sidebar {
@@ -1160,13 +1198,15 @@ footer {
   .listing-card { padding: 24px 16px; }
 
   .cta-box { padding: 40px 16px; }
+  
+  .nav-logo img { 
+    height: 40px !important; 
+  }
 }
 
 
 /* ─────────────────────────────────────────
    23. DASHBOARD PAGE UTILITIES
-   Replaces inline styles in dashboard HTML
-   so media queries can actually reach them
 ───────────────────────────────────────── */
 
 .page-wrapper { display: flex; min-height: 100vh; }
@@ -1259,7 +1299,7 @@ footer {
 .stat-up   { font-size: 12px; color: var(--green); font-weight: 600; margin-top: 6px; }
 .stat-note { font-size: 12px; color: var(--muted); margin-top: 6px; }
 
-/* ─── Mobile overrides ─── */
+/* ─── Mobile overrides ── */
 @media (max-width: 768px) {
   .page-wrapper { flex-direction: column; }
 
@@ -1287,4 +1327,13 @@ footer {
   .earnings-amount { font-size: 34px; }
   .profile-avatar  { width: 88px; height: 88px; min-width: 88px; font-size: 32px; }
   .share-grid      { grid-template-columns: 1fr 1fr; gap: 8px; }
+}
+
+/* ══════════════════════════════════════════
+   DESKTOP OVERRIDE - FORCE HAMBURGER HIDDEN
+══════════════════════════════════════════ */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none !important;
+  }
 }
