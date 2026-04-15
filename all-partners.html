@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Partners | HubConnect - Our Trusted Business Network</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <input type="checkbox" id="menu-toggle" />
+        
+        <label for="menu-toggle" class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <div class="nav-logo">
+            <a href="index.html">
+                <img src="HC-Logo.png" alt="HubConnect" />
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#how-it-works">How It Works</a></li>
+            <li><a href="index.html#categories">Categories</a></li>
+            <li><a href="all-partners.html">Partners</a></li>
+            <li><a href="index.html#success-stories">Success Stories</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="login.html" class="btn btn-ghost">Sign In</a>
+            <a href="signup.html" class="btn btn-lime">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section style="padding: 120px 48px 80px; text-align: center; position: relative;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="section-eyebrow" style="margin-bottom: 20px;">OUR NETWORK</div>
+            <h1 style="font-family: 'Syne', sans-serif; font-size: clamp(36px, 5vw, 58px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; color: var(--white);">
+                Meet Our Trusted <span style="background: linear-gradient(135deg, #C8F04A 0%, #5DBE4A 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Partner Businesses</span>
+            </h1>
+            <p style="font-size: 18px; color: var(--muted); line-height: 1.7; max-width: 620px; margin: 0 auto;">
+                From enterprise corporations to local small businesses, every partner on HubConnect is verified, trusted, and committed to offering quality opportunities to our community.
+            </p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section style="padding: 0 48px 60px;">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 48px;">
+                <button class="filter-btn active" onclick="filterPartners('all')">All Partners</button>
+                <button class="filter-btn" onclick="filterPartners('enterprise')">Enterprise</button>
+                <button class="filter-btn" onclick="filterPartners('medium')">Medium Business</button>
+                <button class="filter-btn" onclick="filterPartners('small')">Small Business</button>
+            </div>
+
+            <!-- Partners Grid -->
+            <div id="partnersGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;">
+                
+                <!-- ENTERPRISE PARTNERS -->
+                <div class="partner-card" data-category="enterprise">
+                    <div style="width: 60px; height: 60px; background: rgba(93,190,74,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px;">
+                        🏢
+                    </div>
+                    <div style="display: inline-block; background: rgba(200,240,74,0.15); border: 1px solid rgba(200,240,74,0.3); color: var(--lime); padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;">
+                        Enterprise
+                    </div>
+                    <h4>MamaChika Store</h4>
+                    <p style="font-size: 13px; color: var(--muted); margin-bottom: 12px;">Bulk food supplies across Nigeria</p>
+                    <div style="font-size: 12px; color: var(--green); font-weight: 600;">12 Active Listings</div>
+                </div>
+
+                <div class="partner-card" data-category="enterprise">
+                    <div style="width: 60px; height: 60px; background: rgba(93,190,74,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px;">
+                        🏢
+                    </div>
+                    <div style="display: inline-block; background: rgba(200,240,74,0.15); border: 1px solid rgba(200,240,74,0.3); color: var(--lime); padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;">
+                        Enterprise
+                    </div>
+                    <h4>TechHub Academy</h4>
+                    <p style="font-size: 13px; color: var(--muted); margin-bottom: 12px;">Professional tech training programs</p>
+                    <div style="font-size: 12px; color: var(--green); font-weight: 600;">8 Active Listings</div>
+                </div>
+
+                <div class="partner-card" data-category="enterprise">
+                    <div style="width: 60px; height: 60px; background: rgba(93,190,74,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px;">
+                        🏢
+                    </div>
+                    <div style="display: inline-block; background: rgba(200,240,74,0.15); border: 1px solid rgba(200,240,74,0.3); color: var(--lime); padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;">
+                        Enterprise
+                    </div>
+                    <h4>COLIVE Housing</h4>
+                    <p style="font-size: 13px; color: var(--muted); margin-bottom: 12px;">Affordable shared housing solutions</p>
+                    <div style="font-size: 12px; color: var(--green); font-weight: 600;">15 Active Listings</div>
+                </div>
+
+                <div class="partner-card" data-category="enterprise">
+                    <div style="width: 60px; height: 60px; background: rgba(93,190,74,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px;">
+                        🏢
+                    </div>
+                    <div style="display: inline-block; background: rgba(200,240,74,0.15); border: 1px solid rgba(200,240,74,0.3); color: var(--lime); padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;">
+                        Enterprise
+                    </div>
+                    <h4>GreenCycle Ltd</h4>
+                    <p style="font-size: 13px; color: var(--muted); margin-bottom: 12px;">Waste recycling & environmental services</p>
+                    <div style="font-size: 12px; color: var(--green); font-weight: 600;">6 Active Listings</div>
+                </div>
+
+                <!-- MEDIUM BUSINESSES -->
+                <div class="partner-card" data-category="medium">
+                    <div style="width: 60px; height: 60px; background: rgba(96,165,250,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px;">
+                        🏪
+                    </div>
+                    <div style="display: inline-block; background: rgba(96,165,250,0.15); border: 1px solid rgba(96,165,250,0.3); color: var(--blue); padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;">
+                        Medium Business
+                    </div>
+                    <h4>RideShare Nigeria</h4>
+                    <p style="font-size: 13px; color: var(--muted); margin-bottom: 12px;">Shared transport services</p>
+                    <div style="font-size: 12px; color: var(--green); font-weight: 600;">10 Active Listings</div>
+                </div>
+
+                <div class="partner-card" data-category="medium">
+                    <div style="width: 60px; height: 60px; background: rgba(96,165,250,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px;">
+                        🏪
+                    </div>
+                    <div style="display: inline-block; background: rgba(96,165,250,0.15); border: 1px solid rgba(96,165,250,0.3); color: var(--blue); padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;">
+                        Medium Business
+                    </div>
+                    <h4>FreshFarm Foods</h4>
+                    <p style="font-size: 13px; color: var(--muted); margin-bottom: 12px;">Farm-fresh produce delivery</p>
+                    <div style="font-size: 12px; color: var(--green); font-weight: 600;">7 Active Listings</div>
+                </div>
+
+                <div class="partner-card" data-category="medium">
+                    <div style="width: 60px; height: 60px; background: rgba(96,165,250,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px;">
+                        🏪
+                    </div>
+                    <div style="display: inline-block; background: rgba(96,165,250,0.15); border: 1px solid rgba(96,165,250,0.3); color: var(--blue); padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;">
+                        Medium Business
+                    </div>
+                    <h4>QuickDeliver Express</h4>
+                    <p style="font-size: 13px; color: var(--muted); margin-bottom: 12px;">Same-day delivery services</p>
+                    <div style="font-size: 12px; color: var(--green); font-weight: 600;">9 Active Listings</div>
+                </div>
+
+                <div class="partner-card" data-category="medium">
+                    <div style="width: 60px; height: 60px; background: rgba(96,165,250,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px;">
+                        🏪
+                    </div>
+                    <div style="display: inline-block; background: rgba(96,165,250,0.15); border: 1px solid rgba(96,165,250,0.3); color: var(--blue); padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;">
+                        Medium Business
+                    </div>
+                    <h4>SkillUp Training</h4>
+                    <p style="font-size: 13px; color: var(--muted); margin-bottom: 12px;">Vocational skills development</p>
+                    <div style="font-size: 12px; color: var(--green); font-weight: 600;">5 Active Listings</div>
+                </div>
+
+                <!-- SMALL BUSINESSES -->
+                <div class="partner-card" data-category="small">
+                    <div style="width: 60px; height: 60px; background: rgba(252,211,77,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px;">
+                        🏘️
+                    </div>
+                    <div style="display: inline-block; background: rgba(252,211,77,0.15); border: 1px solid rgba(252,211,77,0.3); color: var(--yellow); padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;">
+                        Small Business
+                    </div>
+                    <h4>Ada's Kitchen</h4>
+                    <p style="font-size: 13px; color: var(--muted); margin-bottom: 12px;">Home-cooked meals & catering</p>
+                    <div style="font-size: 12px; color: var(--green); font-weight: 600;">4 Active Listings</div>
+                </div>
+
+                <div class="partner-card" data-category="small">
+                    <div style="width: 60px; height: 60px; background: rgba(252,211,77,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px;">
+                        🏘️
+                    </div>
+                    <div style="display: inline-block; background: rgba(252,211,77,0.15); border: 1px solid rgba(252,211,77,0.3); color: var(--yellow); padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;">
+                        Small Business
+                    </div>
+                    <h4>Chidi's Plumbing</h4>
+                    <p style="font-size: 13px; color: var(--muted); margin-bottom: 12px;">Professional plumbing services</p>
+                    <div style="font-size: 12px; color: var(--green); font-weight: 600;">3 Active Listings</div>
+                </div>
+
+                <div class="partner-card" data-category="small">
+                    <div style="width: 60px; height: 60px; background: rgba(252,211,77,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px;">
+                        🏘️
+                    </div>
+                    <div style="display: inline-block; background: rgba(252,211,77,0.15); border: 1px solid rgba(252,211,77,0.3); color: var(--yellow); padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;">
+                        Small Business
+                    </div>
+                    <h4>Yusuf Tailoring</h4>
+                    <p style="font-size: 13px; color: var(--muted); margin-bottom: 12px;">Custom clothing & alterations</p>
+                    <div style="font-size: 12px; color: var(--green); font-weight: 600;">2 Active Listings</div>
+                </div>
+
+                <div class="partner-card" data-category="small">
+                    <div style="width: 60px; height: 60px; background: rgba(252,211,77,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px;">
+                        🏘️
+                    </div>
+                    <div style="display: inline-block; background: rgba(252,211,77,0.15); border: 1px solid rgba(252,211,77,0.3); color: var(--yellow); padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px;">
+                        Small Business
+                    </div>
+                    <h4>Mama Ngozi Salon</h4>
+                    <p style="font-size: 13px; color: var(--muted); margin-bottom: 12px;">Hair & beauty services</p>
+                    <div style="font-size: 12px; color: var(--green); font-weight: 600;">3 Active Listings</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <h2>Want to Join Our Partner Network?</h2>
+            <p>List your business opportunities on HubConnect and connect with thousands of potential customers looking to pool resources and save money.</p>
+            <div class="cta-actions">
+                <a href="signup.html?type=partner" class="btn btn-lime btn-lg">Become a Partner</a>
+                <a href="index.html#how-it-works" class="btn btn-outline btn-lg">Learn How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="HC-Logo.png" alt="HubConnect" style="width: 140px; margin-bottom: 16px;" />
+                    <p>Africa's Universal Service Layer connecting you to verified businesses across multiple sectors.</p>
+                    <div class="footer-socials">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Twitter">𝕏</a>
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="LinkedIn">in</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="index.html#how-it-works">How It Works</a></li>
+                        <li><a href="index.html#categories">Browse Categories</a></li>
+                        <li><a href="all-partners.html">All Partners</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 HubConnect. All rights reserved.</p>
+                <div class="footer-bottom-right">
+                    <span>Made with 💚 in Nigeria</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="particles-config.js"></script>
+    <script>
+        // Filter partners
+        function filterPartners(category) {
+            const cards = document.querySelectorAll('.partner-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

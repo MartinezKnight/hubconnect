@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Listing | HubConnect Partner Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo">
+                <a href="partner-dashboard.html">
+                    <img src="HC-Logo.png" alt="HubConnect" />
+                </a>
+            </div>
+
+            <div class="nav-label">NAVIGATION</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="partner-dashboard.html">
+                        <span class="nav-dot"></span>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="create-listing.html" class="active">
+                        <span class="nav-dot"></span>
+                        Create Listing
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="transactions.html">
+                        <span class="nav-dot"></span>
+                        Transactions
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="profile.html">
+                        <span class="nav-dot"></span>
+                        Profile
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-label">SUPPORT</div>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="settings.html">
+                        <span class="nav-dot"></span>
+                        Settings
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html">
+                        <span class="nav-dot"></span>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Topbar -->
+            <div class="topbar">
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+                    <h1>Create New Listing</h1>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <a href="notifications.html" class="icon-btn" title="Notifications">🔔</a>
+                    <a href="profile.html" class="icon-btn" title="Profile">👤</a>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="content">
+                <div class="container" style="max-width: 800px;">
+                    
+                    <!-- Page Header -->
+                    <div style="margin-bottom: 32px;">
+                        <p style="color: var(--muted); font-size: 14px; margin-bottom: 8px;">
+                            Fill in the details below to create a new opportunity listing
+                        </p>
+                    </div>
+
+                    <!-- Create Listing Form -->
+                    <form id="createListingForm" class="section">
+                        
+                        <!-- Opportunity Category -->
+                        <div class="form-group">
+                            <label class="form-label">Opportunity Category *</label>
+                            <select class="form-select" id="category" required>
+                                <option value="">Select Category</option>
+                                <option value="bulk-buy">Bulk Buying</option>
+                                <option value="transport">Transport</option>
+                                <option value="food">Food</option>
+                                <option value="housing">Shared Housing</option>
+                                <option value="delivery">Delivery Services</option>
+                                <option value="recycling">Recycling</option>
+                                <option value="training">Training & Education</option>
+                                <option value="service">Professional Services</option>
+                            </select>
+                        </div>
+
+                        <!-- Opportunity Title -->
+                        <div class="form-group">
+                            <label class="form-label">Opportunity Title *</label>
+                            <input 
+                                type="text" 
+                                class="form-input" 
+                                id="title" 
+                                placeholder="e.g., Bulk Rice 50kg - Save 30%" 
+                                required 
+                            />
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group">
+                            <label class="form-label">Description *</label>
+                            <textarea 
+                                class="form-textarea" 
+                                id="description" 
+                                rows="5" 
+                                placeholder="Provide detailed information about this opportunity..." 
+                                required
+                            ></textarea>
+                        </div>
+
+                        <!-- Pricing -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            <div class="form-group">
+                                <label class="form-label">Individual Price (₦) *</label>
+                                <input 
+                                    type="number" 
+                                    class="form-input" 
+                                    id="individualPrice" 
+                                    placeholder="35,000" 
+                                    required 
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Pool Price (₦) *</label>
+                                <input 
+                                    type="number" 
+                                    class="form-input" 
+                                    id="poolPrice" 
+                                    placeholder="24,500" 
+                                    required 
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Slots & Duration -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            <div class="form-group">
+                                <label class="form-label">Total Slots Available *</label>
+                                <input 
+                                    type="number" 
+                                    class="form-input" 
+                                    id="totalSlots" 
+                                    placeholder="20" 
+                                    min="2"
+                                    required 
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Pool Duration (Days) *</label>
+                                <input 
+                                    type="number" 
+                                    class="form-input" 
+                                    id="duration" 
+                                    placeholder="7" 
+                                    min="1"
+                                    required 
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="form-group">
+                            <label class="form-label">Pickup/Delivery Location *</label>
+                            <input 
+                                type="text" 
+                                class="form-input" 
+                                id="location" 
+                                placeholder="e.g., Ikeja, Lagos" 
+                                required 
+                            />
+                        </div>
+
+                        <!-- Terms & Conditions -->
+                        <div class="form-group">
+                            <label class="form-label">Terms & Conditions</label>
+                            <textarea 
+                                class="form-textarea" 
+                                id="terms" 
+                                rows="4" 
+                                placeholder="Enter any specific terms, delivery conditions, or refund policies..."
+                            ></textarea>
+                        </div>
+
+                        <!-- Image Upload (Placeholder) -->
+                        <div class="form-group">
+                            <label class="form-label">Product/Service Image</label>
+                            <input 
+                                type="file" 
+                                class="form-input" 
+                                id="image" 
+                                accept="image/*"
+                                style="padding: 8px;"
+                            />
+                            <p style="font-size: 12px; color: var(--muted); margin-top: 6px;">
+                                Upload a clear image (JPG, PNG - Max 5MB)
+                            </p>
+                        </div>
+
+                        <!-- Availability Status -->
+                        <div class="form-group">
+                            <label class="form-label">Listing Status</label>
+                            <select class="form-select" id="status">
+                                <option value="active">Active (Visible to users)</option>
+                                <option value="draft">Draft (Save for later)</option>
+                            </select>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div style="display: flex; gap: 16px; margin-top: 32px;">
+                            <button type="submit" class="btn btn-lime btn-lg" style="flex: 1;">
+                                🚀 Publish Listing
+                            </button>
+                            <button type="button" class="btn btn-outline btn-lg" style="flex: 1;" onclick="saveDraft()">
+                                💾 Save as Draft
+                            </button>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 16px;">
+                            <a href="partner-dashboard.html" style="color: var(--muted); font-size: 14px;">
+                                Cancel and return to dashboard
+                            </a>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+
+        mobileMenuToggle?.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            mobileOverlay.classList.toggle('active');
+        });
+
+        mobileOverlay?.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+            mobileOverlay.classList.remove('active');
+        });
+
+        // Form submission
+        document.getElementById('createListingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = {
+                category: document.getElementById('category').value,
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                individualPrice: document.getElementById('individualPrice').value,
+                poolPrice: document.getElementById('poolPrice').value,
+                totalSlots: document.getElementById('totalSlots').value,
+                duration: document.getElementById('duration').value,
+                location: document.getElementById('location').value,
+                terms: document.getElementById('terms').value,
+                status: document.getElementById('status').value
+            };
+
+            console.log('Listing Data:', formData);
+            
+            // Show success message
+            alert('✅ Listing created successfully!\n\nYour opportunity has been published and is now visible to HubConnect users.');
+            
+            // Redirect to partner dashboard
+            window.location.href = 'partner-dashboard.html';
+        });
+
+        // Save as draft
+        function saveDraft() {
+            const formData = {
+                category: document.getElementById('category').value,
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                status: 'draft'
+            };
+
+            console.log('Draft Saved:', formData);
+            alert('💾 Draft saved successfully!\n\nYou can continue editing this listing later from your dashboard.');
+            window.location.href = 'partner-dashboard.html';
+        }
+    </script>
+</body>
+</html>
