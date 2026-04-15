@@ -1031,250 +1031,212 @@ footer {
 }
 
 
-/* ═══════════════════════════════════════════════════
-   MOBILE NAVIGATION FIX - PASTE THIS AT THE END OF YOUR STYLES.CSS
-   This replaces the broken mobile nav code
-   ═══════════════════════════════════════════════════ */
-
 /* ══════════════════════════════════════════
-   MOBILE (≤ 768px) - SIMPLIFIED APPROACH
+   19. RESPONSIVE — MOBILE (≤ 768px)
+   CRITICAL FIXES: Hamburger WHITE, proper nav
 ══════════════════════════════════════════ */
 @media (max-width: 768px) {
-  
-  /* STEP 1: Reset nav to simple flexbox */
+
+  /* ── NAVIGATION - FIXED ── */
   nav {
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 20px !important;
-    min-height: 70px;
+    padding: 0 20px !important;
     height: auto !important;
+    min-height: 70px;
   }
 
-  /* STEP 2: Hamburger - LEFT side, WHITE color, VISIBLE */
-  .hamburger {
-    display: flex !important;
-    flex-direction: column;
-    gap: 6px;
-    padding: 8px;
-    order: 1;
-    z-index: 1001;
+  /* SHOW WHITE hamburger */
+  .hamburger { 
+    display: flex !important; 
+    order: -1;
   }
 
-  .hamburger span {
-    width: 28px;
-    height: 3px;
-    background: #FFFFFF !important; /* FORCE WHITE */
-    border-radius: 2px;
+  /* Logo centered, proper size */
+  .nav-logo { 
+    flex: 1; 
+    text-align: center; 
+    order: 0;
+    display: flex;
+    justify-content: center;
   }
 
-  /* STEP 3: Logo - CENTER, proper size */
-  .nav-logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    order: 2;
+  .nav-logo img { 
+    height: 60px !important; 
   }
 
-  .nav-logo img {
-    height: 60px !important;
-    width: auto;
-  }
-
-  /* STEP 4: Empty div on right for balance (if needed) */
-  .nav-actions {
-    order: 3;
-    width: 44px; /* Same width as hamburger to balance */
-    visibility: hidden; /* Hide but keep space */
-  }
-
-  /* STEP 5: Menu items - FULL WIDTH BELOW */
+  /* Hide nav links by default */
   .nav-links {
     display: none !important;
     flex-direction: column;
     width: 100%;
-    order: 4;
     background: rgba(9,17,42,0.98);
-    backdrop-filter: blur(20px);
-    border-top: 1px solid var(--border);
-    margin: 0;
+    margin: 0; 
     padding: 20px 0;
+    gap: 0; 
+    order: 3;
+    border-top: 1px solid var(--border);
+  }
+  
+  /* Show when menu toggled */
+  #menu-toggle:checked ~ .nav-links { 
+    display: flex !important; 
   }
 
-  /* Show menu when checkbox checked */
-  #menu-toggle:checked ~ .nav-links {
-    display: flex !important;
+  .nav-links li { 
+    width: 100%; 
+    text-align: center; 
+  }
+  
+  .nav-links a  { 
+    display: block !important; 
+    padding: 18px 20px !important; 
+    font-size: 16px !important; 
+    border-bottom: 1px solid var(--border); 
   }
 
-  .nav-links li {
-    width: 100%;
-    text-align: center;
-  }
-
-  .nav-links a {
-    display: block !important;
-    padding: 18px 20px !important;
-    font-size: 16px !important;
-    color: var(--muted);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-links a:hover {
-    color: var(--white);
-    background: rgba(255,255,255,0.04);
-  }
-
-  /* STEP 6: Action buttons - FULL WIDTH BELOW menu */
+  /* Nav actions */
   .nav-actions {
     display: none !important;
     flex-direction: column;
-    width: 100%;
-    order: 5;
+    width: 100%; 
     gap: 12px;
     padding: 20px;
     background: rgba(9,17,42,0.98);
-    visibility: visible; /* Show when menu open */
+    order: 4;
+  }
+  
+  #menu-toggle:checked ~ .nav-actions { 
+    display: flex !important; 
   }
 
-  #menu-toggle:checked ~ .nav-actions {
-    display: flex !important;
+  .nav-actions .btn { 
+    width: 100% !important; 
+    justify-content: center; 
   }
 
-  .nav-actions .btn {
-    width: 100% !important;
-    justify-content: center;
-  }
-
-  /* Dashboard sidebar */
+  /* ── Sidebar (dashboard) ── */
   .sidebar {
     left: -260px;
   }
-
-  .sidebar.open {
-    left: 0;
-  }
+  .sidebar.open { left: 0; }
 
   .main {
     margin-left: 0;
     width: 100%;
   }
 
-  .mobile-menu-toggle {
-    display: flex;
-    color: #FFFFFF !important; /* WHITE */
-  }
+  .mobile-menu-toggle { display: flex; }
 
-  /* Content spacing */
-  .topbar {
-    padding: 0 20px;
-  }
+  /* ── Topbar ── */
+  .topbar { padding: 0 20px; }
+  .topbar h1 { font-size: 18px; }
 
-  .topbar h1 {
-    font-size: 18px;
-  }
+  /* ── Content ── */
+  .content   { padding: 20px 16px; }
+  .container { padding: 20px 16px; }
 
-  .content {
-    padding: 20px 16px;
+  /* ── Hero - FIXED: Proper mockup sizing ── */
+  .hero { 
+    padding: 70px 24px 60px; 
+    min-height: auto; 
   }
-
-  .container {
-    padding: 20px 16px;
+  
+  .hero-title { 
+    font-size: 36px !important; 
+    line-height: 1.1 !important; 
   }
-
-  /* Hero section */
-  .hero {
-    padding: 70px 24px 60px;
-    min-height: auto;
-  }
-
-  .hero-content-wrapper {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  .hero-title {
-    font-size: 36px !important;
-    line-height: 1.1 !important;
-    text-align: center;
-  }
-
-  .hero-subtitle {
+  
+  .hero-subtitle { 
     font-size: 16px;
-    text-align: center;
+    max-width: 100%;
+  }
+  
+  .hero-cta { 
+    flex-direction: column; 
+    width: 100%; 
+  }
+  
+  .hero-cta .btn { 
+    width: 100%; 
   }
 
-  .hero-cta {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .hero-cta .btn {
-    width: 100%;
-  }
-
+  /* FIXED: Mobile mockup proper sizing */
   .hero-image {
     max-width: 280px;
     margin: 0 auto;
   }
 
-  /* Sections */
-  .section-heading {
-    font-size: 32px !important;
-  }
-
+  /* ── Landing sections ── */
   .how-section,
   .categories-section,
   .partners-section,
   .stories-section,
-  .cta-section {
-    padding: 60px 24px;
-  }
+  .cta-section    { padding: 60px 24px; }
+  .stats-section  { padding: 48px 24px; }
+  .mission-band   { padding: 48px 24px; }
 
-  /* Stats */
-  .stats-row {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+  .section-heading { 
+    font-size: 32px !important; 
+    hyphens: none;
+    word-break: keep-all;
   }
+  
+  .mission-quote   { font-size: 16px; }
 
-  /* Card grids */
+  /* ── Stats ── */
+  .stats-row     { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .stat-cell     { border-right: none; border-bottom: 1px solid var(--border); padding: 20px; }
+  .stat-cell:last-child { border-bottom: none; }
+
+  /* ── Card grids ── */
   .categories-grid,
   .partners-grid,
-  .stories-grid {
-    grid-template-columns: 1fr !important;
-    gap: 16px;
-  }
+  .stories-grid,
+  #listings-grid  { grid-template-columns: 1fr !important; gap: 16px; }
 
-  /* CTA */
-  .cta-box {
-    padding: 48px 24px;
-  }
+  /* ── Forms ── */
+  .form-input,
+  .form-select,
+  .form-textarea { font-size: 16px; } /* Prevents iOS zoom */
 
-  .cta-box h2 {
+  /* ── CTA ── */
+  .cta-box    { padding: 48px 24px; }
+  .cta-box h2 { 
     font-size: 28px !important;
+    hyphens: none;
+    word-break: keep-all;
   }
+  .cta-box p  { font-size: 15px; }
+  .cta-actions { flex-direction: column; width: 100%; }
+  .cta-actions .btn { width: 100%; }
 
-  /* Footer */
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
+  /* ── Footer ── */
+  .footer-grid   { grid-template-columns: 1fr; gap: 32px; }
+  footer         { padding: 60px 24px 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
 
-  footer {
-    padding: 60px 24px 32px;
-  }
+  /* ── Touch targets ── */
+  .btn, .filter-btn, .mode-filter-btn, .icon-btn, .toggle-switch { min-height: 44px; }
+  
+  /* Hide second mockup */
+  .how-grid > div:last-child { display: none; }
 }
 
+
 /* ══════════════════════════════════════════
-   SMALL MOBILE (≤ 480px)
+   20. RESPONSIVE — SMALL MOBILE (≤ 480px)
 ══════════════════════════════════════════ */
 @media (max-width: 480px) {
-  .nav-logo img {
-    height: 50px !important;
+  .nav-logo img { 
+    height: 50px !important; 
   }
 
-  .hero-title {
-    font-size: 30px !important;
+  .hero      { padding: 60px 16px 50px; }
+  .hero-title { 
+    font-size: 30px !important; 
+  }
+
+  .section-heading { 
+    font-size: 26px !important; 
   }
 
   .hero-image {
@@ -1282,28 +1244,21 @@ footer {
   }
 }
 
+
 /* ══════════════════════════════════════════
-   DESKTOP (≥ 769px) - HIDE MOBILE ELEMENTS
+   21. DESKTOP OVERRIDE - FORCE HAMBURGER HIDDEN
 ══════════════════════════════════════════ */
 @media (min-width: 769px) {
   .hamburger {
     display: none !important;
   }
-
+  
   .mobile-menu-toggle {
     display: none !important;
   }
-
-  .nav-logo {
-    position: static !important;
-    transform: none !important;
-  }
-
-  .nav-actions {
-    visibility: visible !important;
-    width: auto !important;
-  }
 }
+
+
 /* ═══════════════════════════════════════════
    22. DASHBOARD PAGE UTILITIES
 ═══════════════════════════════════════════ */
