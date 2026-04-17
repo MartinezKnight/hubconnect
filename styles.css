@@ -1658,6 +1658,40 @@ footer {
     gap: 12px;
     margin-bottom: 24px;
   }
+  /* FIX FOR CHALLENGE 1: List Your Business & Hero */
+  .section {
+    padding: 40px 20px !important; /* Reduces massive desktop margins */
+  }
+
+  .hero-title {
+    font-size: 32px !important; /* Prevents text from being wider than the phone */
+  }
+
+  /* FIX FOR CHALLENGE 2: Dashboard & Earnings */
+  .earnings-grid, 
+  .stats-grid, 
+  .grid-3-col,
+  .hero-text > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important; /* Stacks everything vertically */
+    gap: 16px !important;
+  }
+
+  .profile-header-card {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  /* Makes buttons easy to tap with a thumb */
+  .profile-actions, .nav-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .btn {
+    width: 100% !important;
+    text-align: center;
+  }
 }
 
 
