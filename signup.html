@@ -9,44 +9,104 @@
     <style>
         body { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; margin: 0; }
         .hero-side {
-    position: relative; /* This is the anchor for the background layer */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 80px 60px;
-    overflow: hidden; /* This keeps the blur from 'leaking' outside the box */
-    min-height: 100vh;
-}
-
-/* This is your new "Background Layer" */
-.hero-side::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    /* Put your image and dark tint here */
-    background: linear-gradient(rgba(6, 8, 26, 0.6), rgba(6, 8, 26, 0.8)), 
-                url('hero-image.png');
-    background-size: cover;
-    background-position: center;
-    filter: blur(8px); /* Adjust this number to your liking */
-    transform: scale(1.1); /* Prevents white edges caused by the blur */
-    z-index: 0;
-}
-
-/* This ensures your text sits ON TOP of the blur */
-.hero-content {
-    position: relative;
-    z-index: 1;
-}
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 60px;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+        .hero-side::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(rgba(6, 8, 26, 0.6), rgba(6, 8, 26, 0.8)),
+                        url('hero-image.png');
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+            transform: scale(1.1);
+            z-index: 0;
+        }
+        .hero-content { position: relative; z-index: 1; }
         .form-side { background: var(--navy); display: flex; align-items: center; justify-content: center; padding: 60px 40px; overflow-y: auto; }
         @media (max-width: 960px) { body { grid-template-columns: 1fr; } .hero-side { display: none; } }
+
+        /* Password field wrapper */
+        .password-wrapper { position: relative; }
+        .password-wrapper input { padding-right: 50px !important; }
+        .toggle-password {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--muted);
+            font-size: 18px;
+            padding: 0;
+            line-height: 1;
+        }
+        .toggle-password:hover { color: var(--lime); }
+
+        /* Password requirements */
+        .password-rules {
+            margin-top: 8px;
+            padding: 12px 14px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .password-rules p {
+            font-size: 12px;
+            color: var(--muted);
+            margin: 0 0 6px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .rule {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 4px;
+            transition: color 0.2s;
+        }
+        .rule .dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            flex-shrink: 0;
+            transition: background 0.2s;
+        }
+        .rule.pass { color: #4ade80; }
+        .rule.pass .dot { background: #4ade80; color: #000; }
+
+        /* Phone hint */
+        .field-hint {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 6px;
+            opacity: 0.7;
+        }
     </style>
 </head>
 <body>
 
 <div class="hero-side">
     <div class="hero-content">
-        <img src="HC-Logo.png" alt="HubConnect" style="width: 160px; margin-bottom: 48px;">
+        <a href="index.html">
+            <img src="HC-Logo.png" alt="HubConnect" style="width: 160px; margin-bottom: 48px;">
+        </a>
         <h1 style="font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 24px;">
             Start Saving<br><span style="color: var(--lime);">Today</span>
         </h1>
@@ -55,7 +115,7 @@
         </p>
         <div style="background: rgba(93,190,74,0.08); border: 1px solid rgba(93,190,74,0.2); border-radius: 12px; padding: 24px; max-width: 500px;">
             <div style="font-size: 15px; font-weight: 700; margin-bottom: 12px; color: var(--lime);">What You Get</div>
-            <ul style="list-style: none; padding: 0;">
+            <ul style="list-style: none; padding: 0; margin: 0;">
                 <li style="padding: 10px 0; font-size: 14px; color: var(--muted);">✓ Save up to 70% on everything</li>
                 <li style="padding: 10px 0; font-size: 14px; color: var(--muted);">✓ Earn ₦500 per referral + 5% forever</li>
                 <li style="padding: 10px 0; font-size: 14px; color: var(--muted);">✓ Access to exclusive pools</li>
@@ -67,38 +127,132 @@
 
 <div class="form-side">
     <div style="width: 100%; max-width: 440px;">
+
+        <!-- Mobile logo -->
+        <div style="display: none; margin-bottom: 32px;" class="mobile-logo">
+            <a href="index.html">
+                <img src="HC-Logo.png" alt="HubConnect" style="width: 130px;">
+            </a>
+        </div>
+
         <div style="margin-bottom: 40px;">
             <h2 style="font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; margin-bottom: 12px;">Create Account</h2>
             <p style="color: var(--muted); font-size: 15px;">Join 50,000+ people saving money</p>
         </div>
-        <form id="signup-form">
+
+        <form id="signup-form" novalidate>
+
+            <!-- Full Name -->
             <div class="form-group">
                 <label class="form-label">Full Name</label>
-                <input type="text" class="form-input" placeholder="Ada Okafor" required style="font-size: 15px; padding: 14px 18px;">
+                <input type="text" class="form-input" placeholder="e.g. Ada Okafor" required style="font-size: 15px; padding: 14px 18px;">
             </div>
+
+            <!-- Email -->
             <div class="form-group">
                 <label class="form-label">Email Address</label>
                 <input type="email" class="form-input" placeholder="you@example.com" required style="font-size: 15px; padding: 14px 18px;">
             </div>
+
+            <!-- Phone -->
             <div class="form-group">
                 <label class="form-label">Phone Number</label>
-                <input type="tel" class="form-input" placeholder="+234 801 234 5678" required style="font-size: 15px; padding: 14px 18px;">
+                <input type="tel" id="phone-input" class="form-input" placeholder="08012345678" required style="font-size: 15px; padding: 14px 18px;">
+                <div class="field-hint">Enter your Nigerian number e.g. 08012345678</div>
             </div>
+
+            <!-- Password -->
             <div class="form-group">
                 <label class="form-label">Password</label>
-                <input type="password" class="form-input" placeholder="••••••••" required style="font-size: 15px; padding: 14px 18px;">
+                <div class="password-wrapper">
+                    <input type="password" id="password-input" class="form-input" placeholder="Create a strong password" required style="font-size: 15px; padding: 14px 18px; width: 100%; box-sizing: border-box;">
+                    <button type="button" class="toggle-password" onclick="togglePassword('password-input', this)" title="Show/hide password">
+                        👁
+                    </button>
+                </div>
+                <!-- Password requirements -->
+                <div class="password-rules">
+                    <p>Password must have:</p>
+                    <div class="rule" id="rule-length">
+                        <span class="dot">✓</span> At least 8 characters
+                    </div>
+                    <div class="rule" id="rule-upper">
+                        <span class="dot">✓</span> One uppercase letter (A-Z)
+                    </div>
+                    <div class="rule" id="rule-lower">
+                        <span class="dot">✓</span> One lowercase letter (a-z)
+                    </div>
+                    <div class="rule" id="rule-number">
+                        <span class="dot">✓</span> One number (0-9)
+                    </div>
+                </div>
             </div>
+
+            <!-- Referral Code -->
             <div class="form-group">
-                <label class="form-label">Referral Code (Optional)</label>
-                <input type="text" class="form-input" placeholder="Enter code if you have one" style="font-size: 15px; padding: 14px 18px;">
+                <label class="form-label">Referral Code <span style="color: var(--muted); font-weight: 400;">(Optional)</span></label>
+                <input type="text" class="form-input" placeholder="Enter code if you have one" style="font-size: 15px; padding: 14px 18px; text-transform: uppercase; letter-spacing: 1px;">
             </div>
-            <button type="submit" class="btn btn-lime" style="width: 100%; padding: 14px; font-size: 15px;">Create Account</button>
+
+            <button type="submit" class="btn btn-lime" style="width: 100%; padding: 14px; font-size: 15px; margin-top: 8px;">
+                Create Account
+            </button>
+
             <p style="text-align: center; margin-top: 32px; font-size: 14px; color: var(--muted);">
                 Already have an account? <a href="login.html" style="color: var(--lime); font-weight: 600;">Sign in</a>
             </p>
+
         </form>
     </div>
 </div>
+
+<style>
+    @media (max-width: 960px) {
+        .mobile-logo { display: block !important; }
+    }
+</style>
+
+<script>
+    // ── Show/Hide Password ────────────────────────────────────
+    function togglePassword(inputId, btn) {
+        const input = document.getElementById(inputId);
+        if (input.type === 'password') {
+            input.type = 'text';
+            btn.textContent = '🙈';
+            btn.title = 'Hide password';
+        } else {
+            input.type = 'password';
+            btn.textContent = '👁';
+            btn.title = 'Show password';
+        }
+    }
+
+    // ── Live Password Validation ──────────────────────────────
+    document.getElementById('password-input').addEventListener('input', function () {
+        const val = this.value;
+        checkRule('rule-length', val.length >= 8);
+        checkRule('rule-upper',  /[A-Z]/.test(val));
+        checkRule('rule-lower',  /[a-z]/.test(val));
+        checkRule('rule-number', /[0-9]/.test(val));
+    });
+
+    function checkRule(id, passed) {
+        const el = document.getElementById(id);
+        if (passed) el.classList.add('pass');
+        else el.classList.remove('pass');
+    }
+
+    // ── Phone number: strip spaces and + for backend ──────────
+    document.getElementById('phone-input').addEventListener('blur', function () {
+        let val = this.value.trim();
+        // Convert +2348012345678 → 08012345678
+        if (val.startsWith('+234')) val = '0' + val.slice(4);
+        // Remove spaces
+        val = val.replace(/\s+/g, '');
+        this.value = val;
+    });
+</script>
+
 <script src="api.js"></script>
 </body>
 </html>
