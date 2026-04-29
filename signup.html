@@ -1,265 +1,493 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Account — HubConnect</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account — HubConnect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── BASE STYLES ── */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      min-height: 100vh;
-      background: #0a0a0a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      padding: 20px;
-    }
+        body {
+            min-height: 100vh;
+            background: #0a0a0a;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
 
-    .auth-wrapper {
-      width: 100%;
-      max-width: 420px;
-    }
+        /* ── HERO SIDE (Desktop only) ── */
+        .hero-side {
+            background-image: url('hero-image.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 60px;
+        }
 
-    /* LOGO */
-    .auth-logo {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-    .auth-logo img {
-      height: 48px;
-      width: auto;
-    }
+        .hero-side::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(6,8,26,0.92) 0%, rgba(6,8,26,0.85) 50%, rgba(6,8,26,0.75) 100%);
+        }
 
-    /* CARD */
-    .auth-card {
-      background: #111;
-      border: 1px solid #222;
-      border-radius: 20px;
-      padding: 32px 28px;
-    }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
 
-    .auth-card h1 {
-      font-size: 24px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 6px;
-    }
-    .auth-card p.subtitle {
-      font-size: 14px;
-      color: #888;
-      margin-bottom: 28px;
-    }
+        .hero-content img {
+            width: 160px;
+            margin-bottom: 48px;
+        }
 
-    /* FORM */
-    .form-group {
-      margin-bottom: 18px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 500;
-      color: #aaa;
-      margin-bottom: 7px;
-    }
-    .form-group input {
-      width: 100%;
-      background: #1a1a1a;
-      border: 1.5px solid #2a2a2a;
-      border-radius: 12px;
-      padding: 14px 16px;
-      font-size: 15px;
-      color: #fff;
-      outline: none;
-      transition: border-color .2s;
-    }
-    .form-group input:focus {
-      border-color: #c8f000;
-    }
-    .form-group input.error {
-      border-color: #ef4444;
-    }
-    .form-group input.valid {
-      border-color: #22c55e;
-    }
-    .form-hint {
-      font-size: 12px;
-      color: #666;
-      margin-top: 5px;
-    }
+        .hero-content h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #fff;
+        }
 
-    /* PASSWORD WRAPPER */
-    .password-wrapper {
-      position: relative;
-    }
-    .password-wrapper input {
-      padding-right: 48px;
-    }
-    .toggle-pw {
-      position: absolute;
-      right: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 18px;
-      color: #666;
-      padding: 4px;
-    }
+        .hero-content h1 span {
+            color: #c8f000;
+        }
 
-    /* PASSWORD STRENGTH */
-    .pw-rules {
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
-      border-radius: 10px;
-      padding: 12px 14px;
-      margin-top: 10px;
-      display: none;
-    }
-    .pw-rules.show { display: block; }
-    .pw-rules p {
-      font-size: 11px;
-      font-weight: 600;
-      color: #666;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      margin-bottom: 8px;
-    }
-    .pw-rule {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      color: #666;
-      margin-bottom: 5px;
-      transition: color .2s;
-    }
-    .pw-rule .dot {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: #2a2a2a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      flex-shrink: 0;
-      transition: background .2s;
-    }
-    .pw-rule.pass { color: #22c55e; }
-    .pw-rule.pass .dot { background: #22c55e; }
-    .pw-rule.pass .dot::after { content: '✓'; color: #000; font-weight: 700; }
+        .hero-content > p {
+            font-size: 17px;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.7;
+            max-width: 480px;
+            margin-bottom: 50px;
+        }
 
-    /* SUBMIT BUTTON */
-    .btn-signup {
-      width: 100%;
-      background: #c8f000;
-      color: #000;
-      border: none;
-      border-radius: 14px;
-      padding: 16px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 8px;
-      transition: opacity .2s, transform .1s;
-    }
-    .btn-signup:hover { opacity: .9; }
-    .btn-signup:active { transform: scale(.98); }
-    .btn-signup:disabled { opacity: .6; cursor: not-allowed; }
+        .benefits-box {
+            background: rgba(6,8,26,0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(93,190,74,0.3);
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 500px;
+        }
 
-    /* TOAST */
-    .toast {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 9999;
-      padding: 13px 22px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 500;
-      white-space: nowrap;
-      box-shadow: 0 4px 20px rgba(0,0,0,.4);
-      transition: opacity .4s;
-    }
-    .toast.success { background: #dcfce7; color: #15803d; }
-    .toast.error   { background: #fee2e2; color: #dc2626; }
+        .benefits-box > div:first-child {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #c8f000;
+        }
 
-    /* FOOTER LINK */
-    .auth-footer {
-      text-align: center;
-      margin-top: 22px;
-      font-size: 14px;
-      color: #666;
-    }
-    .auth-footer a { color: #c8f000; font-weight: 600; text-decoration: none; }
-  </style>
+        .benefits-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .benefits-box li {
+            padding: 12px 0;
+            font-size: 15px;
+            color: rgba(255,255,255,0.85);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .benefits-box li span {
+            color: #c8f000;
+            font-size: 18px;
+        }
+
+        .decorative-dots {
+            position: absolute;
+            bottom: 60px;
+            left: 60px;
+            display: flex;
+            gap: 12px;
+            z-index: 2;
+        }
+
+        .decorative-dots div {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        /* ── FORM SIDE ── */
+        .form-side {
+            background: #0a0a0a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 40px;
+        }
+
+        /* Mobile logo (hidden on desktop) */
+        .mobile-logo-header {
+            display: none;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .mobile-logo-header a img {
+            height: 65px;
+            width: auto;
+        }
+
+        /* Form wrapper */
+        .auth-wrapper {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .auth-card {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 20px;
+            padding: 32px 28px;
+        }
+
+        .auth-card h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .auth-card p.subtitle {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 28px;
+        }
+
+        /* Form groups */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: #aaa;
+            margin-bottom: 7px;
+        }
+
+        .form-group input {
+            width: 100%;
+            background: #1a1a1a;
+            border: 1.5px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 14px 16px;
+            font-size: 15px;
+            color: #fff;
+            outline: none;
+            transition: border-color .2s;
+        }
+
+        .form-group input:focus {
+            border-color: #c8f000;
+        }
+
+        .form-hint {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Password wrapper */
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-wrapper input {
+            padding-right: 48px;
+        }
+
+        .toggle-pw {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #666;
+            padding: 4px;
+        }
+
+        /* Password strength */
+        .pw-rules {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 10px;
+            padding: 12px 14px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .pw-rules.show {
+            display: block;
+        }
+
+        .pw-rules p {
+            font-size: 11px;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: 8px;
+        }
+
+        .pw-rule {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+            transition: color .2s;
+        }
+
+        .pw-rule .dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            flex-shrink: 0;
+            transition: background .2s;
+        }
+
+        .pw-rule.pass {
+            color: #22c55e;
+        }
+
+        .pw-rule.pass .dot {
+            background: #22c55e;
+        }
+
+        .pw-rule.pass .dot::after {
+            content: '✓';
+            color: #000;
+            font-weight: 700;
+        }
+
+        /* Submit button */
+        .btn-signup {
+            width: 100%;
+            background: #c8f000;
+            color: #000;
+            border: none;
+            border-radius: 14px;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: opacity .2s, transform .1s;
+        }
+
+        .btn-signup:hover {
+            opacity: .9;
+        }
+
+        .btn-signup:active {
+            transform: scale(.98);
+        }
+
+        .btn-signup:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+        /* Toast notifications */
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            padding: 13px 22px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            box-shadow: 0 4px 20px rgba(0,0,0,.4);
+            transition: opacity .4s;
+        }
+
+        .toast.success {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .toast.error {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        /* Footer link */
+        .auth-footer {
+            text-align: center;
+            margin-top: 22px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .auth-footer a {
+            color: #c8f000;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* ══════════════════════════════════════════
+           RESPONSIVE — MOBILE
+        ══════════════════════════════════════════ */
+        @media (max-width: 960px) {
+            body {
+                grid-template-columns: 1fr !important;
+                overflow-x: hidden;
+            }
+
+            .hero-side {
+                display: none !important;
+            }
+
+            .form-side {
+                padding: 40px 24px !important;
+            }
+
+            .mobile-logo-header {
+                display: block !important;
+                padding-top: 20px;
+            }
+
+            .auth-card h1 {
+                font-size: 28px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mobile-logo-header a img {
+                height: 55px !important;
+            }
+
+            .form-side {
+                padding: 30px 20px !important;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div class="auth-wrapper">
-
-  <!-- LOGO close to form -->
-  <div class="auth-logo">
-    <img src="HC-Logo.png" alt="HubConnect">
-  </div>
-
-  <div class="auth-card">
-    <h1>Create Account</h1>
-    <p class="subtitle">Join 50,000+ Africans saving up to 70% together.</p>
-
-    <form id="signup-form" novalidate>
-
-      <div class="form-group">
-        <label>Full Name</label>
-        <input type="text" id="full-name" placeholder="e.g. Martins Ogundare" required autocomplete="name">
-      </div>
-
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" id="email" placeholder="you@example.com" required autocomplete="email">
-      </div>
-
-      <div class="form-group">
-        <label>Phone Number</label>
-        <input type="tel" id="phone" placeholder="e.g. 08012345678" required autocomplete="tel">
-        <p class="form-hint">Nigerian number — 08012345678 or 07012345678</p>
-      </div>
-
-      <div class="form-group">
-        <label>Password</label>
-        <div class="password-wrapper">
-          <input type="password" id="password" placeholder="Create a strong password" required autocomplete="new-password">
-          <button type="button" class="toggle-pw" id="toggle-pw" aria-label="Show password">👁️</button>
+<!-- LEFT SIDE: Hero (Desktop only) -->
+<div class="hero-side">
+    <div class="hero-content">
+        <img src="HC-Logo.png" alt="HubConnect">
+        
+        <h1>
+            Start Saving<br><span>Today</span>
+        </h1>
+        
+        <p>
+            Create your free account and unlock access to affordable transport, food, housing, training, and more.
+        </p>
+        
+        <div class="benefits-box">
+            <div>What You Get</div>
+            <ul>
+                <li><span>✓</span> Save up to 70% on everything</li>
+                <li><span>✓</span> Earn ₦500 per referral + 5% forever</li>
+                <li><span>✓</span> Access to exclusive pools</li>
+                <li><span>✓</span> Escrow-protected payments</li>
+            </ul>
         </div>
-        <!-- Live password rules -->
-        <div class="pw-rules" id="pw-rules">
-          <p>Password must have:</p>
-          <div class="pw-rule" id="rule-length"><span class="dot"></span> At least 8 characters</div>
-          <div class="pw-rule" id="rule-upper"><span class="dot"></span> One uppercase letter (A–Z)</div>
-          <div class="pw-rule" id="rule-lower"><span class="dot"></span> One lowercase letter (a–z)</div>
-          <div class="pw-rule" id="rule-number"><span class="dot"></span> One number (0–9)</div>
+    </div>
+    
+    <div class="decorative-dots">
+        <div style="background: #5DBE4A;"></div>
+        <div style="background: #c8f000;"></div>
+        <div style="background: rgba(255,255,255,0.1);"></div>
+    </div>
+</div>
+
+<!-- RIGHT SIDE: Form -->
+<div class="form-side">
+    <div class="auth-wrapper">
+        
+        <!-- Mobile logo (only visible on mobile) -->
+        <div class="mobile-logo-header">
+            <a href="index.html">
+                <img src="HC-Logo.png" alt="HubConnect">
+            </a>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label>Referral Code <span style="color:#666;font-weight:400">(Optional)</span></label>
-        <input type="text" id="referral-code" placeholder="Enter code if you have one" autocomplete="off">
-      </div>
+        <div class="auth-card">
+            <h1>Create Account</h1>
+            <p class="subtitle">Join 50,000+ Africans saving up to 70% together.</p>
 
-      <button type="submit" class="btn-signup" id="signup-btn">Create Account</button>
+            <form id="signup-form" novalidate>
 
-    </form>
-  </div>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="full-name" placeholder="e.g. Martins Ogundare" required autocomplete="name">
+                </div>
 
-  <div class="auth-footer">
-    Already have an account? <a href="login.html">Sign in</a>
-  </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" placeholder="you@example.com" required autocomplete="email">
+                </div>
 
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="phone" placeholder="e.g. 08012345678" required autocomplete="tel">
+                    <p class="form-hint">Nigerian number — 08012345678 or 07012345678</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" placeholder="Create a strong password" required autocomplete="new-password">
+                        <button type="button" class="toggle-pw" id="toggle-pw" aria-label="Show password">👁️</button>
+                    </div>
+                    <!-- Live password rules -->
+                    <div class="pw-rules" id="pw-rules">
+                        <p>Password must have:</p>
+                        <div class="pw-rule" id="rule-length"><span class="dot"></span> At least 8 characters</div>
+                        <div class="pw-rule" id="rule-upper"><span class="dot"></span> One uppercase letter (A–Z)</div>
+                        <div class="pw-rule" id="rule-lower"><span class="dot"></span> One lowercase letter (a–z)</div>
+                        <div class="pw-rule" id="rule-number"><span class="dot"></span> One number (0–9)</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Referral Code <span style="color:#666;font-weight:400">(Optional)</span></label>
+                    <input type="text" id="referral-code" placeholder="Enter code if you have one" autocomplete="off">
+                </div>
+
+                <button type="submit" class="btn-signup" id="signup-btn">Create Account</button>
+
+            </form>
+        </div>
+
+        <div class="auth-footer">
+            Already have an account? <a href="login.html">Sign in</a>
+        </div>
+
+    </div>
 </div>
 
 <script>
