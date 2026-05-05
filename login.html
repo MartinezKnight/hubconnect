@@ -1,105 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In — HubConnect</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { min-height: 100vh; background: #0a0a0a; font-family: 'DM Sans', sans-serif; display: grid; grid-template-columns: 1fr 1fr; }
-        .hero-side { background: #0a0a0a; position: relative; display: flex; flex-direction: column; justify-content: center; padding: 80px 60px; }
-        .hero-content img { width: 160px; margin-bottom: 48px; }
-        .hero-content h1 { font-family: 'Syne', sans-serif; font-size: 56px; font-weight: 800; line-height: 1.1; margin-bottom: 24px; color: #fff; }
-        .hero-content h1 span { color: #c8f000; }
-        .hero-content > p { font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.7; max-width: 480px; margin-bottom: 50px; }
-        .stats-box { background: rgba(13,16,48,0.5); border: 1px solid rgba(93,190,74,0.3); border-radius: 16px; padding: 32px; max-width: 500px; }
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-        .stat-item { }
-        .stat-num { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; color: #c8f000; margin-bottom: 8px; }
-        .stat-lbl { font-size: 13px; color: rgba(255,255,255,0.65); }
-        .form-side { background: #0a0a0a; display: flex; align-items: center; justify-content: center; padding: 60px 40px; }
-        .mobile-logo { display: none; }
-        .auth-wrapper { width: 100%; max-width: 440px; }
-        .auth-card { background: #111; border: 1px solid #222; border-radius: 20px; padding: 32px 28px; }
-        .auth-card h1 { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 6px; }
-        .auth-card p.subtitle { font-size: 14px; color: #888; margin-bottom: 28px; }
-        .form-group { margin-bottom: 18px; }
-        .form-group label { display: block; font-size: 13px; font-weight: 500; color: #aaa; margin-bottom: 7px; }
-        .form-group input { width: 100%; background: #1a1a1a; border: 1.5px solid #2a2a2a; border-radius: 12px; padding: 14px 16px; font-size: 15px; color: #fff; outline: none; transition: border-color .2s; }
-        .form-group input:focus { border-color: #c8f000; }
-        .password-wrapper { position: relative; }
-        .password-wrapper input { padding-right: 48px; }
-        .toggle-pw { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #666; padding: 4px; }
-        .forgot-link { text-align: right; margin-bottom: 24px; }
-        .forgot-link a { color: #c8f000; font-size: 14px; font-weight: 600; text-decoration: none; }
-        .btn-login { width: 100%; background: #c8f000; color: #000; border: none; border-radius: 14px; padding: 16px; font-size: 16px; font-weight: 700; cursor: pointer; transition: opacity .2s, transform .1s; }
-        .btn-login:hover { opacity: .9; }
-        .btn-login:active { transform: scale(.98); }
-        .btn-login:disabled { opacity: .6; cursor: not-allowed; }
-        .toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 9999; padding: 13px 22px; border-radius: 12px; font-size: 14px; font-weight: 500; white-space: nowrap; box-shadow: 0 4px 20px rgba(0,0,0,.4); transition: opacity .4s; }
-        .toast.success { background: #dcfce7; color: #15803d; }
-        .toast.error { background: #fee2e2; color: #dc2626; }
-        .auth-footer { text-align: center; margin-top: 22px; font-size: 14px; color: #666; }
-        .auth-footer a { color: #c8f000; font-weight: 600; text-decoration: none; }
-        @media (max-width: 960px) {
-            body { grid-template-columns: 1fr !important; }
-            .hero-side { display: none !important; }
-            .form-side { padding: 30px 24px !important; display: block !important; }
-            .mobile-logo { display: block !important; text-align: center; margin-bottom: 32px; padding-top: 20px; }
-            .mobile-logo a img { height: 80px !important; width: auto; }
-            .auth-card h1 { font-size: 28px !important; }
-        }
-        @media (max-width: 480px) {
-            .mobile-logo a img { height: 70px !important; }
-            .form-side { padding: 20px 16px !important; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — HubConnect</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-<div class="hero-side">
-    <div class="hero-content">
-        <img src="HC-Logo.png" alt="HubConnect">
-        <h1>Welcome<br><span>Back</span></h1>
-        <p>Sign in to access your account and pools. Continue saving on transport, food, housing, and more.</p>
-        <div class="stats-box">
-            <div class="stats-grid">
-                <div class="stat-item"><div class="stat-num">120+</div><div class="stat-lbl">Active Pools</div></div>
-                <div class="stat-item"><div class="stat-num">50K+</div><div class="stat-lbl">Members</div></div>
-                <div class="stat-item"><div class="stat-num">₦2.4B</div><div class="stat-lbl">Pooled Together</div></div>
-                <div class="stat-item"><div class="stat-num">70%</div><div class="stat-lbl">Avg. Savings</div></div>
-            </div>
-        </div>
+<body class="auth-page">
+
+<div class="auth-container">
+  
+  <!-- Left: Hero -->
+  <div class="auth-hero">
+    <img src="HC-Logo.png" alt="HubConnect" class="auth-hero-logo">
+    <h1 class="auth-hero-title">Welcome<br><span>Back</span></h1>
+    <p class="auth-hero-subtitle">Sign in to access your account and pools. Continue saving on transport, food, housing, and more.</p>
+    <div class="auth-stats">
+      <div class="stat"><div class="num">120+</div><div class="label">Active Pools</div></div>
+      <div class="stat"><div class="num">50K+</div><div class="label">Members</div></div>
+      <div class="stat"><div class="num">₦2.4B</div><div class="label">Pooled Together</div></div>
+      <div class="stat"><div class="num">70%</div><div class="label">Avg. Savings</div></div>
     </div>
-</div>
-<div class="form-side">
-    <div class="auth-wrapper">
-        <div class="mobile-logo"><a href="index.html"><img src="HC-Logo.png" alt="HubConnect"></a></div>
-        <div class="auth-card">
-            <h1>Welcome Back</h1>
-            <p class="subtitle">Sign in to access your account and pools.</p>
-            <form id="login-form" novalidate>
-                <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" id="email" placeholder="you@example.com" required autocomplete="email">
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <div class="password-wrapper">
-                        <input type="password" id="password" placeholder="••••••••••••" required autocomplete="current-password">
-                        <button type="button" class="toggle-pw" id="toggle-pw"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg></button>
-                    </div>
-                </div>
-                <div class="forgot-link"><a href="reset-password.html">Forgot password?</a></div>
-                <button type="submit" class="btn-login" id="login-btn">Sign In</button>
-            </form>
-        </div>
-        <div class="auth-footer">Don't have an account? <a href="signup.html">Create account</a></div>
+  </div>
+
+  <!-- Right: Form -->
+  <div class="auth-form-wrapper">
+    
+    <!-- Mobile logo -->
+    <div class="auth-mobile-logo">
+      <a href="index.html"><img src="HC-Logo.png" alt="HubConnect"></a>
     </div>
+
+    <div class="auth-form-container">
+      <h1>Welcome Back</h1>
+      <p class="auth-subtitle">Sign in to access your account and pools</p>
+
+      <form id="login-form" class="auth-form" novalidate>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="email" placeholder="you@example.com" required autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <div class="password-field">
+            <input type="password" id="password" placeholder="••••••••••••" required autocomplete="current-password">
+            <button type="button" class="password-toggle" id="toggle-pw">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group" style="text-align:right;margin-bottom:32px">
+          <a href="reset-password.html" style="color:var(--lime);font-size:14px;font-weight:600">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-lime" id="login-btn">Sign In</button>
+      </form>
+
+      <p class="auth-footer-text">Don't have an account? <a href="signup.html">Create account</a></p>
+    </div>
+  </div>
+
 </div>
+
 <script>
-const API_BASE='https://hubconnect-backend.onrender.com/api';function showToast(msg,type='success'){document.querySelectorAll('.toast').forEach(t=>t.remove());const t=document.createElement('div');t.className=`toast ${type}`;t.textContent=msg;document.body.appendChild(t);setTimeout(()=>{t.style.opacity='0';setTimeout(()=>t.remove(),400)},4000)}if(localStorage.getItem('hc_token'))window.location.href='dashboard.html';const pwInput=document.getElementById('password'),toggleBtn=document.getElementById('toggle-pw');let pwVisible=false;toggleBtn.addEventListener('click',()=>{pwVisible=!pwVisible;pwInput.type=pwVisible?'text':'password';toggleBtn.innerHTML=pwVisible?'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>':'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>'});document.getElementById('login-form').addEventListener('submit',async(e)=>{e.preventDefault();const btn=document.getElementById('login-btn'),email=document.getElementById('email').value.trim(),password=document.getElementById('password').value;if(!email){showToast('Please enter your email address.','error');return}if(!password){showToast('Please enter your password.','error');return}btn.textContent='Signing in…';btn.disabled=true;try{const res=await fetch(`${API_BASE}/auth/login`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password})}),data=await res.json();if(res.ok){localStorage.setItem('hc_token',data.data.token);localStorage.setItem('hc_user',JSON.stringify(data.data.user));showToast('Welcome back! 🎉');setTimeout(()=>window.location.href='dashboard.html',1200)}else{showToast(data.message||'Login failed. Please check your credentials.','error');btn.textContent='Sign In';btn.disabled=false}}catch(err){showToast('Network error. Please check your connection.','error');btn.textContent='Sign In';btn.disabled=false}});
+const API_BASE='https://hubconnect-backend.onrender.com/api';function showToast(m,t='success'){document.querySelectorAll('.toast').forEach(e=>e.remove());const e=document.createElement('div');e.className=`toast ${t}`;e.textContent=m;document.body.appendChild(e);setTimeout(()=>{e.style.opacity='0';setTimeout(()=>e.remove(),400)},4e3)}if(localStorage.getItem('hc_token'))window.location.href='dashboard.html';const pw=document.getElementById('password'),tog=document.getElementById('toggle-pw');let vis=!1;tog.addEventListener('click',()=>{vis=!vis;pw.type=vis?'text':'password';tog.innerHTML=vis?'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>':'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>'});document.getElementById('login-form').addEventListener('submit',async e=>{e.preventDefault();const btn=document.getElementById('login-btn'),email=document.getElementById('email').value.trim(),pass=document.getElementById('password').value;if(!email){showToast('Please enter email.','error');return}if(!pass){showToast('Please enter password.','error');return}btn.textContent='Signing in…';btn.disabled=!0;try{const res=await fetch(`${API_BASE}/auth/login`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password:pass})}),data=await res.json();if(res.ok){localStorage.setItem('hc_token',data.data.token);localStorage.setItem('hc_user',JSON.stringify(data.data.user));showToast('Welcome back! 👋');setTimeout(()=>window.location.href='dashboard.html',1200)}else{showToast(data.message||'Login failed.','error');btn.textContent='Sign In';btn.disabled=!1}}catch{showToast('Network error.','error');btn.textContent='Sign In';btn.disabled=!1}});
 </script>
+
 </body>
 </html>
