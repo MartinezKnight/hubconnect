@@ -1,104 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Account — HubConnect</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; margin: 0; }
-        .hero-side {
-    position: relative; /* This is the anchor for the background layer */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 80px 60px;
-    overflow: hidden; /* This keeps the blur from 'leaking' outside the box */
-    min-height: 100vh;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — HubConnect</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--navy:#06081a;--lime:#c8f535;--lime-dark:#a8d420;--muted:#8b8fa8;--card:#0e1029;--border:#1e2240;--white:#ffffff}
+    body{min-height:100vh;background:var(--navy);font-family:'DM Sans',sans-serif;color:var(--white);display:flex;flex-direction:column}
 
-/* This is your new "Background Layer" */
-.hero-side::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    /* Put your image and dark tint here */
-    background: linear-gradient(rgba(6, 8, 26, 0.6), rgba(6, 8, 26, 0.8)), 
-                url('hero-image.png');
-    background-size: cover;
-    background-position: center;
-    filter: blur(8px); /* Adjust this number to your liking */
-    transform: scale(1.1); /* Prevents white edges caused by the blur */
-    z-index: 0;
-}
+    /* ── TOP BAR ── */
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;position:relative;z-index:10}
+    .topbar-logo img{height:36px;display:block}
+    .topbar-link{font-size:14px;color:var(--muted);text-decoration:none}
+    .topbar-link span{color:var(--lime);font-weight:600}
 
-/* This ensures your text sits ON TOP of the blur */
-.hero-content {
-    position: relative;
-    z-index: 1;
-}
-        .form-side { background: var(--navy); display: flex; align-items: center; justify-content: center; padding: 60px 40px; overflow-y: auto; }
-        @media (max-width: 960px) { body { grid-template-columns: 1fr; } .hero-side { display: none; } }
-    </style>
+    /* ── HERO ── */
+    .hero{padding:36px 24px 28px;text-align:center}
+    .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(200,245,53,0.1);border:1px solid rgba(200,245,53,0.25);border-radius:100px;padding:6px 14px;font-size:12px;font-weight:600;color:var(--lime);letter-spacing:0.05em;margin-bottom:20px}
+    .hero-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lime);display:block}
+    .hero h1{font-family:'Syne',sans-serif;font-size:clamp(26px,7vw,40px);font-weight:800;line-height:1.1;margin-bottom:12px}
+    .hero h1 span{color:var(--lime)}
+    .hero p{font-size:15px;color:var(--muted);line-height:1.6;max-width:360px;margin:0 auto}
+
+    /* ── BENEFITS ── */
+    .benefits{margin:24px 16px 0;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px 20px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .benefit{display:flex;align-items:center;gap:8px;font-size:13px;color:#ccd0e0}
+    .benefit::before{content:"✓";color:var(--lime);font-weight:700;font-size:14px;flex-shrink:0}
+
+    /* ── FORM CARD ── */
+    .form-card{margin:20px 16px 40px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px 24px}
+    .form-card h2{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:6px}
+    .form-card .sub{font-size:14px;color:var(--muted);margin-bottom:24px}
+
+    /* ── FORM ELEMENTS ── */
+    .form-group{margin-bottom:16px}
+    .form-group label{display:block;font-size:13px;font-weight:600;color:#ccd0e0;margin-bottom:8px;letter-spacing:0.02em}
+    .form-group input{width:100%;background:#0a0d22;border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--white);outline:none;transition:border-color .2s}
+    .form-group input::placeholder{color:#3a3f5c}
+    .form-group input:focus{border-color:var(--lime)}
+    .form-group small{display:block;font-size:12px;color:var(--muted);margin-top:6px}
+
+    .pw-wrap{position:relative}
+    .pw-wrap input{padding-right:48px}
+    .pw-toggle{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);display:flex;align-items:center;padding:4px;transition:color .2s}
+    .pw-toggle:hover{color:var(--white)}
+
+    /* ── PASSWORD RULES ── */
+    .pw-rules{background:#080b1e;border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-top:10px;display:none}
+    .pw-rules.show{display:block}
+    .pw-rules p{font-size:12px;color:var(--muted);margin-bottom:10px;font-weight:600}
+    .rule{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-bottom:6px;transition:color .25s}
+    .rule:last-child{margin-bottom:0}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--border);flex-shrink:0;transition:background .25s}
+    .rule.pass{color:#7aefb0}
+    .rule.pass .dot{background:#7aefb0}
+
+    /* ── BUTTONS ── */
+    .btn-lime{width:100%;background:var(--lime);color:#000;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;border:none;border-radius:12px;padding:15px;cursor:pointer;transition:background .2s,transform .1s;letter-spacing:0.01em;margin-top:4px}
+    .btn-lime:hover{background:var(--lime-dark)}
+    .btn-lime:active{transform:scale(0.98)}
+    .btn-lime:disabled{opacity:0.6;cursor:not-allowed}
+
+    .footer-text{text-align:center;font-size:14px;color:var(--muted);margin-top:20px}
+    .footer-text a{color:var(--lime);font-weight:600;text-decoration:none}
+
+    /* ── TOAST ── */
+    .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1e2240;border:1px solid var(--border);color:var(--white);padding:12px 20px;border-radius:12px;font-size:14px;z-index:999;white-space:nowrap;transition:opacity .4s}
+    .toast.success{border-color:var(--lime);color:var(--lime)}
+    .toast.error{border-color:#ff5757;color:#ff5757}
+
+    /* ── DESKTOP ── */
+    @media(min-width:960px){
+      body{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr;align-items:stretch}
+      .topbar{grid-column:1/-1}
+
+      .hero{grid-column:1;padding:50px 60px 40px 80px;text-align:left;display:flex;flex-direction:column;justify-content:flex-start}
+      .hero p{margin:0;max-width:420px}
+
+      .benefits{grid-column:1;margin:24px 80px 0 80px;grid-template-columns:1fr 1fr}
+
+      .form-card{grid-column:2;grid-row:2/4;margin:40px 80px 40px 40px;align-self:start;padding:36px 36px}
+      .form-card h2{font-size:26px;margin-bottom:8px}
+    }
+  </style>
 </head>
 <body>
 
-<div class="hero-side">
-    <div class="hero-content">
-        <img src="HC-Logo.png" alt="HubConnect" style="width: 160px; margin-bottom: 48px;">
-        <h1 style="font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 24px;">
-            Start Saving<br><span style="color: var(--lime);">Today</span>
-        </h1>
-        <p style="font-size: 18px; color: var(--muted); line-height: 1.7; max-width: 480px; margin-bottom: 40px;">
-            Create your free account and unlock access to affordable transport, food, housing, training, and more.
-        </p>
-        <div style="background: rgba(93,190,74,0.08); border: 1px solid rgba(93,190,74,0.2); border-radius: 12px; padding: 24px; max-width: 500px;">
-            <div style="font-size: 15px; font-weight: 700; margin-bottom: 12px; color: var(--lime);">What You Get</div>
-            <ul style="list-style: none; padding: 0;">
-                <li style="padding: 10px 0; font-size: 14px; color: var(--muted);">✓ Save up to 70% on everything</li>
-                <li style="padding: 10px 0; font-size: 14px; color: var(--muted);">✓ Earn ₦500 per referral + 5% forever</li>
-                <li style="padding: 10px 0; font-size: 14px; color: var(--muted);">✓ Access to exclusive pools</li>
-                <li style="padding: 10px 0; font-size: 14px; color: var(--muted);">✓ Escrow-protected payments</li>
-            </ul>
-        </div>
-    </div>
+<div class="topbar">
+  <a href="index.html" class="topbar-logo"><img src="HC-Logo.png" alt="HubConnect"></a>
+  <a href="login.html" class="topbar-link">Have an account? <span>Sign in</span></a>
 </div>
 
-<div class="form-side">
-    <div style="width: 100%; max-width: 440px;">
-        <div style="margin-bottom: 40px;">
-            <h2 style="font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; margin-bottom: 12px;">Create Account</h2>
-            <p style="color: var(--muted); font-size: 15px;">Join 50,000+ people saving money</p>
-        </div>
-        <form onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
-            <div class="form-group">
-                <label class="form-label">Full Name</label>
-                <input type="text" class="form-input" placeholder="Ada Okafor" required style="font-size: 15px; padding: 14px 18px;">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Email Address</label>
-                <input type="email" class="form-input" placeholder="you@example.com" required style="font-size: 15px; padding: 14px 18px;">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Phone Number</label>
-                <input type="tel" class="form-input" placeholder="+234 801 234 5678" required style="font-size: 15px; padding: 14px 18px;">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Password</label>
-                <input type="password" class="form-input" placeholder="••••••••" required style="font-size: 15px; padding: 14px 18px;">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Referral Code (Optional)</label>
-                <input type="text" class="form-input" placeholder="Enter code if you have one" style="font-size: 15px; padding: 14px 18px;">
-            </div>
-            <button type="submit" class="btn btn-lime" style="width: 100%; padding: 14px; font-size: 15px;">Create Account</button>
-            <p style="text-align: center; margin-top: 32px; font-size: 14px; color: var(--muted);">
-                Already have an account? <a href="login.html" style="color: var(--lime); font-weight: 600;">Sign in</a>
-            </p>
-        </form>
-    </div>
+<div class="hero">
+  <div class="hero-tag">Free to join — No hidden fees</div>
+  <h1>Start Saving<br><span>Up to 70%</span><br>Today</h1>
+  <p>Join 50,000+ Africans accessing affordable transport, food, housing, training, and more.</p>
 </div>
 
+<div class="benefits">
+  <div class="benefit">Save up to 70% on everything</div>
+  <div class="benefit">Earn ₦500 per referral</div>
+  <div class="benefit">Access exclusive pools</div>
+  <div class="benefit">Escrow-protected payments</div>
+</div>
+
+<div class="form-card">
+  <h2>Create Account</h2>
+  <p class="sub">It only takes a minute to get started</p>
+
+  <form id="signup-form" novalidate>
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" id="full-name" placeholder="e.g. Martins Ogundare" required autocomplete="name">
+    </div>
+
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" id="email" placeholder="you@example.com" required autocomplete="email">
+    </div>
+
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input type="tel" id="phone" placeholder="e.g. 08012345678" required autocomplete="tel">
+      <small>Nigerian number — 080, 081, 070, 090 formats accepted</small>
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <div class="pw-wrap">
+        <input type="password" id="password" placeholder="Create a strong password" required autocomplete="new-password">
+        <button type="button" class="pw-toggle" id="toggle-pw" aria-label="Toggle password visibility">
+          <svg id="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+      </div>
+      <div class="pw-rules" id="pw-rules">
+        <p>Password must have:</p>
+        <div class="rule" id="rule-length"><span class="dot"></span> At least 8 characters</div>
+        <div class="rule" id="rule-upper"><span class="dot"></span> One uppercase letter (A–Z)</div>
+        <div class="rule" id="rule-lower"><span class="dot"></span> One lowercase letter (a–z)</div>
+        <div class="rule" id="rule-number"><span class="dot"></span> One number (0–9)</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Referral Code <span style="opacity:0.5;font-weight:400">(Optional)</span></label>
+      <input type="text" id="referral-code" placeholder="Enter code if you have one" autocomplete="off">
+    </div>
+
+    <button type="submit" class="btn-lime" id="signup-btn">Create Account</button>
+  </form>
+
+  <p class="footer-text">Already have an account? <a href="login.html">Sign in</a></p>
+</div>
+
+<script>
+const API='https://hubconnect-backend.onrender.com/api';
+
+function showToast(m,t='success'){
+  document.querySelectorAll('.toast').forEach(e=>e.remove());
+  const e=document.createElement('div');
+  e.className=`toast ${t}`;e.textContent=m;
+  document.body.appendChild(e);
+  setTimeout(()=>{e.style.opacity='0';setTimeout(()=>e.remove(),400)},4000);
+}
+
+if(localStorage.getItem('hc_token'))window.location.href='dashboard.html';
+
+const urlRef=new URLSearchParams(window.location.search).get('ref');
+if(urlRef)document.getElementById('referral-code').value=urlRef;
+
+// Password toggle
+let vis=false;
+const pwInput=document.getElementById('password');
+const eyeIcon=document.getElementById('eye-icon');
+document.getElementById('toggle-pw').addEventListener('click',()=>{
+  vis=!vis;
+  pwInput.type=vis?'text':'password';
+  eyeIcon.innerHTML=vis
+    ?'<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>'
+    :'<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+});
+
+// Password rules
+pwInput.addEventListener('focus',()=>document.getElementById('pw-rules').classList.add('show'));
+pwInput.addEventListener('input',()=>{
+  const v=pwInput.value;
+  const set=(id,ok)=>document.getElementById(id).classList.toggle('pass',ok);
+  set('rule-length',v.length>=8);
+  set('rule-upper',/[A-Z]/.test(v));
+  set('rule-lower',/[a-z]/.test(v));
+  set('rule-number',/\d/.test(v));
+});
+
+// Phone normalise
+function normPhone(p){
+  p=p.replace(/[\s\-()]/g,'');
+  if(p.startsWith('+234'))p='0'+p.slice(4);
+  if(p.startsWith('234')&&p.length===13)p='0'+p.slice(3);
+  return p;
+}
+
+// Submit
+document.getElementById('signup-form').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const btn=document.getElementById('signup-btn');
+  const name=document.getElementById('full-name').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const phone=document.getElementById('phone').value.trim();
+  const pass=document.getElementById('password').value;
+  const ref=document.getElementById('referral-code').value.trim();
+
+  if(!name){showToast('Please enter your full name.','error');return}
+  if(!email){showToast('Please enter your email.','error');return}
+  if(!phone){showToast('Please enter your phone number.','error');return}
+  if(pass.length<8||!/[A-Z]/.test(pass)||!/[a-z]/.test(pass)||!/\d/.test(pass)){
+    showToast('Password must have 8+ chars, uppercase, lowercase, number.','error');return
+  }
+
+  const parts=name.split(' '),first=parts[0],last=parts.slice(1).join(' ')||parts[0];
+  const ph=normPhone(phone);
+
+  btn.textContent='Creating…';btn.disabled=true;
+  try{
+    const res=await fetch(`${API}/auth/signup`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({first_name:first,last_name:last,email,phone:ph,password:pass,referral_code:ref||undefined})});
+    const data=await res.json();
+    if(res.ok){
+      localStorage.setItem('hc_token',data.data.token);
+      localStorage.setItem('hc_user',JSON.stringify(data.data.user));
+      showToast('Account created! Welcome 🎉');
+      setTimeout(()=>window.location.href='dashboard.html',1200);
+    }else{
+      showToast(data.message||'Signup failed.','error');
+      btn.textContent='Create Account';btn.disabled=false;
+    }
+  }catch{
+    showToast('Network error. Please try again.','error');
+    btn.textContent='Create Account';btn.disabled=false;
+  }
+});
+</script>
 </body>
 </html>
