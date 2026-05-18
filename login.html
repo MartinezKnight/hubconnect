@@ -1,189 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In — HubConnect</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{--navy:#06081a;--lime:#c8f535;--lime-dark:#a8d420;--muted:#8b8fa8;--card:#0e1029;--border:#1e2240;--white:#ffffff}
-    body{min-height:100vh;background:var(--navy);font-family:'DM Sans',sans-serif;color:var(--white);display:flex;flex-direction:column}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In — HubConnect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; margin: 0; }
+        .hero-side {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 60px;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+        .hero-side::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(rgba(6, 8, 26, 0.6), rgba(6, 8, 26, 0.8)),
+                        url('hero-image.png');
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+            transform: scale(1.1);
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .form-side { background: var(--navy); display: flex; align-items: center; justify-content: center; padding: 60px 40px; }
 
-    /* ── TOP BAR ── */
-    .topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;position:relative;z-index:10}
-    .topbar-logo img{height:36px;display:block}
-    .topbar-link{font-size:14px;color:var(--muted);text-decoration:none}
-    .topbar-link span{color:var(--lime);font-weight:600}
+        /* MOBILE: hide hero, show only form */
+        @media (max-width: 960px) {
+            body { grid-template-columns: 1fr; }
+            .hero-side { display: none; }
+            .form-side { padding: 40px 24px; align-items: flex-start; }
 
-    /* ── HERO ── */
-    .hero{padding:40px 24px 32px;text-align:center}
-    .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(200,245,53,0.1);border:1px solid rgba(200,245,53,0.25);border-radius:100px;padding:6px 14px;font-size:12px;font-weight:600;color:var(--lime);letter-spacing:0.05em;margin-bottom:20px}
-    .hero-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lime);display:block}
-    .hero h1{font-family:'Syne',sans-serif;font-size:clamp(28px,7vw,42px);font-weight:800;line-height:1.1;margin-bottom:14px}
-    .hero h1 span{color:var(--lime)}
-    .hero p{font-size:15px;color:var(--muted);line-height:1.6;max-width:360px;margin:0 auto}
-
-    /* ── STATS ── */
-    .stats{display:flex;justify-content:center;gap:0;margin:28px 24px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--card)}
-    .stat{flex:1;padding:16px 12px;text-align:center;border-right:1px solid var(--border)}
-    .stat:last-child{border-right:none}
-    .stat-num{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--lime);display:block}
-    .stat-label{font-size:11px;color:var(--muted);display:block;margin-top:2px}
-
-    /* ── FORM CARD ── */
-    .form-card{margin:28px 16px 40px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px 24px}
-    .form-card h2{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:6px}
-    .form-card .sub{font-size:14px;color:var(--muted);margin-bottom:24px}
-
-    /* ── FORM ELEMENTS ── */
-    .form-group{margin-bottom:18px}
-    .form-group label{display:block;font-size:13px;font-weight:600;color:#ccd0e0;margin-bottom:8px;letter-spacing:0.02em}
-    .form-group input{width:100%;background:#0a0d22;border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--white);outline:none;transition:border-color .2s}
-    .form-group input::placeholder{color:#3a3f5c}
-    .form-group input:focus{border-color:var(--lime)}
-
-    .pw-wrap{position:relative}
-    .pw-wrap input{padding-right:48px}
-    .pw-toggle{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);display:flex;align-items:center;padding:4px;transition:color .2s}
-    .pw-toggle:hover{color:var(--white)}
-
-    .forgot{display:block;text-align:right;font-size:13px;color:var(--muted);text-decoration:none;margin-top:-10px;margin-bottom:20px}
-    .forgot:hover{color:var(--lime)}
-
-    /* ── BUTTONS ── */
-    .btn-lime{width:100%;background:var(--lime);color:#000;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;border:none;border-radius:12px;padding:15px;cursor:pointer;transition:background .2s,transform .1s;letter-spacing:0.01em}
-    .btn-lime:hover{background:var(--lime-dark)}
-    .btn-lime:active{transform:scale(0.98)}
-    .btn-lime:disabled{opacity:0.6;cursor:not-allowed}
-
-    .divider{display:flex;align-items:center;gap:12px;margin:20px 0;color:var(--muted);font-size:13px}
-    .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--border)}
-
-    .footer-text{text-align:center;font-size:14px;color:var(--muted);margin-top:20px}
-    .footer-text a{color:var(--lime);font-weight:600;text-decoration:none}
-
-    /* ── TOAST ── */
-    .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1e2240;border:1px solid var(--border);color:var(--white);padding:12px 20px;border-radius:12px;font-size:14px;z-index:999;white-space:nowrap;transition:opacity .4s}
-    .toast.success{border-color:var(--lime);color:var(--lime)}
-    .toast.error{border-color:#ff5757;color:#ff5757}
-
-    /* ── DESKTOP ── */
-    @media(min-width:960px){
-      body{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr;align-items:stretch}
-      .topbar{grid-column:1/-1}
-
-      .hero{grid-column:1;padding:60px 60px 60px 80px;text-align:left;display:flex;flex-direction:column;justify-content:center}
-      .hero p{margin:0;max-width:440px}
-      .hero-tag{margin-bottom:24px}
-
-      .stats{grid-column:1;margin:32px 80px 0 80px;justify-content:flex-start;border-radius:16px}
-
-      .form-card{grid-column:2;grid-row:2;margin:40px 80px 40px 40px;align-self:center;padding:40px 36px}
-      .form-card h2{font-size:28px;margin-bottom:8px}
-    }
-  </style>
+            /* Mobile logo shown above form */
+            .mobile-logo { display: block; margin-bottom: 32px; }
+            .mobile-logo img { height: 40px; }
+        }
+        @media (min-width: 961px) {
+            .mobile-logo { display: none; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="topbar">
-  <a href="index.html" class="topbar-logo"><img src="HC-Logo.png" alt="HubConnect"></a>
-  <a href="signup.html" class="topbar-link">No account? <span>Sign up</span></a>
-</div>
-
-<div class="hero">
-  <div class="hero-tag">Africa's Universal Service Layer</div>
-  <h1>Welcome<br>Back to<br><span>HubConnect</span></h1>
-  <p>Join 50,000+ Africans pooling resources to save up to 70% on transport, food, housing, and more.</p>
-</div>
-
-<div class="stats">
-  <div class="stat"><span class="stat-num">50K+</span><span class="stat-label">Active Users</span></div>
-  <div class="stat"><span class="stat-num">70%</span><span class="stat-label">Avg Savings</span></div>
-  <div class="stat"><span class="stat-num">₦500</span><span class="stat-label">Per Referral</span></div>
-</div>
-
-<div class="form-card">
-  <h2>Sign In</h2>
-  <p class="sub">Access your savings dashboard</p>
-
-  <form id="login-form" novalidate>
-    <div class="form-group">
-      <label>Email Address</label>
-      <input type="email" id="email" placeholder="you@example.com" required autocomplete="email">
+<div class="hero-side">
+    <div class="hero-content">
+        <img src="HC-Logo.png" alt="HubConnect" style="width: 160px; margin-bottom: 48px;">
+        <h1 style="font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 24px;">Save Up To<br><span style="color: var(--lime);">70% on Everything</span></h1>
+        <p style="font-size: 18px; color: var(--muted); line-height: 1.7; max-width: 480px;">Join 50,000+ Africans pooling resources to access life-changing opportunities.</p>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; max-width: 500px;">
+            <div><div style="font-family: 'Syne'; font-size: 32px; font-weight: 800; color: var(--lime);">50K+</div><div style="font-size: 13px; color: var(--muted);">Active Users</div></div>
+            <div><div style="font-family: 'Syne'; font-size: 32px; font-weight: 800; color: var(--lime);">70%</div><div style="font-size: 13px; color: var(--muted);">Avg Savings</div></div>
+            <div><div style="font-family: 'Syne'; font-size: 32px; font-weight: 800; color: var(--lime);">3</div><div style="font-size: 13px; color: var(--muted);">Cities</div></div>
+        </div>
     </div>
+</div>
 
-    <div class="form-group">
-      <label>Password</label>
-      <div class="pw-wrap">
-        <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
-        <button type="button" class="pw-toggle" id="toggle-pw" aria-label="Toggle password visibility">
-          <svg id="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
-          </svg>
-        </button>
-      </div>
+<div class="form-side">
+    <div style="width: 100%; max-width: 440px;">
+
+        <!-- Mobile logo -->
+        <div class="mobile-logo">
+            <a href="index.html"><img src="HC-Logo.png" alt="HubConnect"></a>
+        </div>
+
+        <div style="margin-bottom: 40px;">
+            <h2 style="font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; margin-bottom: 12px;">Welcome Back</h2>
+            <p style="color: var(--muted); font-size: 15px;">Sign in to access your account</p>
+        </div>
+
+        <form id="login-form" novalidate>
+            <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="you@example.com" required autocomplete="email" style="font-size: 15px; padding: 14px 18px;">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <div style="position:relative;">
+                    <input type="password" id="password" class="form-input" placeholder="••••••••" required autocomplete="current-password" style="font-size: 15px; padding: 14px 48px 14px 18px;">
+                    <button type="button" id="toggle-pw" aria-label="Toggle password" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);display:flex;align-items:center;padding:4px;">
+                        <svg id="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div style="text-align:right; margin-bottom: 20px;">
+                <a href="forgot-password.html" style="font-size:13px; color:var(--muted); text-decoration:none;">Forgot password?</a>
+            </div>
+            <button type="submit" id="login-btn" class="btn btn-lime" style="width: 100%; padding: 14px; font-size: 15px;">Sign In</button>
+            <p style="text-align: center; margin-top: 32px; font-size: 14px; color: var(--muted);">
+                Don't have an account? <a href="signup.html" style="color: var(--lime); font-weight: 600;">Create account</a>
+            </p>
+        </form>
     </div>
-
-    <a href="forgot-password.html" class="forgot">Forgot password?</a>
-
-    <button type="submit" class="btn-lime" id="login-btn">Sign In</button>
-
-    <p class="footer-text">Don't have an account? <a href="signup.html">Create account</a></p>
-  </form>
 </div>
 
 <script>
 const API='https://hubconnect-backend.onrender.com/api';
-
-function showToast(m,t='success'){
-  document.querySelectorAll('.toast').forEach(e=>e.remove());
-  const e=document.createElement('div');
-  e.className=`toast ${t}`;e.textContent=m;
-  document.body.appendChild(e);
-  setTimeout(()=>{e.style.opacity='0';setTimeout(()=>e.remove(),400)},4000);
-}
-
+function showToast(m,t='success'){document.querySelectorAll('.toast').forEach(e=>e.remove());const e=document.createElement('div');e.className=`toast ${t}`;e.textContent=m;document.body.appendChild(e);setTimeout(()=>{e.style.opacity='0';setTimeout(()=>e.remove(),400)},4000)}
 if(localStorage.getItem('hc_token'))window.location.href='dashboard.html';
 
-// Password toggle
+// Password toggle — clean SVG only
 let vis=false;
 const pwInput=document.getElementById('password');
 const eyeIcon=document.getElementById('eye-icon');
 document.getElementById('toggle-pw').addEventListener('click',()=>{
-  vis=!vis;
-  pwInput.type=vis?'text':'password';
-  eyeIcon.innerHTML=vis
-    ?'<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>'
-    :'<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+    vis=!vis;
+    pwInput.type=vis?'text':'password';
+    eyeIcon.innerHTML=vis
+        ?'<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>'
+        :'<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
 });
 
-// Submit
 document.getElementById('login-form').addEventListener('submit',async e=>{
-  e.preventDefault();
-  const btn=document.getElementById('login-btn');
-  const email=document.getElementById('email').value.trim();
-  const pass=document.getElementById('password').value;
-  if(!email){showToast('Please enter your email.','error');return}
-  if(!pass){showToast('Please enter your password.','error');return}
-  btn.textContent='Signing in…';btn.disabled=true;
-  try{
-    const res=await fetch(`${API}/auth/login`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password:pass})});
-    const data=await res.json();
-    if(res.ok){
-      localStorage.setItem('hc_token',data.data.token);
-      localStorage.setItem('hc_user',JSON.stringify(data.data.user));
-      showToast('Welcome back! 👋');
-      setTimeout(()=>window.location.href='dashboard.html',1200);
-    }else{
-      showToast(data.message||'Login failed.','error');
-      btn.textContent='Sign In';btn.disabled=false;
+    e.preventDefault();
+    const btn=document.getElementById('login-btn');
+    const email=document.getElementById('email').value.trim();
+    const pass=document.getElementById('password').value;
+    if(!email){showToast('Please enter your email.','error');return}
+    if(!pass){showToast('Please enter your password.','error');return}
+    btn.textContent='Signing in…';btn.disabled=true;
+    try{
+        const res=await fetch(`${API}/auth/login`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password:pass})});
+        const data=await res.json();
+        if(res.ok){
+            localStorage.setItem('hc_token',data.data.token);
+            localStorage.setItem('hc_user',JSON.stringify(data.data.user));
+            showToast('Welcome back! 👋');
+            setTimeout(()=>window.location.href='dashboard.html',1200);
+        }else{
+            showToast(data.message||'Login failed.','error');
+            btn.textContent='Sign In';btn.disabled=false;
+        }
+    }catch{
+        showToast('Network error. Please try again.','error');
+        btn.textContent='Sign In';btn.disabled=false;
     }
-  }catch{
-    showToast('Network error. Please try again.','error');
-    btn.textContent='Sign In';btn.disabled=false;
-  }
 });
 </script>
 </body>
