@@ -1,139 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Account — HubConnect</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In — HubConnect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; margin: 0; }
+        .hero-side {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 60px;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+        .hero-side::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(rgba(6, 8, 26, 0.6), rgba(6, 8, 26, 0.8)),
+                        url('hero-image.png');
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+            transform: scale(1.1);
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .form-side { background: var(--navy); display: flex; align-items: center; justify-content: center; padding: 60px 40px; }
+
+        /* MOBILE: hide hero, show only form */
+        @media (max-width: 960px) {
+            body { grid-template-columns: 1fr; }
+            .hero-side { display: none; }
+            .form-side { padding: 40px 24px; align-items: flex-start; }
+
+            /* Mobile logo shown above form */
+            .mobile-logo { display: block; margin-bottom: 32px; }
+            .mobile-logo img { height: 40px; }
+        }
+        @media (min-width: 961px) {
+            .mobile-logo { display: none; }
+        }
+    </style>
 </head>
-<body class="auth-page">
+<body>
 
-<div class="auth-container">
-
-  <!-- Left: Hero (desktop only) -->
-  <div class="auth-hero">
-    <img src="HC-Logo.png" alt="HubConnect" class="auth-hero-logo">
-    <h1 class="auth-hero-title">Start Saving<br><span>Today</span></h1>
-    <p class="auth-hero-subtitle">Create your free account and unlock access to affordable transport, food, housing, training, and more.</p>
-    <div class="auth-benefits">
-      <div class="benefits-label">What You Get</div>
-      <ul>
-        <li><span>✓</span> Save up to 70% on everything</li>
-        <li><span>✓</span> Earn ₦500 per referral + 5% forever</li>
-        <li><span>✓</span> Access to exclusive pools</li>
-        <li><span>✓</span> Escrow-protected payments</li>
-      </ul>
+<div class="hero-side">
+    <div class="hero-content">
+        <img src="HC-Logo.png" alt="HubConnect" style="width: 160px; margin-bottom: 48px;">
+        <h1 style="font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 24px;">Save Up To<br><span style="color: var(--lime);">70% on Everything</span></h1>
+        <p style="font-size: 18px; color: var(--muted); line-height: 1.7; max-width: 480px;">Join 50,000+ Africans pooling resources to access life-changing opportunities.</p>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; max-width: 500px;">
+            <div><div style="font-family: 'Syne'; font-size: 32px; font-weight: 800; color: var(--lime);">50K+</div><div style="font-size: 13px; color: var(--muted);">Active Users</div></div>
+            <div><div style="font-family: 'Syne'; font-size: 32px; font-weight: 800; color: var(--lime);">70%</div><div style="font-size: 13px; color: var(--muted);">Avg Savings</div></div>
+            <div><div style="font-family: 'Syne'; font-size: 32px; font-weight: 800; color: var(--lime);">3</div><div style="font-size: 13px; color: var(--muted);">Cities</div></div>
+        </div>
     </div>
-  </div>
+</div>
 
-  <!-- Right: Form -->
-  <div class="auth-form-wrapper">
+<div class="form-side">
+    <div style="width: 100%; max-width: 440px;">
 
-    <!-- Mobile logo (hidden on desktop) -->
-    <div class="auth-mobile-logo">
-      <a href="index.html"><img src="HC-Logo.png" alt="HubConnect" style="height:40px;display:block;"></a>
+        <!-- Mobile logo -->
+        <div class="mobile-logo">
+            <a href="index.html"><img src="HC-Logo.png" alt="HubConnect"></a>
+        </div>
+
+        <div style="margin-bottom: 40px;">
+            <h2 style="font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; margin-bottom: 12px;">Welcome Back</h2>
+            <p style="color: var(--muted); font-size: 15px;">Sign in to access your account</p>
+        </div>
+
+        <form id="login-form" novalidate>
+            <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="you@example.com" required autocomplete="email" style="font-size: 15px; padding: 14px 18px;">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <div style="position:relative;">
+                    <input type="password" id="password" class="form-input" placeholder="••••••••" required autocomplete="current-password" style="font-size: 15px; padding: 14px 48px 14px 18px;">
+                    <button type="button" id="toggle-pw" aria-label="Toggle password" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);display:flex;align-items:center;padding:4px;">
+                        <svg id="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div style="text-align:right; margin-bottom: 20px;">
+                <a href="forgot-password.html" style="font-size:13px; color:var(--muted); text-decoration:none;">Forgot password?</a>
+            </div>
+            <button type="submit" id="login-btn" class="btn btn-lime" style="width: 100%; padding: 14px; font-size: 15px;">Sign In</button>
+            <p style="text-align: center; margin-top: 32px; font-size: 14px; color: var(--muted);">
+                Don't have an account? <a href="signup.html" style="color: var(--lime); font-weight: 600;">Create account</a>
+            </p>
+        </form>
     </div>
-
-    <div class="auth-form-container">
-      <h1>Create Account</h1>
-      <p class="auth-subtitle">Join 50,000+ Africans saving up to 70% together.</p>
-
-      <form id="signup-form" class="auth-form" novalidate>
-        <div class="form-group">
-          <label>Full Name</label>
-          <input type="text" id="full-name" placeholder="e.g. Martins Ogundare" required autocomplete="name">
-        </div>
-
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" id="email" placeholder="you@example.com" required autocomplete="email">
-        </div>
-
-        <div class="form-group">
-          <label>Phone Number</label>
-          <input type="tel" id="phone" placeholder="e.g. 08012345678" required autocomplete="tel">
-          <small>Nigerian number — 08012345678 or 07012345678</small>
-        </div>
-
-        <div class="form-group">
-          <label>Password</label>
-          <div class="password-field">
-            <input type="password" id="password" placeholder="Create a strong password" required autocomplete="new-password">
-            <button type="button" class="password-toggle" id="toggle-pw" aria-label="Toggle password">
-              <svg id="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
-              </svg>
-            </button>
-          </div>
-          <div class="password-rules" id="pw-rules">
-            <p>Password must have:</p>
-            <div class="rule" id="rule-length"><span class="dot"></span> At least 8 characters</div>
-            <div class="rule" id="rule-upper"><span class="dot"></span> One uppercase letter (A–Z)</div>
-            <div class="rule" id="rule-lower"><span class="dot"></span> One lowercase letter (a–z)</div>
-            <div class="rule" id="rule-number"><span class="dot"></span> One number (0–9)</div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Referral Code <span style="opacity:0.6">(Optional)</span></label>
-          <input type="text" id="referral-code" placeholder="Enter code if you have one" autocomplete="off">
-        </div>
-
-        <button type="submit" class="btn btn-lime" id="signup-btn">Create Account</button>
-      </form>
-
-      <p class="auth-footer-text">Already have an account? <a href="login.html">Sign in</a></p>
-    </div>
-  </div>
-
 </div>
 
 <script>
-const API_BASE='https://hubconnect-backend.onrender.com/api';
-function showToast(m,t='success'){document.querySelectorAll('.toast').forEach(e=>e.remove());const e=document.createElement('div');e.className=`toast ${t}`;e.textContent=m;document.body.appendChild(e);setTimeout(()=>{e.style.opacity='0';setTimeout(()=>e.remove(),400)},4e3)}
+const API='https://hubconnect-backend.onrender.com/api';
+function showToast(m,t='success'){document.querySelectorAll('.toast').forEach(e=>e.remove());const e=document.createElement('div');e.className=`toast ${t}`;e.textContent=m;document.body.appendChild(e);setTimeout(()=>{e.style.opacity='0';setTimeout(()=>e.remove(),400)},4000)}
 if(localStorage.getItem('hc_token'))window.location.href='dashboard.html';
-const urlRef=new URLSearchParams(window.location.search).get('ref');
-if(urlRef)document.getElementById('referral-code').value=urlRef;
 
 // Password toggle — clean SVG only
 let vis=false;
-const pw=document.getElementById('password');
+const pwInput=document.getElementById('password');
 const eyeIcon=document.getElementById('eye-icon');
 document.getElementById('toggle-pw').addEventListener('click',()=>{
     vis=!vis;
-    pw.type=vis?'text':'password';
+    pwInput.type=vis?'text':'password';
     eyeIcon.innerHTML=vis
         ?'<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>'
         :'<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
 });
 
-pw.addEventListener('focus',()=>document.getElementById('pw-rules').classList.add('show'));
-pw.addEventListener('input',()=>{const v=pw.value,c=(i,t)=>document.getElementById(i).classList.toggle('pass',t);c('rule-length',v.length>=8);c('rule-upper',/[A-Z]/.test(v));c('rule-lower',/[a-z]/.test(v));c('rule-number',/\d/.test(v))});
-
-function normPhone(p){p=p.replace(/[\s\-()]/g,'');if(p.startsWith('+234'))p='0'+p.slice(4);if(p.startsWith('234')&&p.length===13)p='0'+p.slice(3);return p}
-
-document.getElementById('signup-form').addEventListener('submit',async e=>{
+document.getElementById('login-form').addEventListener('submit',async e=>{
     e.preventDefault();
-    const btn=document.getElementById('signup-btn'),name=document.getElementById('full-name').value.trim(),email=document.getElementById('email').value.trim(),phone=document.getElementById('phone').value.trim(),pass=document.getElementById('password').value,ref=document.getElementById('referral-code').value.trim();
-    if(!name){showToast('Please enter your full name.','error');return}
+    const btn=document.getElementById('login-btn');
+    const email=document.getElementById('email').value.trim();
+    const pass=document.getElementById('password').value;
     if(!email){showToast('Please enter your email.','error');return}
-    if(!phone){showToast('Please enter your phone.','error');return}
-    if(pass.length<8||!/[A-Z]/.test(pass)||!/[a-z]/.test(pass)||!/\d/.test(pass)){showToast('Password must have 8+ chars, uppercase, lowercase, number.','error');return}
-    const parts=name.split(' '),first=parts[0],last=parts.slice(1).join(' ')||parts[0],ph=normPhone(phone);
-    btn.textContent='Creating…';btn.disabled=true;
+    if(!pass){showToast('Please enter your password.','error');return}
+    btn.textContent='Signing in…';btn.disabled=true;
     try{
-        const res=await fetch(`${API_BASE}/auth/signup`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({first_name:first,last_name:last,email,phone:ph,password:pass,referral_code:ref||void 0})});
+        const res=await fetch(`${API}/auth/login`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password:pass})});
         const data=await res.json();
         if(res.ok){
             localStorage.setItem('hc_token',data.data.token);
             localStorage.setItem('hc_user',JSON.stringify(data.data.user));
-            showToast('Account created! Welcome 🎉');
+            showToast('Welcome back! 👋');
             setTimeout(()=>window.location.href='dashboard.html',1200);
         }else{
-            showToast(data.message||'Signup failed.','error');
-            btn.textContent='Create Account';btn.disabled=false;
+            showToast(data.message||'Login failed.','error');
+            btn.textContent='Sign In';btn.disabled=false;
         }
-    }catch{showToast('Network error.','error');btn.textContent='Create Account';btn.disabled=false;}
+    }catch{
+        showToast('Network error. Please try again.','error');
+        btn.textContent='Sign In';btn.disabled=false;
+    }
 });
 </script>
 </body>
